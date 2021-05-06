@@ -60,7 +60,7 @@ public class rootPageController {
         return oldPassword;
     }
 
-    public String login(ActionEvent event ) throws IOException {
+    public void login(ActionEvent event ) throws IOException {
         String username = textInput.getText();
         String password = passwordInput.getText();
 
@@ -103,14 +103,30 @@ public class rootPageController {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Connection Failed! Check Your Internet Connection");
+            alert.setContentText("Click Ok to Try Again");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
+            textInput.setText("");
+            passwordInput.setText("");
         }
-        return password;
     }
 
-    public void reset(ActionEvent e)throws IOException{
-        textInput.setText("");
-        passwordInput.setText("");
+    public void reset(ActionEvent e){
+        textInput.clear();
+        passwordInput.clear();
     }
 
+    public void resetPassword(ActionEvent event)throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resetPassword/resetPassword.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

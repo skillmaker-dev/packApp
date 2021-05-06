@@ -1,9 +1,13 @@
 .myButtons{
-    -fx-background-radius : 20px;
+    -fx-background-radius : 40px;
     -fx-font-variant: small-caps;
+    -fx-font-size: 18px;
+    -fx-text-transform: uppercase;
+    -fx-text-align: center;
+    -fx-background-color: rgb(118, 198, 230);
 }
 .myButtons:hover{
-          -fx-background-color:  rgb(201, 201, 201);
+          -fx-background-color:  #4ae4ff;
           }
 .logout{
     -fx-border-mode : outset;
@@ -15,6 +19,6 @@
        -fx-background-color:  rgb(118, 198, 230);
        }
 .myPane{
-    -fx-background-image: url("IMG/package.jpg");
-    -fx-background-size: 600px 400px;
+    -fx-background-image: url("IMG/background1.jpg");
+    -fx-background-size: cover;
 }

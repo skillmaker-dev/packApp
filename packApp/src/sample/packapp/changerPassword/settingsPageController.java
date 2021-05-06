@@ -50,7 +50,7 @@ public class settingsPageController extends rootPageController {
         rootPageController pageController = loader1.getController();
 
         if(!newPassword.matches("")){
-            if(!pageController.displayCurrentpassword().equals(currentPassword)){
+            if(!displayCurrentpassword().equals(currentPassword)){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR!");
                 alert.setHeaderText("The current password is wrong");

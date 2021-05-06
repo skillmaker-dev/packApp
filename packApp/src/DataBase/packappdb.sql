@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 06 mai 2021 à 01:36
+-- Généré le : jeu. 06 mai 2021 à 19:43
 -- Version du serveur :  10.4.18-MariaDB
 -- Version de PHP : 7.3.27
 
@@ -80,15 +80,16 @@ INSERT INTO `products` (`product`, `price`) VALUES
 CREATE TABLE `users` (
   `username` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL,
-  `oldPassword` varchar(40) NOT NULL
+  `oldPassword` varchar(40) NOT NULL,
+  `email` varchar(50) NOT NULL DEFAULT 'Admin_Manager@gmail.com'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `oldPassword`) VALUES
-('admin', 'admin', 'mst');
+INSERT INTO `users` (`username`, `password`, `oldPassword`, `email`) VALUES
+('admin', '2000/08/01', '1234', 'Admin_Manager@gmail.com');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
