@@ -32,7 +32,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="268.0" layoutY="275.0" mnemonicParsing="false" onAction="#reset" prefHeight="14.0" prefWidth="62.0" styleClass="resetButton" stylesheets="@../../CSSFiles/rootPageCss.css" text="Reset">
+      <Button layoutX="189.0" layoutY="275.0" mnemonicParsing="false" onAction="#reset" prefHeight="28.0" prefWidth="82.0" styleClass="resetButton" stylesheets="@../../CSSFiles/rootPageCss.css" text="Clear">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -41,5 +41,10 @@
             <Font name="Roboto" size="61.0" />
          </font>
       </Label>
+      <Button fx:id="forgetPassword" layoutX="284.0" layoutY="275.0" mnemonicParsing="false" onAction="#resetPassword" prefHeight="28.0" prefWidth="117.0" styleClass="resetButton" stylesheets="@../../CSSFiles/rootPageCss.css" text="Forget Password">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
