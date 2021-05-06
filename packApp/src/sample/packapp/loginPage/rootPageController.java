@@ -30,7 +30,7 @@ public class rootPageController {
 
     public String displayCurrentpassword() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/packappdb","root","");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             String query = "SELECT * FROM users";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -46,7 +46,7 @@ public class rootPageController {
 
     public String displayOldpassword() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/packappdb","root","");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             String query = "SELECT * FROM users";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -66,7 +66,7 @@ public class rootPageController {
 
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/packappdb","root","");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             String query = "SELECT * FROM users WHERE username = '"+username+"' and password = '"+password+"'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);

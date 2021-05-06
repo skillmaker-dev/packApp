@@ -11,7 +11,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/PackApp/src/DataBase/mysql-connector-java-8.0.24.jar!/" />
+          <root url="jar://$MODULE_DIR$/packApp/src/sample/DataBase/sqlite-jdbc-3.34.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
