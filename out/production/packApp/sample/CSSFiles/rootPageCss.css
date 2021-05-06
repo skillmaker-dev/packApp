@@ -1,0 +1,26 @@
+.loginButton,.resetButton{
+    -fx-background-radius: 20px;
+    -fx-background-color: rgb(131, 211, 243);
+    -fx-font-style: normal;
+}
+.loginButton{
+-fx-font-size:16px ;
+}
+.resetButton{
+-fx-background-radius: 5px;
+-fx-font-size:12px ;
+}
+
+.loginButton:hover{
+-fx-background-color:  rgb(118, 198, 230);
+
+}
+.myPane{
+    -fx-background-image: url("IMG/background1.jpg");
+    -fx-background-size : 600px 400px;
+}
+.textField{
+    -fx-background-color: azure;
+    -fx-background-radius: 10px;
+    -fx-padding-left: 20px;
+}

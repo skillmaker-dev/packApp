@@ -1,0 +1,17 @@
+.myAnchorPane{
+    -fx-border-mode: double ;
+    -fx-background-image: url("IMG/background1.jpg");
+    -fx-background-size: 600px 400px;
+}
+.myPassField{
+    -fx-background-radius : 30px;
+    -fx-background-color: rgb(237, 240, 238);
+}
+.myButton{
+    -fx-background-color: rgb(131, 211, 243);;
+    -fx-background-radius: 40px;
+}
+
+.myButton:hover{
+         -fx-background-color:  rgb(118, 198, 230);
+         }

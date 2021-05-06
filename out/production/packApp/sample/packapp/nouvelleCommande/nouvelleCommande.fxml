@@ -16,22 +16,22 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="56.0" layoutY="80.0" promptText="Téléphone ">
+      <TextField fx:id="phoneField" layoutX="56.0" layoutY="80.0" promptText="Téléphone ">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="56.0" layoutY="125.0" promptText="Nom Complet">
+      <TextField fx:id="fullNameField" layoutX="56.0" layoutY="125.0" promptText="Nom Complet">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="56.0" layoutY="171.0" promptText="Email">
+      <TextField fx:id="emailField" layoutX="56.0" layoutY="171.0" promptText="Email">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <RadioButton layoutX="263.0" layoutY="130.0" mnemonicParsing="false" text="H">
+      <RadioButton fx:id="maleRadio" layoutX="263.0" layoutY="130.0" mnemonicParsing="false" text="H">
          <font>
             <Font size="14.0" />
          </font>
@@ -39,7 +39,7 @@
             <ToggleGroup fx:id="sexe" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="312.0" layoutY="130.0" mnemonicParsing="false" text="F" toggleGroup="$sexe">
+      <RadioButton fx:id="femaleRadio" layoutX="312.0" layoutY="130.0" mnemonicParsing="false" text="F" toggleGroup="$sexe">
          <font>
             <Font size="14.0" />
          </font>
@@ -49,34 +49,34 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="54.0" layoutY="292.0" prefHeight="30.0" prefWidth="254.0" promptText="Adresse">
+      <TextField fx:id="addressField" layoutX="54.0" layoutY="292.0" prefHeight="30.0" prefWidth="254.0" promptText="Adresse">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="328.0" layoutY="257.0" prefHeight="30.0" prefWidth="82.0" promptText="Quantité">
+      <TextField fx:id="amountField" layoutX="328.0" layoutY="257.0" prefHeight="30.0" prefWidth="82.0" promptText="Quantité">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="420.0" layoutY="257.0" prefHeight="30.0" prefWidth="82.0" promptText="Prix Unit">
+      <TextField fx:id="priceField" layoutX="420.0" layoutY="257.0" prefHeight="30.0" prefWidth="82.0" promptText="Prix Unit">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="512.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="34.0" text="+">
+      <Button layoutX="512.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="30.0" prefWidth="34.0" text="+">
          <font>
             <Font name="Britannic Bold" size="15.0" />
          </font>
       </Button>
-      <ChoiceBox layoutX="54.0" layoutY="257.0" prefHeight="30.0" prefWidth="254.0" />
-      <ChoiceBox layoutX="328.0" layoutY="292.0" prefHeight="30.0" prefWidth="218.0" />
+      <ChoiceBox fx:id="productBox" layoutX="54.0" layoutY="257.0" prefHeight="30.0" prefWidth="254.0" />
+      <ChoiceBox fx:id="statusBox" layoutX="328.0" layoutY="292.0" prefHeight="30.0" prefWidth="218.0" />
       <Label layoutX="387.0" layoutY="20.0" text="Nouvelle Commande">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Button layoutX="447.0" layoutY="355.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="97.0" text="Enregistrer" />
+      <Button layoutX="447.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="30.0" prefWidth="97.0" text="Enregistrer" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" text="&lt; Retour" />
    </children>
 </AnchorPane>

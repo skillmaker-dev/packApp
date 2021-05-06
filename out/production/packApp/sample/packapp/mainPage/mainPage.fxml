@@ -25,7 +25,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#afficherCommandes" opacity="0.94" prefHeight="49.0" prefWidth="326.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Afficher Commandes">
+            <Button mnemonicParsing="false" onAction="#commandes" opacity="0.94" prefHeight="49.0" prefWidth="326.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Commandes" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
@@ -36,7 +36,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#nouvelleCommande" opacity="0.94" prefHeight="59.0" prefWidth="329.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Nouvelle Commande" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#nouvelleCommande" opacity="0.94" prefHeight="59.0" prefWidth="329.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Nouvelle Commande">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
@@ -47,7 +47,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#chercherCommande" opacity="0.94" prefHeight="261.0" prefWidth="400.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Chercher Commande" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#depot" opacity="0.94" prefHeight="261.0" prefWidth="400.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Depot" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
@@ -58,7 +58,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#chercherClient" opacity="0.94" prefHeight="59.0" prefWidth="344.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Chercher Client" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#client" opacity="0.94" prefHeight="59.0" prefWidth="344.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Clients" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
