@@ -28,7 +28,7 @@ public class ResetPasswordController extends rootPageController {
 
     public String displayEmail(){
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/packappdb","root","");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             String query = "SELECT * FROM users";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
