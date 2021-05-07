@@ -77,7 +77,7 @@ public class settingsPageController extends rootPageController {
                 newPassField.setText("");
             }else{
                 try {
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/packappdb","root","");
+                    Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
                     String query = "UPDATE users SET password = '" + newPassword + "' , oldPassword = '" + currentPassword +"'";
                     Statement statement = connection.createStatement();
                     statement.executeUpdate(query);
