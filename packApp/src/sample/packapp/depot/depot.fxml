@@ -56,7 +56,7 @@
             <TableColumn fx:id="YearCol" prefWidth="104.0" text="Prix Unit(Dhs)" />
          </columns>
       </TableView>
-      <Button layoutX="14.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="64.0" text="Ajouter" AnchorPane.rightAnchor="531.0">
+      <Button fx:id="InsertButton" layoutX="14.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="64.0" text="Ajouter" AnchorPane.rightAnchor="531.0">
          <font>
 
             <Font size="13.0" />
