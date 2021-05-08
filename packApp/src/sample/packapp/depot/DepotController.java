@@ -1,6 +1,7 @@
 package sample.packapp.depot;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -49,6 +47,8 @@ public class DepotController implements Initializable {
     private TableColumn<Products,Integer> quantityColumn;
     @FXML
     private TableColumn<Products,Double> unitPriceColumn;
+    @FXML
+    private Button Modifier,Supprimer;
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
@@ -57,11 +57,13 @@ public class DepotController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        Modifier.setDisable(true);
+        Supprimer.setDisable(true);
         showProducts();
 
     }
@@ -168,6 +170,7 @@ public class DepotController implements Initializable {
         showProducts();
         clearFields();
 
+
     }
 
     public void handleDeleteProducts() {
@@ -183,6 +186,8 @@ public class DepotController implements Initializable {
     private void handleMouseAction(MouseEvent event) {
 
         Products products = productsTableView.getSelectionModel().getSelectedItem();
+        Modifier.setDisable(false);
+        Supprimer.setDisable(false);
         idTextField.setText("" + products.getId());
         productNameTextField.setText("" + products.getProductName());
         quantityTextField.setText("" + products.getQuantity());
