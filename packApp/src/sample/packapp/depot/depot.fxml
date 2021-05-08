@@ -38,9 +38,9 @@
             <VBox prefHeight="226.0" prefWidth="160.0" spacing="12.0">
                <children>
                   <TextField fx:id="IDTextField" />
-                  <TextField fx:id="TitleTextField" />
-                  <TextField fx:id="AuthorTextField" layoutX="10.0" layoutY="35.0" />
-                  <TextField fx:id="YearTextField" layoutX="10.0" layoutY="60.0" />
+                  <TextField fx:id="ProductNameTextField" />
+                  <TextField fx:id="QuantityTextField" layoutX="10.0" layoutY="35.0" />
+                  <TextField fx:id="UnitPriceTextField" layoutX="10.0" layoutY="60.0" />
                </children>
                <HBox.margin>
                   <Insets />
@@ -56,22 +56,18 @@
             <TableColumn fx:id="YearCol" prefWidth="104.0" text="Prix Unit(Dhs)" />
          </columns>
       </TableView>
-      <Button fx:id="InsertBtn" layoutX="14.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="Insert" AnchorPane.rightAnchor="524.0">
+      <Button layoutX="14.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="64.0" text="Ajouter" AnchorPane.rightAnchor="531.0">
          <font>
 
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="UpdateBtn" layoutX="86.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="69.0" text="Update">
+      <Button fx:id="UpdateBtn" layoutX="75.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="71.0" text="Modifier">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="DeleteBtn" layoutX="164.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="69.0" text="Delete">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="RetournBtn" layoutX="19.0" layoutY="14.0" mnemonicParsing="false" text="&lt; Retour" />
+      <Button fx:id="DeleteBtn" layoutX="153.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="80.0" text="Supprimer" />
+      <Button fx:id="RetournBtn" layoutX="19.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" text="&lt; Retour" />
    </children>
 </AnchorPane>
