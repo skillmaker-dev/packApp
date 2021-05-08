@@ -13,11 +13,9 @@ import javafx.stage.Stage;
 import sample.packapp.loginPage.rootPageController;
 
 import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class settingsPageController extends rootPageController {
     private Stage stage;
@@ -39,6 +37,7 @@ public class settingsPageController extends rootPageController {
         stage.setScene(scene);
         stage.show();
     }
+
     public void confirm(ActionEvent event) throws IOException {
 
         String currentPassword= currentPassField.getText();
@@ -47,7 +46,6 @@ public class settingsPageController extends rootPageController {
 
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("../loginPage/rootPage.fxml"));
         root = loader1.load();
-        rootPageController pageController = loader1.getController();
 
         if(!newPassword.matches("")){
             if(!displayCurrentpassword().equals(currentPassword)){

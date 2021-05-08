@@ -65,7 +65,6 @@ public class rootPageController {
         String password = passwordInput.getText();
 
         try {
-            //Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             String query = "SELECT * FROM users WHERE username = '"+username+"' and password = '"+password+"'";
             Statement statement = connection.createStatement();
@@ -101,7 +100,7 @@ public class rootPageController {
                 textInput.setText("");
                 passwordInput.setText("");
             }
-
+            connection.close();
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
