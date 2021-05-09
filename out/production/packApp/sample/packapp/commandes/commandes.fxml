@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.CommandesController">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" text="&lt; Retour" />
-      <Button fx:id="ButtonModifier" layoutX="443.0" layoutY="366.0" mnemonicParsing="false" text="Modifier" />
+      <Button fx:id="ButtonModifier" layoutX="443.0" layoutY="366.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
       <Button fx:id="ButtonChercher" layoutX="58.0" layoutY="332.0" mnemonicParsing="false" text="Chercher" />
       <Button fx:id="ButtonSupprimer" layoutX="514.0" layoutY="366.0" mnemonicParsing="false" text="Supprimer" />
       <ListView fx:id="commandesList" layoutX="173.0" layoutY="20.0" prefHeight="338.0" prefWidth="415.0" />
@@ -41,4 +41,3 @@
       </GridPane>
    </children>
 </AnchorPane>
-

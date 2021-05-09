@@ -80,7 +80,7 @@ public class NouvelleComandeController implements Initializable {
         }
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/packappdb","root","");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             String query = "INSERT INTO commandes VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
                     " , '" + emailField.getText() + "' , '" + addressField.getText() + "' , '" + radioButtonChoice +
                     "' , '" + productBox.getValue() + "' , " + priceField.getText() + " , " + amountField.getText() +
@@ -113,7 +113,7 @@ public class NouvelleComandeController implements Initializable {
     public void setProductPrice() {
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/packappdb","root","");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             String query = "SELECT * FROM products WHERE product = '" + productBox.getValue() + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);

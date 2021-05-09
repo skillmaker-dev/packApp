@@ -203,7 +203,7 @@ public class DepotController implements Initializable {
         if(!quantityTextField.getText().matches("[0-9]*") && !unitPriceTextField.getText().matches("[0-9]*")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
-            alert.setHeaderText("You must enter valide value !");
+            alert.setHeaderText("You must enter valid value !");
             alert.setContentText("Click Ok to Try Again");
             alert.show();
             Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
