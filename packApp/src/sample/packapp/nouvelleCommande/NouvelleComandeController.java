@@ -44,7 +44,8 @@ public class NouvelleComandeController implements Initializable {
     private TextField amountField;
     @FXML
     private Label totalLabel;
-
+    @FXML
+    private Button incrementButton,decrementButton;
     private String[] status = {"En cours" , "Livrée" , "Annulée"};
     private ObservableList<String> products = FXCollections.observableArrayList();
 
@@ -194,8 +195,10 @@ public class NouvelleComandeController implements Initializable {
     }
 
     public void setProductPrice(ActionEvent event) {
-
+        incrementButton.setDisable(false);
+        decrementButton.setDisable(false);
         priceField.setText(Double.toString(getProductPrice()));
+
 
     }
 
@@ -208,6 +211,8 @@ public class NouvelleComandeController implements Initializable {
         productBox.setValue("Product : ");
         amountField.setText("0");
         totalLabel.setText("0");
+        incrementButton.setDisable(true);
+        decrementButton.setDisable(true);
         productBox.setOnAction(this::setProductPrice);
 
     }

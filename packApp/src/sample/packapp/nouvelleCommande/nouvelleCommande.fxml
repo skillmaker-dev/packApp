@@ -65,7 +65,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="512.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="30.0" prefWidth="34.0" text="+">
+      <Button fx:id="incrementButton" layoutX="512.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="30.0" prefWidth="34.0" text="+">
          <font>
             <Font name="Britannic Bold" size="15.0" />
          </font>
@@ -85,7 +85,7 @@
          </font>
       </Text>
       <Label fx:id="totalLabel" layoutX="420.0" layoutY="277.0" prefHeight="18.0" prefWidth="82.0" />
-      <Button layoutX="551.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleDecrementButton" prefHeight="30.0" prefWidth="34.0" text="-">
+      <Button fx:id="decrementButton" layoutX="551.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleDecrementButton" prefHeight="30.0" prefWidth="34.0" text="-">
          <font>
             <Font name="Britannic Bold" size="15.0" />
          </font>
