@@ -57,9 +57,22 @@ public class settingsPageController extends rootPageController {
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                 Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
                 stage.getIcons().add(myIcone);
-                currentPassField.setText("");
-                confirmPassField.setText("");
-                newPassField.setText("");
+                currentPassField.clear();
+                confirmPassField.clear();
+                newPassField.clear();
+            }
+            else if(currentPassword.equals(newPassword)){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("ERROR!");
+                alert.setHeaderText("You can not change your password to your current password");
+                alert.setContentText("Click Ok to Try Again");
+                alert.show();
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                Image myIcone = new Image("sample/icon/warning.png");
+                stage.getIcons().add(myIcone);
+                currentPassField.clear();
+                confirmPassField.clear();
+                newPassField.clear();
             }
             else if(!newPassword.equals(confirmPassword)){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -70,9 +83,9 @@ public class settingsPageController extends rootPageController {
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                 Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
                 stage.getIcons().add(myIcone);
-                currentPassField.setText("");
-                confirmPassField.setText("");
-                newPassField.setText("");
+                currentPassField.clear();
+                confirmPassField.clear();
+                newPassField.clear();
             }else{
                 try {
                     Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");

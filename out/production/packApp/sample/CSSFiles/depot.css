@@ -23,3 +23,7 @@
     -fx-background-color: rgb(177, 179, 174);
      -fx-background-radius: 30px 10px 30px 10px;
 }
+
+.myTable{
+    -fx-background-color:#e6e6e6 ;
+}
