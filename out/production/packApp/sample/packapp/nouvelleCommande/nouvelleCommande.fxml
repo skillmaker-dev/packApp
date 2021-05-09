@@ -16,12 +16,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="phoneField" layoutX="56.0" layoutY="80.0" promptText="Téléphone ">
+      <TextField fx:id="fullNameField" layoutX="56.0" layoutY="80.0" promptText="Nom Complet">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="fullNameField" layoutX="56.0" layoutY="125.0" promptText="Nom Complet">
+      <TextField fx:id="phoneField" layoutX="56.0" layoutY="125.0" promptText="Téléphone">
          <font>
             <Font size="14.0" />
          </font>
