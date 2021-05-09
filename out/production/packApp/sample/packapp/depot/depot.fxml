@@ -57,18 +57,18 @@
          </columns>
       </TableView>
       <Button layoutX="14.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="64.0" text="Ajouter" AnchorPane.rightAnchor="531.0" />
-      <Button layoutX="14.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleInsertProducts" prefHeight="29.0" prefWidth="64.0" text="Ajouter" AnchorPane.rightAnchor="531.0">
+      <Button defaultButton="true" layoutX="14.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleInsertProducts" prefHeight="29.0" prefWidth="64.0" text="Ajouter" AnchorPane.rightAnchor="531.0">
          <font>
 
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="Modifier" layoutX="75.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleUpdateProducts" prefHeight="29.0" prefWidth="71.0" text="Modifier">
+      <Button fx:id="modifier" layoutX="75.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleUpdateProducts" prefHeight="29.0" prefWidth="71.0" text="Modifier">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="Supprimer" layoutX="153.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="29.0" prefWidth="80.0" text="Supprimer" />
+      <Button fx:id="supprimer" layoutX="153.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="29.0" prefWidth="80.0" text="Supprimer" />
       <Button layoutX="19.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" text="&lt; Retour" />
    </children>
 </AnchorPane>
