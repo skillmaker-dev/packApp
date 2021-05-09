@@ -135,28 +135,28 @@ public class DepotController implements Initializable {
     }
 
 
-        public int checkID(){
-            try {
-                Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-                String query = "SELECT * FROM products";
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(query);
-                while (resultSet.next()) {
-                    if(resultSet.getInt("id") == Integer.parseInt(idTextField.getText())){
-                        ID = resultSet.getInt("id");
-                        break;
-                    }
+    public int checkID(){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            String query = "SELECT * FROM products";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                if(resultSet.getInt("id") == Integer.parseInt(idTextField.getText())){
+                    ID = resultSet.getInt("id");
+                    break;
                 }
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-            return ID;
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return ID;
+    }
 
     public void handleInsertProducts() {
 
-        if(!quantityTextField.getText().matches("[0-9]*") && !unitPriceTextField.getText().matches("[0-9]*")){
+        if(!quantityTextField.getText().matches("[0-9]*") || !unitPriceTextField.getText().matches("[0-9]*")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText("You must enter valide value !");
@@ -200,7 +200,7 @@ public class DepotController implements Initializable {
     }
 
     public void handleUpdateProducts() {
-        if(!quantityTextField.getText().matches("[0-9]*") && !unitPriceTextField.getText().matches("[0-9]*")){
+        if(!quantityTextField.getText().matches("[0-9]*") || !unitPriceTextField.getText().matches("[0-9]*")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText("You must enter valid value !");
@@ -211,7 +211,7 @@ public class DepotController implements Initializable {
             stage.getIcons().add(myIcone);
             clearFields();
         }else{
-            if(idTextField.getText().isEmpty() && productNameTextField.getText().isEmpty() && quantityTextField.getText().isEmpty() && unitPriceTextField.getText().isEmpty()){
+            if(idTextField.getText().isEmpty() || productNameTextField.getText().isEmpty() || quantityTextField.getText().isEmpty() || unitPriceTextField.getText().isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR!");
                 alert.setHeaderText("You must select a product UPDATE it !");
@@ -233,7 +233,7 @@ public class DepotController implements Initializable {
     }
 
     public void handleDeleteProducts() {
-        if(idTextField.getText().isEmpty() && productNameTextField.getText().isEmpty() && quantityTextField.getText().isEmpty() && unitPriceTextField.getText().isEmpty()){
+        if(idTextField.getText().isEmpty() || productNameTextField.getText().isEmpty() || quantityTextField.getText().isEmpty() || unitPriceTextField.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText("You must select a product to DELETE it !");

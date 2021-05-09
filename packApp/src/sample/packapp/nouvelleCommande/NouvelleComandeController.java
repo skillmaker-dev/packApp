@@ -100,26 +100,37 @@ public class NouvelleComandeController implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
         } else {
-            try {
-                Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-                String query = "INSERT INTO commandes VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
-                        " , '" + emailField.getText() + "' , '" + addressField.getText() + "' , '" + radioButtonChoice +
-                        "' , '" + productBox.getValue() + "' , " + priceField.getText() + " , " + amountField.getText() +
-                        " , '" + statusBox.getValue() + "')";
-                Statement statement = connection.createStatement();
-                statement.executeUpdate(query);
-            } catch (Exception e) {
-                e.printStackTrace();
+            if(!phoneField.getText().matches("[0-9](,10)")){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR!");
+                alert.setHeaderText("The phone number must be 10 digits !");
+                alert.setContentText("Click Ok to Try Again");
+                alert.show();
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+                stage.getIcons().add(myIcone);
+            }else {
+                try {
+                    Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+                    String query = "INSERT INTO commandes VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
+                            " , '" + emailField.getText() + "' , '" + addressField.getText() + "' , '" + radioButtonChoice +
+                            "' , '" + productBox.getValue() + "' , " + priceField.getText() + " , " + amountField.getText() +
+                            " , '" + statusBox.getValue() + "')";
+                    Statement statement = connection.createStatement();
+                    statement.executeUpdate(query);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                resetScene();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Confirmation!");
+                alert.setHeaderText("You successfully added a new command!");
+                alert.setContentText("Click Ok");
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                Image myIcone = new Image("sample/icon/iconfinder_Info_728979.png");
+                stage.getIcons().add(myIcone);
+                alert.showAndWait();
             }
-            resetScene();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Confirmation!");
-            alert.setHeaderText("You successfully added a new command!");
-            alert.setContentText("Click Ok");
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            Image myIcone = new Image("sample/icon/iconfinder_Info_728979.png");
-            stage.getIcons().add(myIcone);
-            alert.showAndWait();
         }
 
     }

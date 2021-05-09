@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.ClientsController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/client.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.ClientsController">
    <children>
-      <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#mainPage" text="&lt; Retour" />
+      <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Retour" />
       <HBox layoutX="234.0" prefHeight="400.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="clientsTableView" prefHeight="400.0" prefWidth="393.0">
+            <TableView fx:id="clientsTableView" prefHeight="400.0" prefWidth="393.0" styleClass="myTable">
                <columns>
                   <TableColumn fx:id="numClientColumn" prefWidth="96.0" text="num client" />
                   <TableColumn fx:id="ClientNameColumn" prefWidth="114.0" text="nom client" />
@@ -18,34 +24,34 @@
             </TableView>
          </children>
       </HBox>
-      <Label layoutX="22.0" layoutY="104.0" text="chercher client:">
+      <Label layoutX="18.0" layoutY="74.0" text="chercher client:" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="commandes" layoutX="5.0" layoutY="300.0" mnemonicParsing="false" text="commandes">
+      <Button fx:id="commandes" layoutX="24.0" layoutY="300.0" mnemonicParsing="false" styleClass="myButtons" text="commandes">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="modifier" layoutX="152.0" layoutY="300.0" mnemonicParsing="false" text="modifier">
+      <Button fx:id="modifier" layoutX="140.0" layoutY="300.0" mnemonicParsing="false" styleClass="myButtons" text="modifier">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Label layoutX="8.0" layoutY="143.0" prefHeight="17.0" prefWidth="79.0" text="nom client:">
+      <Label layoutX="8.0" layoutY="143.0" prefHeight="17.0" prefWidth="79.0" text="nom client:" textFill="WHITE">
          <font>
-            <Font name="System Bold Italic" size="12.0" />
+            <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="8.0" layoutY="204.0" text="num client:">
+      <Label layoutX="8.0" layoutY="204.0" text="num client:" textFill="WHITE">
          <font>
-            <Font name="System Bold Italic" size="12.0" />
+            <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="clientNumTextField" layoutX="79.0" layoutY="200.0" />
-      <TextField fx:id="clientNameTextField" layoutX="79.0" layoutY="139.0" />
-      <Button fx:id="chercher" layoutX="152.0" layoutY="100.0" mnemonicParsing="false" text="chercher">
+      <TextField fx:id="clientNumTextField" layoutX="79.0" layoutY="200.0" styleClass="textField" />
+      <TextField fx:id="clientNameTextField" layoutX="79.0" layoutY="139.0" styleClass="textField" />
+      <Button fx:id="chercher" layoutX="152.0" layoutY="100.0" mnemonicParsing="false" styleClass="myButtons" text="chercher">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>

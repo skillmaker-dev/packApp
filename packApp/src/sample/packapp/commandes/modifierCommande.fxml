@@ -12,10 +12,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="287.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.modifierCommandeController">
+<AnchorPane prefHeight="507.0" prefWidth="392.0" styleClass="myPane" stylesheets="@../../CSSFiles/changeOrders.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.modifierCommandeController">
    <children>
-      <Button fx:id="enregistrerButton" layoutX="150.0" layoutY="347.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="26.0" prefWidth="78.0" text="Enregistrer" />
-      <GridPane layoutX="32.0" layoutY="50.0" prefHeight="217.0" prefWidth="222.0">
+      <Button fx:id="enregistrerButton" layoutX="196.0" layoutY="407.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" text="Enregistrer" />
+      <GridPane layoutX="65.0" layoutY="79.0" prefHeight="267.0" prefWidth="258.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -28,25 +28,25 @@
             <RowConstraints maxHeight="75.20001831054688" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="nomField" promptText="Nom Client" />
-            <TextField fx:id="telField" promptText="Téléphone" GridPane.rowIndex="1" />
-            <TextField fx:id="emailField" promptText="Email" GridPane.rowIndex="2" />
-            <TextField fx:id="adrField" promptText="Adresse" GridPane.rowIndex="3" />
-            <TextField fx:id="QuantiteField" promptText="Quantité" GridPane.rowIndex="4" />
-            <ChoiceBox fx:id="commandeStatus" prefHeight="26.0" prefWidth="240.0" GridPane.rowIndex="5" />
+            <TextField fx:id="nomField" promptText="Nom Client" styleClass="textField" />
+            <TextField fx:id="telField" promptText="Téléphone" styleClass="textField" GridPane.rowIndex="1" />
+            <TextField fx:id="emailField" promptText="Email" styleClass="textField" GridPane.rowIndex="2" />
+            <TextField fx:id="adrField" promptText="Adresse" styleClass="textField" GridPane.rowIndex="3" />
+            <TextField fx:id="QuantiteField" promptText="Quantité" styleClass="textField" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="commandeStatus" prefHeight="26.0" prefWidth="263.0" styleClass="selectFields" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <RadioButton fx:id="maleRadioButton" layoutX="78.0" layoutY="282.0" mnemonicParsing="false" text="Male">
+      <RadioButton fx:id="maleRadioButton" layoutX="97.0" layoutY="358.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Male">
          <toggleGroup>
             <ToggleGroup fx:id="gender" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="femaleRadioButton" layoutX="150.0" layoutY="282.0" mnemonicParsing="false" text="Female" toggleGroup="$gender" />
-      <Text layoutX="60.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier La Commande">
+      <RadioButton fx:id="femaleRadioButton" layoutX="194.0" layoutY="358.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Female" toggleGroup="$gender" />
+      <Text fill="WHITE" layoutX="53.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier La Commande" wrappingWidth="287.0">
          <font>
-            <Font size="16.0" />
+            <Font name="Britannic Bold" size="27.0" />
          </font>
       </Text>
-      <Button fx:id="annulerButton" layoutX="63.0" layoutY="347.0" mnemonicParsing="false" onAction="#annuler" prefHeight="26.0" prefWidth="78.0" text="Annuler" />
+      <Button fx:id="annulerButton" layoutX="100.0" layoutY="407.0" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" text="Annuler" />
    </children>
 </AnchorPane>

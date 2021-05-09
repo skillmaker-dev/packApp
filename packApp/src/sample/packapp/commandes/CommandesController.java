@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -47,10 +48,17 @@ public class CommandesController implements Initializable {
             Image myIcon = new Image("sample/icon/PackageAPP.png");
             stage.getIcons().add(myIcon);
             stage.setScene(new Scene(root1));
+            stage.centerOnScreen();
             stage.show();
         } catch (Exception exception) {
-            System.out.println("Error");
-            System.out.println(exception);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("You can not Modify an order!!");
+            alert.setContentText("Click Ok to Try Again");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
         }
     }
 
