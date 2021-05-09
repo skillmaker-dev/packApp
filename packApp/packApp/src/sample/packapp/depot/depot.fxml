@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.depot.DepotController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/Depot.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.depot.DepotController">
    <children>
       <HBox layoutX="14.0" layoutY="80.0" prefHeight="169.0" prefWidth="222.0">
          <children>
@@ -37,10 +37,10 @@
             </VBox>
             <VBox prefHeight="226.0" prefWidth="160.0" spacing="12.0">
                <children>
-                  <TextField fx:id="idTextField" />
-                  <TextField fx:id="productNameTextField" />
-                  <TextField fx:id="quantityTextField" layoutX="10.0" layoutY="35.0" />
-                  <TextField fx:id="unitPriceTextField" layoutX="10.0" layoutY="60.0" />
+                  <TextField fx:id="idTextField" styleClass="textField" stylesheets="@../../CSSFiles/Depot.css" />
+                  <TextField fx:id="productNameTextField" styleClass="textField" stylesheets="@../../CSSFiles/Depot.css" />
+                  <TextField fx:id="quantityTextField" layoutX="10.0" layoutY="35.0" styleClass="textField" stylesheets="@../../CSSFiles/Depot.css" />
+                  <TextField fx:id="unitPriceTextField" layoutX="10.0" layoutY="60.0" styleClass="textField" stylesheets="@../../CSSFiles/Depot.css" />
                </children>
                <HBox.margin>
                   <Insets />
@@ -48,7 +48,7 @@
             </VBox>
          </children>
       </HBox>
-      <TableView fx:id="productsTableView" layoutX="240.0" layoutY="1.0" onMouseClicked="#handleMouseAction" prefHeight="394.0" prefWidth="360.0">
+      <TableView fx:id="productsTableView" layoutX="248.0" layoutY="1.0" onMouseClicked="#handleMouseAction" prefHeight="400.0" prefWidth="352.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
             <TableColumn fx:id="productNameColumn" prefWidth="129.0" text="Nom Produit" />
@@ -56,19 +56,26 @@
             <TableColumn fx:id="unitPriceColumn" prefWidth="104.0" text="Prix Unit(Dhs)" />
          </columns>
       </TableView>
-      <Button layoutX="14.0" layoutY="330.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="64.0" text="Ajouter" AnchorPane.rightAnchor="531.0" />
-      <Button defaultButton="true" layoutX="14.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleInsertProducts" prefHeight="29.0" prefWidth="64.0" text="Ajouter" AnchorPane.rightAnchor="531.0">
+      <Button defaultButton="true" layoutX="7.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleInsertProducts" prefHeight="35.0" prefWidth="72.0" styleClass="buttons" stylesheets="@../../CSSFiles/Depot.css" text="Ajouter" AnchorPane.rightAnchor="521.0">
          <font>
 
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="modifier" layoutX="75.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleUpdateProducts" prefHeight="29.0" prefWidth="71.0" text="Modifier">
+      <Button fx:id="modifier" layoutX="83.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleUpdateProducts" prefHeight="35.0" prefWidth="72.0" styleClass="buttons" stylesheets="@../../CSSFiles/Depot.css" text="Modifier">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="supprimer" layoutX="153.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="29.0" prefWidth="80.0" text="Supprimer" />
-      <Button layoutX="19.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" text="&lt; Retour" />
+      <Button fx:id="supprimer" layoutX="162.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="35.0" prefWidth="80.0" styleClass="buttons" stylesheets="@../../CSSFiles/Depot.css" text="Supprimer">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" prefHeight="27.0" prefWidth="72.0" styleClass="buttons" stylesheets="@../../CSSFiles/Depot.css" text="&lt;Return">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
