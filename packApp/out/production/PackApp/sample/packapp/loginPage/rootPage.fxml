@@ -41,7 +41,7 @@
             <Font name="Roboto" size="61.0" />
          </font>
       </Label>
-      <Button fx:id="forgetPassword" layoutX="284.0" layoutY="275.0" mnemonicParsing="false" onAction="#resetPassword" prefHeight="28.0" prefWidth="126.0" styleClass="resetButton" stylesheets="@../../CSSFiles/rootPageCss.css" text="Forgot Password?">
+      <Button fx:id="forgetPassword" layoutX="284.0" layoutY="275.0" mnemonicParsing="false" onAction="#resetPassword" prefHeight="28.0" prefWidth="117.0" styleClass="resetButton" stylesheets="@../../CSSFiles/rootPageCss.css" text="Forget Password">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

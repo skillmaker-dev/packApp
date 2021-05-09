@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/NewCommande.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.nouvelleCommande.NouvelleComandeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.nouvelleCommande.NouvelleComandeController">
    <children>
       <Label layoutX="56.0" layoutY="47.0" text="Client">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="phoneField" layoutX="56.0" layoutY="125.0" promptText="Téléphone " styleClass="textField">
+      <TextField fx:id="phoneField" layoutX="56.0" layoutY="80.0" promptText="Téléphone ">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="fullNameField" layoutX="56.0" layoutY="85.0" promptText="Nom Complet" styleClass="textField">
+      <TextField fx:id="fullNameField" layoutX="56.0" layoutY="125.0" promptText="Nom Complet">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="emailField" layoutX="56.0" layoutY="163.0" promptText="Email" styleClass="textField">
+      <TextField fx:id="emailField" layoutX="56.0" layoutY="171.0" promptText="Email">
          <font>
             <Font size="14.0" />
          </font>
@@ -49,34 +49,34 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="addressField" layoutX="54.0" layoutY="292.0" prefHeight="30.0" prefWidth="254.0" promptText="Adresse" styleClass="textField">
+      <TextField fx:id="addressField" layoutX="54.0" layoutY="292.0" prefHeight="30.0" prefWidth="254.0" promptText="Adresse">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="amountField" layoutX="328.0" layoutY="257.0" prefHeight="30.0" prefWidth="82.0" promptText="Quantité" styleClass="textField">
+      <TextField fx:id="amountField" layoutX="328.0" layoutY="257.0" prefHeight="30.0" prefWidth="82.0" promptText="Quantité">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="priceField" layoutX="420.0" layoutY="257.0" prefHeight="30.0" prefWidth="82.0" promptText="Prix Unit" styleClass="textField">
+      <TextField fx:id="priceField" layoutX="420.0" layoutY="257.0" prefHeight="30.0" prefWidth="82.0" promptText="Prix Unit">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="512.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="30.0" prefWidth="34.0" styleClass="buttons" text="+">
+      <Button layoutX="512.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="30.0" prefWidth="34.0" text="+">
          <font>
             <Font name="Britannic Bold" size="15.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="productBox" layoutX="54.0" layoutY="257.0" prefHeight="30.0" prefWidth="254.0" styleClass="textField" />
-      <ChoiceBox fx:id="statusBox" layoutX="328.0" layoutY="292.0" prefHeight="30.0" prefWidth="218.0" styleClass="textField" />
-      <Label layoutX="342.0" layoutY="20.0" prefHeight="25.0" prefWidth="218.0" text="Nouvelle Commande" textFill="WHITE">
+      <ChoiceBox fx:id="productBox" layoutX="54.0" layoutY="257.0" prefHeight="30.0" prefWidth="254.0" />
+      <ChoiceBox fx:id="statusBox" layoutX="328.0" layoutY="292.0" prefHeight="30.0" prefWidth="218.0" />
+      <Label layoutX="387.0" layoutY="20.0" text="Nouvelle Commande">
          <font>
-            <Font name="Britannic Bold" size="23.0" />
+            <Font size="17.0" />
          </font>
       </Label>
-      <Button layoutX="447.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="30.0" prefWidth="97.0" styleClass="buttons" text="Enregistrer" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="buttons" text="&lt; Retour" />
+      <Button layoutX="447.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="30.0" prefWidth="97.0" text="Enregistrer" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" text="&lt; Retour" />
    </children>
 </AnchorPane>
