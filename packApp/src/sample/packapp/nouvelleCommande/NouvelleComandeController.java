@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -45,6 +42,8 @@ public class NouvelleComandeController implements Initializable {
     private TextField priceField;
     @FXML
     private TextField amountField;
+    @FXML
+    private Label totalLabel;
 
     private String[] status = {"En cours" , "Livrée" , "Annulée"};
     private ObservableList<String> products = FXCollections.observableArrayList();
@@ -148,7 +147,30 @@ public class NouvelleComandeController implements Initializable {
         i += 1;
         amount = Integer.toString(i);
         amountField.setText(amount);
+        double total=0.0;
+        total = Integer.parseInt(amount)*getProductPrice();
+        String totalPrice;
+        totalPrice= Double.toString(total);
+        totalLabel.setText(totalPrice);
+    }
 
+    public void handleDecrementButton(ActionEvent event) {
+
+        String amount = amountField.getText();
+        int i = Integer.parseInt(amount);
+
+        if(i>0)
+        {
+            i=i-1;
+        }
+
+        amount = Integer.toString(i);
+        amountField.setText(amount);
+        double total=0.0;
+        total = Integer.parseInt(amount)*getProductPrice();
+        String totalPrice;
+        totalPrice= Double.toString(total);
+        totalLabel.setText(totalPrice);
     }
 
     public double getProductPrice(){
@@ -185,7 +207,7 @@ public class NouvelleComandeController implements Initializable {
         productBox.getItems().addAll(products);
         productBox.setValue("Product : ");
         amountField.setText("0");
-
+        totalLabel.setText("0");
         productBox.setOnAction(this::setProductPrice);
 
     }
