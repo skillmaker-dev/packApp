@@ -17,8 +17,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" name="lib" level="project" />
-    <orderEntry type="library" name="lib1" level="project" />
-    <orderEntry type="library" name="lib2" level="project" />
     <orderEntry type="library" name="libForOussama" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
   </component>
 </module>

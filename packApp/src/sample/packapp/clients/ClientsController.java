@@ -32,14 +32,14 @@ public class ClientsController implements Initializable {
 
 
     @FXML
-    private TextField clientNumTextField;
+    private TextField clientIdTextField;
     @FXML
     private TextField clientNameTextField;
 
     @FXML
     private TableView<Clients> clientsTableView;
     @FXML
-    private TableColumn<Clients, Integer> numClientColumn;
+    private TableColumn<Clients, Integer> idClientColumn;
     @FXML
     private TableColumn<Clients, String> ClientNameColumn;
     @FXML
@@ -96,7 +96,7 @@ public class ClientsController implements Initializable {
             resultSet = statement.executeQuery(query);
             Clients clients;
             while (resultSet.next()) {
-                clients = new Clients(resultSet.getInt("numClient"), resultSet.getString("ClientName"), resultSet.getString("lastCmd"), resultSet.getInt("NbCmd"));
+                clients = new Clients(resultSet.getInt("idClient"), resultSet.getString("ClientName"), resultSet.getString("lastCmd"), resultSet.getInt("NbCmd"));
                 clientsList.add(clients);
             }
         } catch (Exception e) {
@@ -109,7 +109,7 @@ public class ClientsController implements Initializable {
 
         ObservableList<Clients> list = getClientsList();
 
-        numClientColumn.setCellValueFactory(new PropertyValueFactory<Clients, Integer>("numClients"));
+        idClientColumn.setCellValueFactory(new PropertyValueFactory<Clients, Integer>("idClients"));
         ClientNameColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("ClientsName"));
         lastCmdColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("lastCmd"));
         NbCmdColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("NbCmd"));
@@ -127,7 +127,7 @@ public class ClientsController implements Initializable {
         }
     }
     public void clearFields() {
-        clientNumTextField.clear();
+        clientIdTextField.clear();
         clientNameTextField.clear();
     }
 

@@ -16,7 +16,7 @@
          <children>
             <TableView fx:id="clientsTableView" prefHeight="400.0" prefWidth="393.0" styleClass="myTable">
                <columns>
-                  <TableColumn fx:id="numClientColumn" prefWidth="96.0" text="num client" />
+                  <TableColumn fx:id="idClientColumn" prefWidth="96.0" text="Id client" />
                   <TableColumn fx:id="ClientNameColumn" prefWidth="114.0" text="nom client" />
                   <TableColumn fx:id="NbCmdColumn" prefWidth="58.0" text="nb cmd" />
                   <TableColumn fx:id="lastCmdColumn" prefWidth="105.0" text="dernière cmd" />
@@ -44,12 +44,12 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="8.0" layoutY="204.0" text="num client:" textFill="WHITE">
+      <Label layoutX="8.0" layoutY="204.0" text="Id client:" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="clientNumTextField" layoutX="79.0" layoutY="200.0" styleClass="textField" />
+      <TextField fx:id="clientIdTextField" layoutX="79.0" layoutY="200.0" styleClass="textField" />
       <TextField fx:id="clientNameTextField" layoutX="79.0" layoutY="139.0" styleClass="textField" />
       <Button fx:id="chercher" layoutX="152.0" layoutY="100.0" mnemonicParsing="false" styleClass="myButtons" text="chercher">
          <font>
