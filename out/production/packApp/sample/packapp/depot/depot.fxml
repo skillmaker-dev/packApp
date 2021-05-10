@@ -1,53 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/depot.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.depot.DepotController">
    <children>
-      <HBox layoutX="14.0" layoutY="80.0" prefHeight="169.0" prefWidth="222.0">
+      <VBox layoutX="25.0" layoutY="108.0" prefHeight="147.0" prefWidth="190.0" spacing="12.0">
          <children>
-            <VBox prefHeight="227.0" prefWidth="98.0" spacing="20.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="30.0" text="ID">
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font></Label>
-                  <Label prefHeight="17.0" prefWidth="88.0" text="Nom Produit">
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font></Label>
-                  <Label text="Quantité">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                  <Label text="Prix Unit">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-               </children>
-            </VBox>
-            <VBox prefHeight="226.0" prefWidth="160.0" spacing="12.0">
-               <children>
-                  <TextField fx:id="idTextField" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
-                  <TextField fx:id="productNameTextField" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
-                  <TextField fx:id="quantityTextField" layoutX="10.0" layoutY="35.0" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
-                  <TextField fx:id="unitPriceTextField" layoutX="10.0" layoutY="60.0" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
-               </children>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </VBox>
+            <TextField fx:id="idTextField" promptText="ID" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
+            <TextField fx:id="productNameTextField" promptText="Nom Produit" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
+            <TextField fx:id="quantityTextField" layoutX="10.0" layoutY="35.0" promptText="Quantité" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
+            <TextField fx:id="unitPriceTextField" layoutX="10.0" layoutY="60.0" promptText="Prix Unit" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
          </children>
-      </HBox>
+      </VBox>
       <TableView fx:id="productsTableView" layoutX="240.0" layoutY="1.0" onMouseClicked="#handleMouseAction" prefHeight="400.0" prefWidth="360.0" styleClass="myTable">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
@@ -56,26 +28,30 @@
             <TableColumn fx:id="unitPriceColumn" prefWidth="104.0" text="Prix Unit(Dhs)" />
          </columns>
       </TableView>
-      <Button defaultButton="true" layoutX="14.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleInsertProducts" prefHeight="29.0" prefWidth="64.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Ajouter" AnchorPane.rightAnchor="531.0">
+      <Text fill="WHITE" layoutX="94.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEPOT">
          <font>
-
-            <Font size="13.0" />
+            <Font size="17.0" />
          </font>
+      </Text>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="&lt; Retour">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="modifier" layoutX="75.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleUpdateProducts" prefHeight="29.0" prefWidth="71.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Modifier">
-         <font>
-            <Font size="13.0" />
-         </font>
+      <Button fx:id="ajouter" layoutX="18.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleInsertProducts" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Ajouter">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="supprimer" layoutX="155.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="29.0" prefWidth="80.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Supprimer">
-         <font>
-            <Font size="13.0" />
-         </font>
+      <Button fx:id="modifier" layoutX="77.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleUpdateProducts" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Modifier">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" prefHeight="29.0" prefWidth="71.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="&lt;Return">
-         <font>
-            <Font size="13.0" />
-         </font>
+      <Button fx:id="supprimer" layoutX="146.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="26.0" prefWidth="72.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Supprimer">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>

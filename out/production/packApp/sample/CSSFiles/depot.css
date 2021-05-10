@@ -5,16 +5,17 @@
 
 .myButtons{
     -fx-background-radius: 20px;
-    -fx-background-color: rgb(215, 220, 228);
+    -fx-background-color: #30c5ff;
     -fx-font-style: normal;
 }
 
 .myButtons:hover{
-    -fx-background-color: rgb(215, 220, 228);
+    -fx-background-color:  #4ae4ff;
+
 }
 
 .textField{
-    -fx-background-color: azure;
+    -fx-background-color: #fff;
     -fx-background-radius: 10px;
     -fx-padding-left: 20px;
 }
@@ -25,5 +26,5 @@
 }
 
 .myTable{
-    -fx-background-color:#e6e6e6 ;
+    -fx-background-color:#ffff ;
 }

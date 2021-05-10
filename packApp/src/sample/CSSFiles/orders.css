@@ -5,23 +5,23 @@
 
 .myButtons{
     -fx-background-radius: 20px;
-    -fx-background-color: rgb(215, 220, 228);
+    -fx-background-color: #30c5ff;
     -fx-font-style: normal;
 }
 
 .myButtons:hover{
-    -fx-background-color: rgb(215, 220, 228);
+    -fx-background-color: #4ae4ff;
 }
 
 .textField{
-    -fx-background-color: azure;
+    -fx-background-color: #fff;
     -fx-background-radius: 10px;
     -fx-padding-left: 20px;
 }
 
 .selectFields{
-    -fx-background-color: rgb(177, 179, 174);
-     -fx-background-radius: 30px 10px 30px 10px;
+    -fx-background-color: rgb(200, 200, 200);
+     -fx-background-radius: 30px;
 }
 
 .myTable{

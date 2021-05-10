@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,10 +12,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/client.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.ClientsController">
    <children>
-      <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Retour" />
+      <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Retour">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <HBox layoutX="234.0" prefHeight="400.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="clientsTableView" prefHeight="400.0" prefWidth="393.0" styleClass="myTable">
+            <TableView fx:id="clientsTableView" prefHeight="400.0" prefWidth="385.0" styleClass="myTable">
                <columns>
                   <TableColumn fx:id="idClientColumn" prefWidth="96.0" text="Id client" />
                   <TableColumn fx:id="ClientNameColumn" prefWidth="114.0" text="nom client" />
@@ -24,37 +28,33 @@
             </TableView>
          </children>
       </HBox>
-      <Label layoutX="18.0" layoutY="74.0" text="chercher client:" textFill="WHITE" wrapText="true">
+      <Label layoutX="47.0" layoutY="58.0" text="CHERCHER CLIENT" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="commandes" layoutX="24.0" layoutY="300.0" mnemonicParsing="false" styleClass="myButtons" text="commandes">
+      <Label layoutX="8.0" layoutY="204.0" textFill="WHITE">
          <font>
-            <Font name="System Bold Italic" size="12.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
+      </Label>
+      <TextField fx:id="clientIdTextField" layoutX="31.0" layoutY="177.0" prefHeight="26.0" prefWidth="171.0" promptText="ID Client" styleClass="textField" />
+      <TextField fx:id="clientNameTextField" layoutX="31.0" layoutY="138.0" prefHeight="26.0" prefWidth="171.0" promptText="Nom client" styleClass="textField" />
+      <TextField fx:id="clientEmailTextField" layoutX="32.0" layoutY="214.0" prefHeight="26.0" prefWidth="171.0" promptText="Email" styleClass="textField" />
+      <Button fx:id="commandes" layoutX="28.0" layoutY="304.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Commandes">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="modifier" layoutX="140.0" layoutY="300.0" mnemonicParsing="false" styleClass="myButtons" text="modifier">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
+      <Button fx:id="modifier" layoutX="28.0" layoutY="268.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Modifier">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Label layoutX="8.0" layoutY="143.0" prefHeight="17.0" prefWidth="79.0" text="nom client:" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="8.0" layoutY="204.0" text="Id client:" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="13.0" />
-         </font>
-      </Label>
-      <TextField fx:id="clientIdTextField" layoutX="79.0" layoutY="200.0" styleClass="textField" />
-      <TextField fx:id="clientNameTextField" layoutX="79.0" layoutY="139.0" styleClass="textField" />
-      <Button fx:id="chercher" layoutX="152.0" layoutY="100.0" mnemonicParsing="false" styleClass="myButtons" text="chercher">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
+      <Button fx:id="chercher" layoutX="119.0" layoutY="268.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Chercher">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>

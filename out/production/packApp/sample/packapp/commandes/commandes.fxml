@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ListView?>
@@ -11,10 +12,22 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/orders.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.CommandesController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Retour" />
-      <Button fx:id="ButtonModifier" layoutX="443.0" layoutY="366.0" mnemonicParsing="false" onAction="#modifier" styleClass="myButtons" text="Modifier" />
-      <Button fx:id="ButtonChercher" layoutX="58.0" layoutY="332.0" mnemonicParsing="false" styleClass="myButtons" text="Chercher" />
-      <Button fx:id="ButtonSupprimer" layoutX="514.0" layoutY="366.0" mnemonicParsing="false" styleClass="myButtons" text="Supprimer" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Retour">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="ButtonModifier" layoutX="443.0" layoutY="366.0" mnemonicParsing="false" onAction="#modifier" styleClass="myButtons" text="Modifier">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="ButtonChercher" layoutX="58.0" layoutY="332.0" mnemonicParsing="false" styleClass="myButtons" text="Chercher">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="ButtonSupprimer" layoutX="514.0" layoutY="366.0" mnemonicParsing="false" styleClass="myButtons" text="Supprimer">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <ListView fx:id="commandesList" layoutX="173.0" layoutY="20.0" prefHeight="338.0" prefWidth="415.0" styleClass="myTable" />
       <GridPane layoutX="12.0" layoutY="90.0" prefHeight="219.0" prefWidth="154.0">
          <columnConstraints>
@@ -34,7 +47,10 @@
             <TextField fx:id="emailField" prefHeight="26.0" prefWidth="134.0" promptText="Email" styleClass="textField" GridPane.rowIndex="2" />
             <TextField fx:id="refField" prefHeight="26.0" prefWidth="134.0" promptText="Référence" styleClass="textField" GridPane.rowIndex="3" />
             <TextField fx:id="adrField" prefHeight="26.0" prefWidth="134.0" promptText="Adresse" styleClass="textField" GridPane.rowIndex="4" />
-            <ChoiceBox fx:id="statusChoice" prefHeight="26.0" prefWidth="159.0" styleClass="selectFields" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="statusChoice" prefHeight="26.0" prefWidth="159.0" styleClass="selectFields" GridPane.rowIndex="6">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ChoiceBox>
             <TextField fx:id="prodField" promptText="Produit" styleClass="textField" GridPane.rowIndex="5" />
             <TextField fx:id="clientField" promptText="Nom Client" styleClass="textField" />
          </children>
