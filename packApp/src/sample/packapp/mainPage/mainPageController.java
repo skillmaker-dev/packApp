@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 
 public class mainPageController {
@@ -22,6 +23,8 @@ public class mainPageController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+
     }
     public void nouvelleCommande(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../nouvelleCommande/nouvelleCommande.fxml"));
