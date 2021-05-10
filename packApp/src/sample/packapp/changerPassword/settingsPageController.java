@@ -12,8 +12,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import sample.packapp.loginPage.rootPageController;
 
-import javax.swing.plaf.nimbus.State;
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.*;
 
