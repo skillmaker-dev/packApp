@@ -48,7 +48,7 @@ public class NouvelleComandeController implements Initializable {
     private Button incrementButton,decrementButton;
     private String[] status = {"En cours" , "Livrée" , "Annulée"};
     private ObservableList<String> products = FXCollections.observableArrayList();
-
+    referenceGenerator refGen;
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
         root = loader.load();
@@ -100,22 +100,13 @@ public class NouvelleComandeController implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
         } else {
-            if(!phoneField.getText().matches("[0-9](,10)")){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ERROR!");
-                alert.setHeaderText("The phone number must be 10 digits !");
-                alert.setContentText("Click Ok to Try Again");
-                alert.show();
-                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
-                stage.getIcons().add(myIcone);
-            }else {
+
                 try {
                     Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-                    String query = "INSERT INTO commandes VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
+                    String query = "INSERT INTO orders VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
                             " , '" + emailField.getText() + "' , '" + addressField.getText() + "' , '" + radioButtonChoice +
                             "' , '" + productBox.getValue() + "' , " + priceField.getText() + " , " + amountField.getText() +
-                            " , '" + statusBox.getValue() + "')";
+                            " , '" + statusBox.getValue() + "' , '" + refGen.generateRef() + "')";
                     Statement statement = connection.createStatement();
                     statement.executeUpdate(query);
                 } catch (Exception e) {
@@ -133,7 +124,7 @@ public class NouvelleComandeController implements Initializable {
             }
         }
 
-    }
+
 
     public void resetScene() {
 
