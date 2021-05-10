@@ -5,12 +5,12 @@
 
 .myButtons{
     -fx-background-radius: 20px;
-    -fx-background-color: #30c5ff;
+    -fx-background-color: rgb(215, 220, 228);
     -fx-font-style: normal;
 }
 
 .myButtons:hover{
-    -fx-background-color: #4ae4ff;
+    -fx-background-color: rgb(215, 220, 228);
 }
 
 .textField{
@@ -20,6 +20,6 @@
 }
 
 .selectFields{
-    -fx-background-color: rgb(200, 200, 200);
-     -fx-background-radius: 30px;
+    -fx-background-color: rgb(177, 179, 174);
+     -fx-background-radius: 30px 10px 30px 10px;
 }
