@@ -1,4 +1,4 @@
-package sample.packapp.clients;
+package sample.packapp.clients.ModifierClient;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +43,7 @@ private Button TerminerButton;
 private Button SaveButton;
 
     public void mainPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("clients.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../_Clients/clients.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

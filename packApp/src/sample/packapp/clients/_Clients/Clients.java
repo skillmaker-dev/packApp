@@ -1,4 +1,4 @@
-package sample.packapp.clients;
+package sample.packapp.clients._Clients;
 
 public class Clients {
     private int idClient;

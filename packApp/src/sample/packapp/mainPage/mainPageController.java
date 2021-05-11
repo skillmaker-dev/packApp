@@ -41,7 +41,7 @@ public class mainPageController {
 
     }
     public void client(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../clients/clients.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../clients/_Clients/clients.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
