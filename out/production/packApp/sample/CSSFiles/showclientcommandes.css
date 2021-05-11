@@ -1,0 +1,27 @@
+.myPane{
+    -fx-background-image: url("IMG/background1.jpg");
+    -fx-background-size : 600px 400px;
+}
+
+.myButtons{
+    -fx-background-radius: 20px;
+    -fx-background-color: #30c5ff;
+    -fx-font-style: normal;
+}
+
+.myButtons:hover{
+    -fx-background-color:  #4ae4ff;
+
+}
+
+.textField{
+    -fx-background-color: #fff;
+    -fx-background-radius: 10px;
+    -fx-padding-left: 20px;
+}
+
+
+
+.myTable{
+    -fx-background-color:#ffff ;
+}

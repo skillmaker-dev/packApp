@@ -1,20 +1,20 @@
 package sample.packapp.clients;
 
 public class Clients {
-    private int numClient;
+    private int idClient;
     private String ClientName;
     private String lastCmd;
     private int NbCmd;
 
-    public Clients(int numClient, String ClientName, String lastCmd, int NbCmd) {
-        this.numClient = numClient;
+    public Clients(int idClient, String ClientName, String lastCmd, int NbCmd) {
+        this.idClient = idClient;
         this.ClientName = ClientName;
         this.lastCmd = lastCmd;
         this.NbCmd = NbCmd;
     }
 
     public int getNumClient() {
-        return numClient;
+        return idClient;
     }
 
     public String getClientName() {

@@ -7,10 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="468.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.ModifierClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="468.0" styleClass="myPane" stylesheets="@../../CSSFiles/changeclient.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.ModifierClientController">
    <children>
-      <TextField fx:id="fullNameField" layoutX="88.0" layoutY="112.0" promptText="nom client" />
+      <TextField fx:id="fullNameField" layoutX="88.0" layoutY="112.0" promptText="nom client" styleClass="textField" />
       <RadioButton fx:id="maleRadio" layoutX="285.0" layoutY="116.0" mnemonicParsing="false" text="H">
          <toggleGroup>
             <ToggleGroup fx:id="sexe" />
@@ -19,9 +20,14 @@
       <RadioButton fx:id="femaleRadio" layoutX="346.0" layoutY="116.0" mnemonicParsing="false" text="F" toggleGroup="$sexe" />
       <Label layoutX="88.0" layoutY="175.0" text="nombre de commandes" />
       <Spinner fx:id="NombreDeCommandeSpinner" layoutX="284.0" layoutY="171.0" prefHeight="25.0" prefWidth="62.0" />
-      <TextField fx:id="phoneField" layoutX="88.0" layoutY="223.0" promptText="numero de telephone" />
-      <Button fx:id="TerminerButton" layoutX="360.0" layoutY="328.0" mnemonicParsing="false" onAction="#HandleEndButton" text="Terminer" />
-      <TextField fx:id="emailField" layoutX="88.0" layoutY="273.0" promptText="Email" />
-      <Button fx:id="SaveButton" layoutX="234.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleSaveButton" text="Enregistrer" />
+      <TextField fx:id="phoneField" layoutX="88.0" layoutY="223.0" promptText="numero de telephone" styleClass="textField" />
+      <Button fx:id="TerminerButton" layoutX="360.0" layoutY="328.0" mnemonicParsing="false" onAction="#HandleEndButton" styleClass="myButtons" text="Terminer" />
+      <TextField fx:id="emailField" layoutX="88.0" layoutY="273.0" promptText="Email" styleClass="textField" />
+      <Button fx:id="SaveButton" layoutX="234.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleSaveButton" styleClass="myButtons" text="Enregistrer" />
+      <Label layoutX="51.0" layoutY="55.0" text="Modifier client">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

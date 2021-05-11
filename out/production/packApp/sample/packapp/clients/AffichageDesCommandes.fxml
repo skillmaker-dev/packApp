@@ -5,9 +5,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.AffichageDesCommandesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/showclientcommandes.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.AffichageDesCommandesController">
    <children>
-      <TableView fx:id="CommandesTableView" prefHeight="287.0" prefWidth="600.0">
+      <TableView fx:id="CommandesTableView" prefHeight="287.0" prefWidth="600.0" styleClass="myTable">
         <columns>
           <TableColumn fx:id="RefCommandeColumn" prefWidth="89.0" text="Reference" />
             <TableColumn fx:id="ProductNameColumn" prefWidth="79.0" text="Nom Produit" />
@@ -17,8 +17,8 @@
             <TableColumn fx:id="NameClientColumn" prefWidth="160.0" text="Nom client" />
         </columns>
       </TableView>
-      <Button fx:id="RetourButton" layoutX="41.0" layoutY="314.0" mnemonicParsing="false" onAction="#mainPage" text="retour" />
-      <Button fx:id="modifierButton" layoutX="512.0" layoutY="314.0" mnemonicParsing="false" text="modifier" />
-      <Button fx:id="NouvelleCommandeButton" layoutX="363.0" layoutY="314.0" mnemonicParsing="false" onAction="#HandleNouvelleCommandeButton" text="nouvelle commande" />
+      <Button fx:id="RetourButton" layoutX="41.0" layoutY="314.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="retour" />
+      <Button fx:id="modifierButton" layoutX="512.0" layoutY="314.0" mnemonicParsing="false" styleClass="myButtons" text="modifier" />
+      <Button fx:id="NouvelleCommandeButton" layoutX="363.0" layoutY="314.0" mnemonicParsing="false" onAction="#HandleNouvelleCommandeButton" styleClass="myButtons" text="nouvelle commande" />
    </children>
 </AnchorPane>
