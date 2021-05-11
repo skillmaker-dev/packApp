@@ -30,7 +30,6 @@ public class ClientsController implements Initializable {
     private Parent root;
 
 
-
     @FXML
     private TextField clientIdTextField;
     @FXML
@@ -116,6 +115,7 @@ public class ClientsController implements Initializable {
 
         clientsTableView.setItems(list);
     }
+
     private void executeQuery(String query) {
         Connection connection = getConnection();
         Statement statement;
@@ -126,10 +126,58 @@ public class ClientsController implements Initializable {
             e.printStackTrace();
         }
     }
+
     public void clearFields() {
         clientIdTextField.clear();
         clientNameTextField.clear();
     }
 
+    public void handleEditButton(ActionEvent event) {
 
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("modifierClient.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Modifier Client");
+            stage.setResizable(false);
+            Image myIcon = new Image("sample/icon/PackageAPP.png");
+            stage.getIcons().add(myIcon);
+            stage.setScene(new Scene(root1));
+            stage.centerOnScreen();
+            stage.show();
+        } catch (Exception exception) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("You can not Modify an order!!");
+            alert.setContentText("Click Ok to Try Again");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
+        }
+    }
+    public void handleCommandeButton(ActionEvent event) {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AffichageDesCommandes.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Afficher les commandes");
+            stage.setResizable(false);
+            Image myIcon = new Image("sample/icon/PackageAPP.png");
+            stage.getIcons().add(myIcon);
+            stage.setScene(new Scene(root1));
+            stage.centerOnScreen();
+            stage.show();
+        } catch (Exception exception) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("You can not Modify an order!!");
+            alert.setContentText("Click Ok to Try Again");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
+        }
+    }
 }

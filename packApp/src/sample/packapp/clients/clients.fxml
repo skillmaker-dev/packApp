@@ -41,12 +41,12 @@
       <TextField fx:id="clientIdTextField" layoutX="31.0" layoutY="177.0" prefHeight="26.0" prefWidth="171.0" promptText="ID Client" styleClass="textField" />
       <TextField fx:id="clientNameTextField" layoutX="31.0" layoutY="138.0" prefHeight="26.0" prefWidth="171.0" promptText="Nom client" styleClass="textField" />
       <TextField fx:id="clientEmailTextField" layoutX="32.0" layoutY="214.0" prefHeight="26.0" prefWidth="171.0" promptText="Email" styleClass="textField" />
-      <Button fx:id="commandes" layoutX="28.0" layoutY="304.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Commandes">
+      <Button fx:id="commandes" layoutX="28.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleCommandeButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Commandes">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="modifier" layoutX="28.0" layoutY="268.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Modifier">
+      <Button fx:id="modifier" layoutX="28.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Modifier">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

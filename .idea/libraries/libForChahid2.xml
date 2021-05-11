@@ -1,13 +1,17 @@
 <component name="libraryTable">
-  <library name="lib3">
+  <library name="libForChahid">
     <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/Compressed/javafx-sdk-16/lib" />
       <root url="file://$USER_HOME$/Downloads/Compressed/javafx-sdk-16/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://$USER_HOME$/Downloads/Compressed/javafx-sdk-16/lib" />
+      <root url="file://$USER_HOME$/Downloads/Compressed/javafx-sdk-16/lib" />
     </SOURCES>
     <jarDirectory url="file://$USER_HOME$/Downloads/Compressed/javafx-sdk-16/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/Compressed/javafx-sdk-16/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/Compressed/javafx-sdk-16/lib" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$USER_HOME$/Downloads/Compressed/javafx-sdk-16/lib" recursive="false" type="SOURCES" />
   </library>
 </component>
