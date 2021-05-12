@@ -1,0 +1,10 @@
+.getStartedButton{
+    -fx-background-radius: 20px;
+    -fx-background-color: rgb(131, 211, 243);
+    -fx-font-style: normal;
+}
+
+.myPane{
+    -fx-background-image: url("IMG/background1.jpg");
+    -fx-background-size : 600px 400px;
+}

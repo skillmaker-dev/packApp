@@ -16,8 +16,17 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="libForOussama" level="project" />
     <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="libForOussama" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/packApp/src/sample/Animation/gradle-wrapper.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

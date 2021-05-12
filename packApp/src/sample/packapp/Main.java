@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("loginPage/rootPage.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GetStarted/getStarted.fxml")));
         primaryStage.setTitle("PackApp");
         Image myIcon = new Image("sample/icon/PackageAPP.png");
         primaryStage.getIcons().add(myIcon);
