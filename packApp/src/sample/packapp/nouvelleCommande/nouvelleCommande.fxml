@@ -11,112 +11,115 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/NewOrder.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.nouvelleCommande.NouvelleComandeController">
-   <children>
-      <Label layoutX="56.0" layoutY="47.0" text="Client" textFill="#fffdfd">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <TextField fx:id="fullNameField" layoutX="56.0" layoutY="80.0" promptText="Nom Complet" styleClass="textField">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="phoneField" layoutX="56.0" layoutY="125.0" promptText="Téléphone" styleClass="textField">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="emailField" layoutX="56.0" layoutY="171.0" prefHeight="30.0" prefWidth="254.0" promptText="Email" styleClass="textField">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <RadioButton fx:id="maleRadio" layoutX="328.0" layoutY="130.0" mnemonicParsing="false" text="Homme" textFill="WHITE">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
-         </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="sexe" />
-         </toggleGroup>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </RadioButton>
-      <RadioButton fx:id="femaleRadio" layoutX="410.0" layoutY="130.0" mnemonicParsing="false" text="Femme" textFill="WHITE" toggleGroup="$sexe">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </RadioButton>
-      <Label layoutX="56.0" layoutY="208.0" text="Commande" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <TextField fx:id="addressField" layoutX="56.0" layoutY="282.0" prefHeight="30.0" prefWidth="254.0" promptText="Adresse" styleClass="textField">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="amountField" layoutX="328.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Quantité" styleClass="textField">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="priceField" layoutX="420.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Prix Unit" styleClass="textField">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <Button fx:id="incrementButton" layoutX="512.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="30.0" prefWidth="34.0" styleClass="incrementButton" text="+">
-         <font>
-            <Font name="Britannic Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <ChoiceBox fx:id="productBox" layoutX="56.0" layoutY="236.0" prefHeight="30.0" prefWidth="254.0" styleClass="selectFields">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></ChoiceBox>
-      <ChoiceBox fx:id="statusBox" layoutX="56.0" layoutY="325.0" prefHeight="30.0" prefWidth="254.0" styleClass="selectFields">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></ChoiceBox>
-      <Label layoutX="300.0" layoutY="29.0" prefHeight="35.0" prefWidth="269.0" text="NOUVELLE COMMANDE" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="447.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="30.0" prefWidth="97.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Enregistrer">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="&lt; Retour">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Text fill="WHITE" layoutX="328.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:">
-         <font>
-            <Font size="29.0" />
-         </font>
-      </Text>
-      <Label fx:id="totalLabel" layoutX="420.0" layoutY="270.0" prefHeight="39.0" prefWidth="114.0" textFill="#e3ff2e">
-         <font>
-            <Font size="32.0" />
-         </font></Label>
-      <Button fx:id="decrementButton" layoutX="551.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleDecrementButton" prefHeight="30.0" prefWidth="34.0" styleClass="decrementButton" text="-">
-         <font>
-            <Font name="Britannic Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-   </children>
+<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/newOrder.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.nouvelleCommande.NouvelleComandeController">
+   <Label layoutX="56.0" layoutY="47.0" text="Client" textFill="#fffdfd">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <TextField fx:id="fullNameField" layoutX="56.0" layoutY="80.0" promptText="Nom Complet" styleClass="textField">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="phoneField" layoutX="56.0" layoutY="125.0" promptText="Téléphone" styleClass="textField">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="emailField" layoutX="56.0" layoutY="171.0" prefHeight="30.0" prefWidth="254.0" promptText="Email" styleClass="textField">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+   <RadioButton fx:id="maleRadio" layoutX="328.0" layoutY="130.0" mnemonicParsing="false" text="Homme" textFill="WHITE">
+      <font>
+         <Font name="Arial Rounded MT Bold" size="14.0" />
+      </font>
+      <toggleGroup>
+         <ToggleGroup fx:id="sexe" />
+      </toggleGroup>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </RadioButton>
+   <RadioButton fx:id="femaleRadio" layoutX="410.0" layoutY="130.0" mnemonicParsing="false" text="Femme" textFill="WHITE" toggleGroup="$sexe">
+      <font>
+         <Font name="Arial Rounded MT Bold" size="14.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </RadioButton>
+   <Label layoutX="56.0" layoutY="208.0" text="Commande" textFill="WHITE">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <TextField fx:id="addressField" layoutX="56.0" layoutY="282.0" prefHeight="30.0" prefWidth="254.0" promptText="Adresse" styleClass="textField">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="amountField" layoutX="328.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Quantité" styleClass="textField">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="priceField" layoutX="420.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Prix Unit" styleClass="textField">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+   <Button fx:id="incrementButton" layoutX="512.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="30.0" prefWidth="34.0" styleClass="incrementButton" text="+">
+      <font>
+         <Font name="Britannic Bold" size="15.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <ChoiceBox fx:id="productBox" layoutX="56.0" layoutY="236.0" prefHeight="30.0" prefWidth="254.0" styleClass="selectFields">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </ChoiceBox>
+   <ChoiceBox fx:id="statusBox" layoutX="56.0" layoutY="325.0" prefHeight="30.0" prefWidth="254.0" styleClass="selectFields">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </ChoiceBox>
+   <Label layoutX="300.0" layoutY="29.0" prefHeight="35.0" prefWidth="269.0" text="NOUVELLE COMMANDE" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
+   <Button fx:id="save" layoutX="447.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="30.0" prefWidth="97.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Enregistrer">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="&lt; Retour">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Text fill="WHITE" layoutX="328.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:">
+      <font>
+         <Font size="29.0" />
+      </font>
+   </Text>
+   <Label fx:id="totalLabel" layoutX="420.0" layoutY="270.0" prefHeight="39.0" prefWidth="114.0" textFill="#e3ff2e">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Button fx:id="decrementButton" layoutX="551.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleDecrementButton" prefHeight="30.0" prefWidth="34.0" styleClass="decrementButton" text="-">
+      <font>
+         <Font name="Britannic Bold" size="15.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
 </AnchorPane>

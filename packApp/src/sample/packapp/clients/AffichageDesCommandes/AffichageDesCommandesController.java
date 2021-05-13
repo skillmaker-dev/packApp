@@ -1,21 +1,29 @@
 package sample.packapp.clients.AffichageDesCommandes;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
+import javafx.util.Duration;
 import sample.packapp.commandes.Orders;
 
 import java.io.IOException;
 
 public class AffichageDesCommandesController  {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    @FXML
+    private AnchorPane container;
+
+   private Parent root;
 
     @FXML
     private Button RetourButton;
@@ -42,17 +50,17 @@ public class AffichageDesCommandesController  {
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../_Clients/clients.fxml"));
         root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.close();
     }
 
     public void HandleNouvelleCommandeButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../nouvelleCommande/nouvelleCommande.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("NouvelleCommande2.fxml"));
         root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

@@ -47,6 +47,5 @@ public class GetStartedController implements Initializable {
             parentContainer.getChildren().remove(container);
         });
         timeline.play();
-
     }
 }

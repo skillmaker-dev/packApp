@@ -16,11 +16,8 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class ModifierClientController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
-@FXML
+    @FXML
 private   TextField    fullNameField ;
 @FXML
 private   TextField    phoneField ;
@@ -44,9 +41,9 @@ private Button SaveButton;
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../_Clients/clients.fxml"));
-        root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -57,15 +54,14 @@ private Button SaveButton;
         // do what you have to do
         stage.close();
     }
-    public void handleSaveButton(ActionEvent event) throws IOException {
 
+    public void handleSaveButton(ActionEvent event) throws IOException {
         String radioButtonChoice = null;
         if(maleRadio.isSelected()) {
             radioButtonChoice = "Homme";
         } else if(femaleRadio.isSelected()) {
             radioButtonChoice = "Femme";
         }
-
         if (fullNameField.getText().isEmpty() || phoneField.getText().isEmpty() || emailField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");

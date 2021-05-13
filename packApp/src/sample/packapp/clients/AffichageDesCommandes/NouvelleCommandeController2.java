@@ -1,4 +1,4 @@
-package sample.packapp.nouvelleCommande;
+package sample.packapp.clients.AffichageDesCommandes;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -19,13 +19,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sample.packapp.nouvelleCommande.referenceGenerator;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class NouvelleComandeController implements Initializable {
+public class NouvelleCommandeController2 implements Initializable {
 
     @FXML
     private AnchorPane container;
@@ -59,20 +60,12 @@ public class NouvelleComandeController implements Initializable {
     private ObservableList<String> products = FXCollections.observableArrayList();
     referenceGenerator refGen;
     public void mainPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AffichageDesCommandes.fxml"));
         Parent root = loader.load();
-        Scene scene = retour.getScene();
-        root.translateXProperty().set(scene.getWidth());
-        StackPane parentContainer = (StackPane) scene.getRoot();
-        parentContainer.getChildren().add(root);
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(),0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1),kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(event1 -> {
-            parentContainer.getChildren().remove(container);
-        });
-        timeline.play();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.close();
     }
 
     public void fillProductsBox() {
@@ -92,7 +85,7 @@ public class NouvelleComandeController implements Initializable {
 
     }
 
-    public NouvelleComandeController() {
+    public NouvelleCommandeController2() {
         fillProductsBox();
     }
 
@@ -106,8 +99,8 @@ public class NouvelleComandeController implements Initializable {
         }
 
         if (fullNameField.getText().isEmpty() || phoneField.getText().isEmpty() || emailField.getText().isEmpty()
-        || addressField.getText().isEmpty() || priceField.getText().isEmpty() || radioButtonChoice == null ||
-        productBox.getValue().contentEquals("Product : ") || statusBox.getValue().contentEquals("Status : ")) {
+                || addressField.getText().isEmpty() || priceField.getText().isEmpty() || radioButtonChoice == null ||
+                productBox.getValue().contentEquals("Product : ") || statusBox.getValue().contentEquals("Status : ")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText("You must insert all fields (required) !");
@@ -118,28 +111,28 @@ public class NouvelleComandeController implements Initializable {
             stage.getIcons().add(myIcone);
         } else {
 
-                try {
-                    Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-                    String query = "INSERT INTO orders VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
-                            " , '" + emailField.getText() + "' , '" + addressField.getText() + "' , '" + radioButtonChoice +
-                            "' , '" + productBox.getValue() + "' , " + priceField.getText() + " , " + amountField.getText() +
-                            " , '" + statusBox.getValue() + "' , '" + refGen.generateRef() + "')";
-                    Statement statement = connection.createStatement();
-                    statement.executeUpdate(query);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                resetScene();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Confirmation!");
-                alert.setHeaderText("You successfully added a new command!");
-                alert.setContentText("Click Ok");
-                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                Image myIcone = new Image("sample/icon/iconfinder_Info_728979.png");
-                stage.getIcons().add(myIcone);
-                alert.showAndWait();
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+                String query = "INSERT INTO orders VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
+                        " , '" + emailField.getText() + "' , '" + addressField.getText() + "' , '" + radioButtonChoice +
+                        "' , '" + productBox.getValue() + "' , " + priceField.getText() + " , " + amountField.getText() +
+                        " , '" + statusBox.getValue() + "' , '" + refGen.generateRef() + "')";
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+            resetScene();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Confirmation!");
+            alert.setHeaderText("You successfully added a new command!");
+            alert.setContentText("Click Ok");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_Info_728979.png");
+            stage.getIcons().add(myIcone);
+            alert.showAndWait();
         }
+    }
 
 
 

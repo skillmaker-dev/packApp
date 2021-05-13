@@ -1,19 +1,25 @@
 package sample.packapp.depot;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,9 +30,11 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class DepotController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+
+    @FXML
+    private AnchorPane container;
+    @FXML
+    private Button retour,modifier,supprimer,ajouter;
 
     private int ID;
 
@@ -48,18 +56,23 @@ public class DepotController implements Initializable {
     private TableColumn<Products,Integer> quantityColumn;
     @FXML
     private TableColumn<Products,Double> unitPriceColumn;
-    @FXML
-    private Button modifier;
-    @FXML
-    private Button supprimer;
+
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
-        root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent root = loader.load();
+        Scene scene = retour.getScene();
+        root.translateXProperty().set(scene.getWidth());
+        StackPane parentContainer = (StackPane) scene.getRoot();
+        parentContainer.getChildren().add(root);
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateXProperty(),0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1),kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(event1 -> {
+            parentContainer.getChildren().remove(container);
+        });
+        timeline.play();
     }
 
     @Override
