@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -13,17 +14,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="507.0" prefWidth="392.0" styleClass="myPane" stylesheets="@../../CSSFiles/changeOrders.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.modifierCommandeController">
+<AnchorPane prefHeight="507.0" prefWidth="392.0" styleClass="myPane" stylesheets="@../../CSSFiles/changeOrders.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.ModifierCommandeController">
    <children>
-      <Button fx:id="enregistrerButton" layoutX="196.0" layoutY="407.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" text="Enregistrer">
+      <Button fx:id="enregistrerButton" layoutX="200.0" layoutY="429.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" text="Enregistrer">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <GridPane layoutX="65.0" layoutY="79.0" prefHeight="267.0" prefWidth="258.0">
+      <GridPane layoutX="65.0" layoutY="73.0" prefHeight="311.0" prefWidth="258.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints maxHeight="69.8" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="69.8" minHeight="10.0" prefHeight="24.200024414062497" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="66.5999755859375" minHeight="10.0" prefHeight="28.800006103515624" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="70.4" minHeight="10.0" prefHeight="27.200000000000003" vgrow="SOMETIMES" />
@@ -32,18 +34,22 @@
             <RowConstraints maxHeight="75.20001831054688" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="nomField" promptText="Nom Client" styleClass="textField" />
-            <TextField fx:id="telField" promptText="Téléphone" styleClass="textField" GridPane.rowIndex="1" />
-            <TextField fx:id="emailField" promptText="Email" styleClass="textField" GridPane.rowIndex="2" />
-            <TextField fx:id="adrField" promptText="Adresse" styleClass="textField" GridPane.rowIndex="3" />
-            <TextField fx:id="QuantiteField" promptText="Quantité" styleClass="textField" GridPane.rowIndex="4" />
-            <ChoiceBox fx:id="commandeStatus" prefHeight="26.0" prefWidth="263.0" styleClass="selectFields" GridPane.rowIndex="5">
+            <TextField fx:id="nomField" promptText="Nom Client" styleClass="textField" GridPane.rowIndex="1" />
+            <TextField fx:id="telField" promptText="Téléphone" styleClass="textField" GridPane.rowIndex="2" />
+            <TextField fx:id="emailField" promptText="Email" styleClass="textField" GridPane.rowIndex="3" />
+            <TextField fx:id="adrField" promptText="Adresse" styleClass="textField" GridPane.rowIndex="4" />
+            <TextField fx:id="QuantiteField" promptText="Quantité" styleClass="textField" GridPane.rowIndex="5" />
+            <ChoiceBox fx:id="commandeStatus" prefHeight="26.0" prefWidth="263.0" styleClass="selectFields" GridPane.rowIndex="6">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ChoiceBox>
+            <TextField fx:id="reference" prefHeight="25.0" prefWidth="226.0" promptText="Reference" styleClass="textField">
+               <GridPane.margin>
+                  <Insets left="50.0" right="50.0" />
+               </GridPane.margin></TextField>
          </children>
       </GridPane>
-      <RadioButton fx:id="maleRadioButton" layoutX="97.0" layoutY="358.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Male">
+      <RadioButton fx:id="maleRadioButton" layoutX="115.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Male">
          <toggleGroup>
             <ToggleGroup fx:id="gender" />
          </toggleGroup>
@@ -51,7 +57,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="femaleRadioButton" layoutX="194.0" layoutY="358.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Female" toggleGroup="$gender">
+      <RadioButton fx:id="femaleRadioButton" layoutX="212.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Female" toggleGroup="$gender">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></RadioButton>
@@ -60,7 +66,7 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Button fx:id="annulerButton" layoutX="100.0" layoutY="407.0" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" stylesheets="@../../CSSFiles/changeOrders.css" text="Annuler">
+      <Button fx:id="annulerButton" layoutX="104.0" layoutY="429.0" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" stylesheets="@../../CSSFiles/changeOrders.css" text="Annuler">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

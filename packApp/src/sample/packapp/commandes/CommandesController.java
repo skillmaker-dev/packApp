@@ -35,22 +35,8 @@ public class CommandesController implements Initializable {
     private AnchorPane container;
     @FXML
     private Button retour;
-
-
-    @FXML
-    private TextField clientField;
-    @FXML
-    private TextField telField;
-    @FXML
-    private TextField adrField;
-    @FXML
-    private TextField emailField;
     @FXML
     private TextField refField;
-    @FXML
-    private TextField prodField;
-    @FXML
-    private ChoiceBox<String> statusChoice;
     @FXML
     private Button searchButton;
     @FXML
@@ -69,6 +55,7 @@ public class CommandesController implements Initializable {
     private TableColumn<Orders,String> statusColumn;
 
     private String[] status = {"En cours" , "Livrée" , "Annulée"};
+    private String selectedReference = "";
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
@@ -89,11 +76,10 @@ public class CommandesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        statusChoice.getItems().setAll(status);
-        statusChoice.setValue("Statut : ");
         showOrders();
         editButton.setDisable(true);
         deleteButton.setDisable(true);
+
     }
 
     public Connection getConnection() {
@@ -150,8 +136,11 @@ public class CommandesController implements Initializable {
     public void handleEditButton(ActionEvent event) {
 
         try {
+            String selectedRef = refField.getText();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("modifierCommande.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
+            ModifierCommandeController modifierCommandeController = fxmlLoader.getController();
+            modifierCommandeController.setSelectedReference(selectedRef);
             Stage stage = new Stage();
             stage.setTitle("Modifier Commande");
             stage.setResizable(false);
@@ -161,14 +150,7 @@ public class CommandesController implements Initializable {
             stage.centerOnScreen();
             stage.show();
         } catch (Exception exception) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText("You can not Modify an order!!");
-            alert.setContentText("Click Ok to Try Again");
-            alert.show();
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
-            stage.getIcons().add(myIcone);
+            exception.printStackTrace();
         }
 
     }
@@ -185,15 +167,7 @@ public class CommandesController implements Initializable {
     }
 
     private void clearFields() {
-
-        clientField.clear();
-        telField.clear();
-        emailField.clear();
         refField.clear();
-        adrField.clear();
-        prodField.clear();
-        statusChoice.setValue("Statut : ");
-
     }
 
     @FXML
@@ -202,20 +176,63 @@ public class CommandesController implements Initializable {
         if(!ordersTableView.getSelectionModel().isEmpty()){
             Orders orders = ordersTableView.getSelectionModel().getSelectedItem();
             refField.setText("" + orders.getReference());
-            clientField.setText("" + orders.getFullName());
-            telField.setText("" + orders.getPhone());
-            adrField.setText("" + orders.getAddress());
-            emailField.setText("" + orders.getEmail());
-            prodField.setText("" + orders.getProduct());
-            statusChoice.setValue("" + orders.getStatus());
             editButton.setDisable(false);
             deleteButton.setDisable(false);
         }
     }
 
-    public void handleSearchButton(ActionEvent event) {
+    public void handleSearchButton(ActionEvent event) throws SQLException {
 
-
+        int index = -1, totalRows = 0;
+        if(refField.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Please enter a reference !");
+            alert.setContentText("Click Ok to Try Again");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
+            refField.clear();
+        } else {
+            String query = "SELECT * FROM orders";
+            Connection connection = getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                index++;
+                if (resultSet.getString("reference").equals(refField.getText())) {
+                    break;
+                }
+            }
+            Connection connection2 = getConnection();
+            Statement statement2 = connection2.createStatement();
+            ResultSet resultSet2 = statement2.executeQuery(query);
+            while (resultSet2.next()) {
+                totalRows++;
+            }
+            index++;
+            String ref = (String) ordersTableView.getColumns().get(0).getCellObservableValue(index - 1).getValue();
+            if (index == 5 && refField.getText().equals(ref)) {
+                ordersTableView.getSelectionModel().select(index - 1);
+            } else if (index < totalRows) {
+                System.out.println(index);
+                System.out.println(totalRows);
+                ordersTableView.getSelectionModel().select(index - 1);
+            } else {
+                System.out.println(index);
+                System.out.println(totalRows);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR!");
+                alert.setHeaderText("No result match with this reference !");
+                alert.setContentText("Click Ok to Continue");
+                alert.show();
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+                stage.getIcons().add(myIcone);
+                refField.clear();
+            }
+        }
 
     }
 
@@ -234,6 +251,7 @@ public class CommandesController implements Initializable {
             Connection connection2 = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             int nbrOfOrders = 0;
             String ref = "";
+            String name = "";
             String query4 = "SELECT * FROM orders WHERE reference = '" + refField.getText() + "'";
             Statement statement3 = connection2.createStatement();
             ResultSet resultSet2 = statement3.executeQuery(query4);
@@ -242,15 +260,22 @@ public class CommandesController implements Initializable {
             }
             String query = "DELETE FROM orders WHERE reference = '" + ref + "'";
             executeQuery(query);
+            Connection connection1 = getConnection();
+            String query5 = "SELECT fullName FROM orders WHERE reference = '" + refField.getText() + "'";
+            Statement statement4 = connection1.createStatement();
+            ResultSet resultSet3 = statement4.executeQuery(query5);
+            while (resultSet3.next()) {
+                name = resultSet3.getString("fullName");
+            }
             Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-            String query2 = "SELECT nbrOrders FROM clients WHERE name = '" + clientField.getText() + "'";
+            String query2 = "SELECT nbrOrders FROM clients WHERE name = '" + name + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query2);
             while (resultSet.next()) {
                 nbrOfOrders = resultSet.getInt("nbrOrders") - 1;
             }
             String query3 = "UPDATE clients SET nbrOrders = " + nbrOfOrders + " WHERE name = '"
-                    + clientField.getText() + "'";
+                    + name + "'";
             Statement statement2 = connection.createStatement();
             statement2.executeUpdate(query3);
             showOrders();
