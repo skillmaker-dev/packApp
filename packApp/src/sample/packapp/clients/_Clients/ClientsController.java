@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,12 +20,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 
@@ -40,7 +37,8 @@ public class ClientsController implements Initializable {
     private TextField clientIdTextField;
     @FXML
     private TextField clientNameTextField;
-
+    @FXML
+    private TextField clientEmailTextField;
     @FXML
     private TableView<Clients> clientsTableView;
     @FXML
@@ -79,8 +77,9 @@ public class ClientsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showClients();
-        //modifier.setDisable(true);
-        //chercher.setDisable(true);
+        modifier.setDisable(true);
+        chercher.setDisable(true);
+        commandes.setDisable(true);
     }
 
     public Connection getConnection() {
@@ -109,7 +108,7 @@ public class ClientsController implements Initializable {
             resultSet = statement.executeQuery(query);
             Clients clients;
             while (resultSet.next()) {
-                clients = new Clients(resultSet.getInt("idClient"), resultSet.getString("ClientName"), resultSet.getString("lastCmd"), resultSet.getInt("NbCmd"));
+                clients = new Clients(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("lastOrder"), resultSet.getInt("NbrOrders"));
                 clientsList.add(clients);
             }
         } catch (Exception e) {
@@ -122,8 +121,8 @@ public class ClientsController implements Initializable {
 
         ObservableList<Clients> list = getClientsList();
 
-        idClientColumn.setCellValueFactory(new PropertyValueFactory<Clients, Integer>("idClients"));
-        ClientNameColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("ClientsName"));
+        idClientColumn.setCellValueFactory(new PropertyValueFactory<Clients, Integer>("clientId"));
+        ClientNameColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("clientName"));
         lastCmdColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("lastCmd"));
         NbCmdColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("NbCmd"));
 
@@ -160,14 +159,7 @@ public class ClientsController implements Initializable {
             stage.centerOnScreen();
             stage.show();
         } catch (Exception exception) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText("You can not Modify an order!!");
-            alert.setContentText("Click Ok to Try Again");
-            alert.show();
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
-            stage.getIcons().add(myIcone);
+           exception.printStackTrace();
         }
     }
     public void handleCommandeButton(ActionEvent event) {
@@ -184,14 +176,33 @@ public class ClientsController implements Initializable {
             stage.centerOnScreen();
             stage.show();
         } catch (Exception exception) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText("You can not Modify an order!!");
-            alert.setContentText("Click Ok to Try Again");
-            alert.show();
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
-            stage.getIcons().add(myIcone);
+            exception.printStackTrace();
         }
     }
+
+    public void handleSearchButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void handleMouseAction(MouseEvent event) throws SQLException {
+
+        if(!clientsTableView.getSelectionModel().isEmpty()){
+            Connection connection = getConnection();
+            String query = "SELECT * FROM orders WHERE fullName = '" + clientNameTextField.getText() + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                String email = resultSet.getString("email");
+                clientEmailTextField.setText(email);
+            }
+            Clients clients = clientsTableView.getSelectionModel().getSelectedItem();
+            clientIdTextField.setText("" + clients.getClientId());
+            clientNameTextField.setText("" + clients.getClientName());
+            modifier.setDisable(false);
+            chercher.setDisable(false);
+            commandes.setDisable(false);
+        }
+    }
+
 }

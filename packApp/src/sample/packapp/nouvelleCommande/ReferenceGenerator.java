@@ -1,6 +1,6 @@
 package sample.packapp.nouvelleCommande;
 import java.util.Random;
-public class referenceGenerator {
+public class ReferenceGenerator {
 
 
 

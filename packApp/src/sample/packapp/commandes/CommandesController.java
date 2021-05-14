@@ -25,10 +25,7 @@ import sample.packapp.depot.Products;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -222,7 +219,7 @@ public class CommandesController implements Initializable {
 
     }
 
-    public void handleDeleteButton(ActionEvent event) {
+    public void handleDeleteButton(ActionEvent event) throws SQLException {
 
         if(ordersTableView.getSelectionModel().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -234,8 +231,28 @@ public class CommandesController implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
         }else{
-            String query = "DELETE FROM orders WHERE fullName = '" + clientField.getText() + "'";
+            Connection connection2 = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            int nbrOfOrders = 0;
+            String ref = "";
+            String query4 = "SELECT * FROM orders WHERE reference = '" + refField.getText() + "'";
+            Statement statement3 = connection2.createStatement();
+            ResultSet resultSet2 = statement3.executeQuery(query4);
+            while (resultSet2.next()) {
+                ref = resultSet2.getString("reference");
+            }
+            String query = "DELETE FROM orders WHERE reference = '" + ref + "'";
             executeQuery(query);
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            String query2 = "SELECT nbrOrders FROM clients WHERE name = '" + clientField.getText() + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query2);
+            while (resultSet.next()) {
+                nbrOfOrders = resultSet.getInt("nbrOrders") - 1;
+            }
+            String query3 = "UPDATE clients SET nbrOrders = " + nbrOfOrders + " WHERE name = '"
+                    + clientField.getText() + "'";
+            Statement statement2 = connection.createStatement();
+            statement2.executeUpdate(query3);
             showOrders();
             clearFields();
             editButton.setDisable(true);

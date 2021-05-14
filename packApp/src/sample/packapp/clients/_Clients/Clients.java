@@ -1,31 +1,31 @@
 package sample.packapp.clients._Clients;
 
 public class Clients {
-    private int idClient;
-    private String ClientName;
+    private int clientId;
+    private String clientName;
     private String lastCmd;
     private int NbCmd;
 
-    public Clients(int idClient, String ClientName, String lastCmd, int NbCmd) {
-        this.idClient = idClient;
-        this.ClientName = ClientName;
+    public Clients(int clientId, String clientName, String lastCmd, int nbCmd) {
+        this.clientId = clientId;
+        this.clientName = clientName;
         this.lastCmd = lastCmd;
-        this.NbCmd = NbCmd;
+        NbCmd = nbCmd;
     }
 
-    public int getNumClient() {
-        return idClient;
+    public int getClientId() {
+        return clientId;
     }
 
     public String getClientName() {
-        return ClientName;
+        return clientName;
     }
 
-    public String getlastCmd() {
+    public String getLastCmd() {
         return lastCmd;
     }
 
-    public double getNbCmd() {
+    public int getNbCmd() {
         return NbCmd;
     }
 }

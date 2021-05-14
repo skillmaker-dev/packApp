@@ -17,7 +17,7 @@
       </cursor>
    </Button>
    <HBox layoutX="234.0" prefHeight="400.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
-      <TableView fx:id="clientsTableView" prefHeight="400.0" prefWidth="385.0" styleClass="myTable">
+      <TableView fx:id="clientsTableView" onMouseClicked="#handleMouseAction" prefHeight="400.0" prefWidth="385.0" styleClass="myTable">
          <columns>
             <TableColumn fx:id="idClientColumn" prefWidth="96.0" text="Id client" />
             <TableColumn fx:id="ClientNameColumn" prefWidth="114.0" text="nom client" />
@@ -49,7 +49,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="chercher" layoutX="119.0" layoutY="268.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Chercher">
+   <Button fx:id="chercher" layoutX="119.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Chercher">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>

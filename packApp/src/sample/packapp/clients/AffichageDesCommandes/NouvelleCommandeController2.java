@@ -1,9 +1,5 @@
 package sample.packapp.clients.AffichageDesCommandes;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,10 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import sample.packapp.nouvelleCommande.referenceGenerator;
+import sample.packapp.nouvelleCommande.ReferenceGenerator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -58,7 +52,7 @@ public class NouvelleCommandeController2 implements Initializable {
     private Button incrementButton,decrementButton;
     private String[] status = {"En cours" , "Livrée" , "Annulée"};
     private ObservableList<String> products = FXCollections.observableArrayList();
-    referenceGenerator refGen;
+    ReferenceGenerator refGen;
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AffichageDesCommandes.fxml"));
         Parent root = loader.load();

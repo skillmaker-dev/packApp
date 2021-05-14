@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -58,7 +57,8 @@ public class NouvelleComandeController implements Initializable {
 
     private String[] status = {"En cours" , "Livrée" , "Annulée"};
     private ObservableList<String> products = FXCollections.observableArrayList();
-    referenceGenerator refGen;
+    ReferenceGenerator refGen;
+    IdGenerator idGen;
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
@@ -98,6 +98,27 @@ public class NouvelleComandeController implements Initializable {
         fillProductsBox();
     }
 
+    public boolean checkClientExist() {
+        boolean check = false;
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            String query = "SELECT * FROM clients";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                if(resultSet.getString("name").equals(fullNameField.getText())){
+                    check = true;
+                    break;
+                }
+            }
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+
+    }
+
     public void handleSaveButton(ActionEvent event) throws IOException {
 
         String radioButtonChoice = null;
@@ -119,60 +140,81 @@ public class NouvelleComandeController implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
         } else {
-
-                try {
-                    Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-                    Statement statement = connection.createStatement();
-                    String query1 = "SELECT * FROM products WHERE productName = '" + productBox.getValue() + "'";
-                    ResultSet resultSet = statement.executeQuery(query1);
-                    int selectedProductQuantity = 0;
-                    while (resultSet.next()) {
-                        selectedProductQuantity = resultSet.getInt("quantity");
-                    }
-                    if (selectedProductQuantity == 0) {
+            try {
+                Connection connection1 = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+                Statement statement = connection1.createStatement();
+                String query1 = "SELECT * FROM products WHERE productName = '" + productBox.getValue() + "'";
+                ResultSet resultSet = statement.executeQuery(query1);
+                int selectedProductQuantity = 0;
+                while (resultSet.next()) {
+                    selectedProductQuantity = resultSet.getInt("quantity");
+                }
+                if (selectedProductQuantity == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR!");
+                    alert.setHeaderText("Product out of stock !");
+                    alert.setContentText("Click Ok to Continue");
+                    alert.show();
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+                    stage.getIcons().add(myIcone);
+                } else if((selectedProductQuantity - Integer.parseInt(amountField.getText()) < 0)) {
+                     if(Integer.parseInt(amountField.getText()) > selectedProductQuantity) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("ERROR!");
-                        alert.setHeaderText("Product out of stock !");
+                        alert.setHeaderText("It left less than you desire from this product , Please decrease the amount !");
                         alert.setContentText("Click Ok to Continue");
                         alert.show();
                         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                         Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
                         stage.getIcons().add(myIcone);
-                    } else if((selectedProductQuantity - Integer.parseInt(amountField.getText()) < 0)) {
-                         if(Integer.parseInt(amountField.getText()) > selectedProductQuantity) {
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setTitle("ERROR!");
-                            alert.setHeaderText("It left less than you desire from this product , Please decrease the amount !");
-                            alert.setContentText("Click Ok to Continue");
-                            alert.show();
-                            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
-                            stage.getIcons().add(myIcone);
-                        }
-                    } else {
-                        String query = "INSERT INTO orders VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
-                                " , '" + emailField.getText() + "' , '" + addressField.getText() + "' , '" + radioButtonChoice +
-                                "' , '" + productBox.getValue() + "' , " + priceField.getText() + " , " + amountField.getText() +
-                                " , '" + statusBox.getValue() + "' , '" + refGen.generateRef() + "')";
-                        statement.executeUpdate(query);
-                        String query2 = "UPDATE products SET quantity = " + (selectedProductQuantity - Integer.parseInt(amountField.getText()))
-                                + " WHERE productName = '" + productBox.getValue() + "'";
-                        statement.executeUpdate(query2);
-                        resetScene();
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Confirmation!");
-                        alert.setHeaderText("You successfully added a new command!");
-                        alert.setContentText("Click Ok");
-                        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                        Image myIcone = new Image("sample/icon/iconfinder_Info_728979.png");
-                        stage.getIcons().add(myIcone);
-                        alert.showAndWait();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } else {
+                    String productRef = refGen.generateRef();
+                    String clientId = idGen.generateId();
+                    int nbrOfOrders = 0;
+                    Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+                    String query = "INSERT INTO orders VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
+                            " , '" + emailField.getText() + "' , '" + addressField.getText() + "' , '" + radioButtonChoice +
+                            "' , '" + productBox.getValue() + "' , " + priceField.getText() + " , " + amountField.getText() +
+                            " , '" + statusBox.getValue() + "' , '" + productRef + "')";
+                    Statement statement1 = connection.createStatement();
+                    statement1.executeUpdate(query);
+                    String query2 = "UPDATE products SET quantity = " + (selectedProductQuantity - Integer.parseInt(amountField.getText()))
+                            + " WHERE productName = '" + productBox.getValue() + "'";
+                    statement.executeUpdate(query2);
+                    if(!checkClientExist()) {
+                        String query3 = "INSERT INTO clients VALUES ('" + clientId + "' , '" + fullNameField.getText()
+                                + "' , '" + productRef + "' , " + 1 + ")";
+                        Statement statement2 = connection.createStatement();
+                        statement2.executeUpdate(query3);
+                    } else {
+                        String query3 = "SELECT nbrOrders FROM clients WHERE name = '" + fullNameField.getText() + "'";
+                        Statement statement2 = connection.createStatement();
+                        ResultSet resultSet1 = statement2.executeQuery(query3);
+                        while (resultSet1.next()) {
+                            nbrOfOrders = resultSet1.getInt("nbrOrders") + 1;
+                        }
+                        String query4 = "UPDATE clients SET nbrOrders = " + nbrOfOrders + " , lastOrder  = '" +
+                                productRef + "' WHERE name = '" + fullNameField.getText() + "'";
+                        Statement statement3 = connection.createStatement();
+                        statement3.executeUpdate(query4);
+                    }
+                    resetScene();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Confirmation!");
+                    alert.setHeaderText("You successfully added a new command!");
+                    alert.setContentText("Click Ok");
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    Image myIcone = new Image("sample/icon/iconfinder_Info_728979.png");
+                    stage.getIcons().add(myIcone);
+                    alert.showAndWait();
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
+    }
 
 
 
