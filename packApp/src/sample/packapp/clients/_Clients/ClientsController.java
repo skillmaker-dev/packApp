@@ -21,6 +21,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javafx.scene.input.MouseEvent;
+import sample.packapp.clients.AffichageDesCommandes.AffichageDesCommandesController;
+import sample.packapp.clients.ModifierClient.ModifierClientController;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -38,8 +41,6 @@ public class ClientsController implements Initializable {
     @FXML
     private TextField clientNameTextField;
     @FXML
-    private TextField clientEmailTextField;
-    @FXML
     private TableView<Clients> clientsTableView;
     @FXML
     private TableColumn<Clients, Integer> idClientColumn;
@@ -55,7 +56,6 @@ public class ClientsController implements Initializable {
     private Button commandes;
     @FXML
     private Button chercher;
-
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../mainPage/mainPage.fxml"));
@@ -78,8 +78,8 @@ public class ClientsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showClients();
         modifier.setDisable(true);
-        chercher.setDisable(true);
         commandes.setDisable(true);
+        chercher.setDisable(false);
     }
 
     public Connection getConnection() {
@@ -148,8 +148,11 @@ public class ClientsController implements Initializable {
     public void handleEditButton(ActionEvent event) {
 
         try {
+            String selectedId = clientIdTextField.getText();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ModifierClient/ModifierClient.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
+            ModifierClientController modifierClientController = fxmlLoader.getController();
+            modifierClientController.setSelectedId(selectedId);
             Stage stage = new Stage();
             stage.setTitle("Modifier Client");
             stage.setResizable(false);
@@ -165,8 +168,11 @@ public class ClientsController implements Initializable {
     public void handleCommandeButton(ActionEvent event) {
 
         try {
+            String selectedClient = clientNameTextField.getText();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../AffichageDesCommandes/AffichageDesCommandes.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
+            AffichageDesCommandesController affichageDesCommandesController = fxmlLoader.getController();
+            affichageDesCommandesController.setSelectedClient(selectedClient);
             Stage stage = new Stage();
             stage.setTitle("Afficher les commandes");
             stage.setResizable(false);
@@ -182,6 +188,65 @@ public class ClientsController implements Initializable {
 
     public void handleSearchButton(ActionEvent event) {
 
+        try {
+            int index = -1, totalRows = 0;
+            if (clientIdTextField.getText().equals("")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR!");
+                alert.setHeaderText("Please enter an id !");
+                alert.setContentText("Click Ok to Try Again");
+                alert.show();
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+                stage.getIcons().add(myIcone);
+                clientIdTextField.clear();
+            } else {
+                String query = "SELECT * FROM clients";
+                Connection connection = getConnection();
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    index++;
+                    if (resultSet.getInt("id") == Integer.parseInt(clientIdTextField.getText())) {
+                        break;
+                    }
+                }
+                Connection connection2 = getConnection();
+                Statement statement2 = connection2.createStatement();
+                ResultSet resultSet2 = statement2.executeQuery(query);
+                while (resultSet2.next()) {
+                    totalRows++;
+                }
+                index++;
+                int id = (int) clientsTableView.getColumns().get(0).getCellObservableValue(index - 1).getValue();
+                if (index == totalRows && Integer.parseInt(clientIdTextField.getText()) == id) {
+                    clientsTableView.getSelectionModel().select(index - 1);
+                } else if (index < totalRows) {
+                    clientsTableView.getSelectionModel().select(index - 1);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR!");
+                    alert.setHeaderText("Client not found !");
+                    alert.setContentText("Click Ok to Continue");
+                    alert.show();
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+                    stage.getIcons().add(myIcone);
+                    clientIdTextField.clear();
+                }
+            }
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Please enter a valid value of ID!");
+            alert.setContentText("Click Ok to Continue");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
+            clientIdTextField.clear();
+        }
+
     }
 
     @FXML
@@ -192,17 +257,20 @@ public class ClientsController implements Initializable {
             String query = "SELECT * FROM orders WHERE fullName = '" + clientNameTextField.getText() + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            if (resultSet.next()) {
-                String email = resultSet.getString("email");
-                clientEmailTextField.setText(email);
-            }
             Clients clients = clientsTableView.getSelectionModel().getSelectedItem();
             clientIdTextField.setText("" + clients.getClientId());
             clientNameTextField.setText("" + clients.getClientName());
             modifier.setDisable(false);
-            chercher.setDisable(false);
+            chercher.setDisable(true);
             commandes.setDisable(false);
         }
     }
 
+    public void refresh(ActionEvent event) {
+        showClients();
+        modifier.setDisable(true);
+        commandes.setDisable(true);
+        chercher.setDisable(false);
+        clearFields();
+    }
 }

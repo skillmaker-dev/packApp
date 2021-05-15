@@ -3,41 +3,34 @@ package sample.packapp.clients.ModifierClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-public class ModifierClientController {
+public class ModifierClientController implements Initializable {
 
     @FXML
-private   TextField    fullNameField ;
-@FXML
-private   TextField    phoneField ;
-
-@FXML
-private   TextField    emailField ;
-@FXML
-private   Spinner    NombreDeCommandeSpinner ;
-/*@FXML
-private DatePicker DateDeRejointDatePicker ;
-@FXML
-private DatePicker DateDeCommandeDatePicker ;*/
-@FXML
-private RadioButton maleRadio;
-@FXML
-private RadioButton femaleRadio;
-@FXML
-private Button TerminerButton;
-@FXML
-private Button SaveButton;
+    private TextField fullNameField ;
+    @FXML
+    private TextField idField;
+    @FXML
+    private TextField lastCmdField;
+    @FXML
+    private TextField nbrCmdField;
+    @FXML
+    private Button TerminerButton;
+    @FXML
+    private Button SaveButton;
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../_Clients/clients.fxml"));
@@ -51,54 +44,47 @@ private Button SaveButton;
     public void HandleEndButton(ActionEvent event) throws IOException{
         // get a handle to the stage
         Stage stage = (Stage) TerminerButton.getScene().getWindow();
-        // do what you have to do
         stage.close();
     }
 
-    public void handleSaveButton(ActionEvent event) throws IOException {
-        String radioButtonChoice = null;
-        if(maleRadio.isSelected()) {
-            radioButtonChoice = "Homme";
-        } else if(femaleRadio.isSelected()) {
-            radioButtonChoice = "Femme";
-        }
-        if (fullNameField.getText().isEmpty() || phoneField.getText().isEmpty() || emailField.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText("You must insert all fields (required) !");
-            alert.setContentText("Click Ok to Try Again");
-            alert.show();
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
-            stage.getIcons().add(myIcone);
-        } else {
+    public void handleSaveButton(ActionEvent event) {
 
-            try {
-                Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-                String query = "INSERT INTO orders VALUES ('" + fullNameField.getText() + "' , " + phoneField.getText() +
-                        " , '" + emailField.getText() +  "')";
-                Statement statement = connection.createStatement();
-                statement.executeUpdate(query);
-            } catch (Exception e) {
-                e.printStackTrace();
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            String query = "UPDATE clients SET id = " + idField.getText() + " , name = '" + fullNameField.getText()
+                    + "'";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+    }
+
+    public void setSelectedId(String selectedId) {
+
+        idField.setText(selectedId);
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            String query = "SELECT * FROM clients WHERE id = '" + idField.getText() +"'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                fullNameField.setText(resultSet.getString("name"));
+                nbrCmdField.setText(String.valueOf(resultSet.getInt("nbrOrders")));
+                lastCmdField.setText(resultSet.getString("lastOrder"));
             }
-            resetScene();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Confirmation!");
-            alert.setHeaderText("You successfully changed the client's contact information");
-            alert.setContentText("Click Ok");
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            Image myIcone = new Image("sample/icon/iconfinder_Info_728979.png");
-            stage.getIcons().add(myIcone);
-            alert.showAndWait();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    }
-    public void resetScene() {
 
-        fullNameField.clear();
-        phoneField.clear();
-        emailField.clear();
-        maleRadio.setSelected(false);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lastCmdField.setEditable(false);
+        nbrCmdField.setEditable(false);
+    }
 }

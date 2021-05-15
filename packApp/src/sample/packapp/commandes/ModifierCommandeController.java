@@ -80,7 +80,7 @@ public class ModifierCommandeController implements Initializable {
         ((Node)(e.getSource())).getScene().getWindow().hide();
     }
 
-    public void enregistrer(ActionEvent e) throws  IOException
+    public void enregistrer(ActionEvent e)
     {
         String choice = "";
         if(maleRadioButton.isSelected()) {

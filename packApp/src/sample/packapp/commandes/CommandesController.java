@@ -55,7 +55,6 @@ public class CommandesController implements Initializable {
     private TableColumn<Orders,String> statusColumn;
 
     private String[] status = {"En cours" , "Livrée" , "Annulée"};
-    private String selectedReference = "";
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
@@ -213,15 +212,11 @@ public class CommandesController implements Initializable {
             }
             index++;
             String ref = (String) ordersTableView.getColumns().get(0).getCellObservableValue(index - 1).getValue();
-            if (index == 5 && refField.getText().equals(ref)) {
+            if (index == totalRows && refField.getText().equals(ref)) {
                 ordersTableView.getSelectionModel().select(index - 1);
             } else if (index < totalRows) {
-                System.out.println(index);
-                System.out.println(totalRows);
                 ordersTableView.getSelectionModel().select(index - 1);
             } else {
-                System.out.println(index);
-                System.out.println(totalRows);
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR!");
                 alert.setHeaderText("No result match with this reference !");
@@ -284,5 +279,12 @@ public class CommandesController implements Initializable {
             deleteButton.setDisable(true);
         }
 
+    }
+
+    public void refresh(ActionEvent event) {
+        showOrders();
+        refField.clear();
+        deleteButton.setDisable(true);
+        editButton.setDisable(true);
     }
 }

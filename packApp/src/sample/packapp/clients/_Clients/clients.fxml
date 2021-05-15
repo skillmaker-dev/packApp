@@ -36,9 +36,8 @@
          <Font name="System Bold" size="13.0" />
       </font>
    </Label>
-   <TextField fx:id="clientIdTextField" layoutX="31.0" layoutY="177.0" prefHeight="26.0" prefWidth="171.0" promptText="ID Client" styleClass="textField" />
+   <TextField fx:id="clientIdTextField" layoutX="31.0" layoutY="191.0" prefHeight="26.0" prefWidth="171.0" promptText="ID Client" styleClass="textField" />
    <TextField fx:id="clientNameTextField" layoutX="31.0" layoutY="138.0" prefHeight="26.0" prefWidth="171.0" promptText="Nom client" styleClass="textField" />
-   <TextField fx:id="clientEmailTextField" layoutX="32.0" layoutY="214.0" prefHeight="26.0" prefWidth="171.0" promptText="Email" styleClass="textField" />
    <Button fx:id="commandes" layoutX="28.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleCommandeButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Commandes">
       <cursor>
          <Cursor fx:constant="HAND" />
@@ -54,4 +53,5 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
+   <Button layoutX="147.0" layoutY="15.0" mnemonicParsing="false" onAction="#refresh" styleClass="myButtons" text="Refresh" />
 </AnchorPane>

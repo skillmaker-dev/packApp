@@ -2,35 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="500.0" styleClass="myPane" stylesheets="@../../../CSSFiles/changeclient.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.ModifierClient.ModifierClientController">
    <children>
-      <TextField fx:id="fullNameField" layoutX="88.0" layoutY="112.0" prefHeight="34.0" prefWidth="190.0" promptText="nom client" styleClass="textField" />
-      <RadioButton fx:id="maleRadio" layoutX="313.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" text="H">
-         <toggleGroup>
-            <ToggleGroup fx:id="sexe" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="femaleRadio" layoutX="381.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" text="F" toggleGroup="$sexe" />
-      <Label layoutX="88.0" layoutY="201.0" text="nombre de commandes" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <Spinner fx:id="NombreDeCommandeSpinner" layoutX="342.0" layoutY="202.0" prefHeight="25.0" prefWidth="62.0" />
-      <TextField fx:id="phoneField" layoutX="88.0" layoutY="275.0" prefHeight="34.0" prefWidth="205.0" promptText="numero de telephone" styleClass="textField" />
-      <Button fx:id="TerminerButton" layoutX="360.0" layoutY="446.0" mnemonicParsing="false" onAction="#HandleEndButton" prefHeight="34.0" prefWidth="83.0" styleClass="myButtons" text="Terminer" />
-      <TextField fx:id="emailField" layoutX="88.0" layoutY="344.0" prefHeight="34.0" prefWidth="205.0" promptText="Email" styleClass="textField" />
-      <Button fx:id="SaveButton" layoutX="237.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="34.0" prefWidth="83.0" styleClass="myButtons" text="Enregistrer" />
-      <Label layoutX="44.0" layoutY="28.0" prefHeight="34.0" prefWidth="275.0" text="Modifier client" textFill="WHITE">
+      <TextField fx:id="fullNameField" layoutX="148.0" layoutY="193.0" prefHeight="34.0" prefWidth="205.0" promptText="nom client" styleClass="textField" />
+      <TextField fx:id="nbrCmdField" layoutX="148.0" layoutY="275.0" prefHeight="34.0" prefWidth="205.0" promptText="Nombre des commandes" styleClass="textField" />
+      <Button fx:id="TerminerButton" layoutX="130.0" layoutY="446.0" mnemonicParsing="false" onAction="#HandleEndButton" prefHeight="34.0" prefWidth="83.0" styleClass="myButtons" text="Annuler" />
+      <Button fx:id="SaveButton" layoutX="295.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="34.0" prefWidth="83.0" styleClass="myButtons" text="Enregistrer" />
+      <Label alignment="CENTER" layoutX="103.0" layoutY="30.0" prefHeight="34.0" prefWidth="275.0" text="Modifier client" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="23.0" />
          </font>
       </Label>
+      <TextField fx:id="lastCmdField" layoutX="148.0" layoutY="357.0" prefHeight="34.0" prefWidth="205.0" promptText="Dernière commande" styleClass="textField" />
+      <TextField fx:id="idField" layoutX="148.0" layoutY="112.0" prefHeight="34.0" prefWidth="205.0" promptText="id" styleClass="textField" />
    </children>
 </AnchorPane>
