@@ -35,17 +35,22 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="ajouter" layoutX="18.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleInsertProducts" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Ajouter">
+   <Button fx:id="ajouter" layoutX="25.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleInsertProducts" prefHeight="26.0" prefWidth="190.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Ajouter">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="modifier" layoutX="77.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleUpdateProducts" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Modifier">
+   <Button fx:id="modifier" layoutX="25.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleUpdateProducts" prefHeight="26.0" prefWidth="190.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Modifier">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="supprimer" layoutX="146.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="26.0" prefWidth="72.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Supprimer">
+   <Button fx:id="supprimer" layoutX="25.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="26.0" prefWidth="190.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Supprimer">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Button fx:id="qrbutton" layoutX="24.0" layoutY="359.0" mnemonicParsing="false" onAction="#qrStage" prefHeight="26.0" prefWidth="190.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Generer Qr Code">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>

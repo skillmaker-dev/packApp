@@ -29,5 +29,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib3" level="project" />
+    <orderEntry type="library" name="lib4" level="project" />
+    <orderEntry type="library" name="core-3.0.1" level="project" />
   </component>
 </module>

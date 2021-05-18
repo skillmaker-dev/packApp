@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="core-3.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/packApp/src/sample/packapp/qrCode/core-3.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/packApp/src/sample/packapp/qrCode/core-3.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

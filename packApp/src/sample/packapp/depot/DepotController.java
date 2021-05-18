@@ -1,5 +1,6 @@
 package sample.packapp.depot;
 
+
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -21,15 +22,17 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class DepotController implements Initializable {
+public class DepotController<root> implements Initializable {
 
     @FXML
     private AnchorPane container;
@@ -56,7 +59,8 @@ public class DepotController implements Initializable {
     private TableColumn<Products,Integer> quantityColumn;
     @FXML
     private TableColumn<Products,Double> unitPriceColumn;
-
+    @FXML
+    private Button qrbutton;
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
@@ -80,7 +84,46 @@ public class DepotController implements Initializable {
         showProducts();
         modifier.setDisable(true);
         supprimer.setDisable(true);
+        qrbutton.setDisable(true);
     }
+
+
+
+
+    public void qrStage(ActionEvent event) {
+
+
+        String id = "Product id : " + idTextField.getText();
+        String name = "Product Name : " + productNameTextField.getText();
+        String quantity = "Quantity : " + quantityTextField.getText();
+        String price = "Product Price : " + unitPriceTextField.getText();
+
+        String Product = id + "\n" + name + "\n" + quantity + "\n" + price;
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("QrCode.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            QrCodeGeneratorController qrCodeGeneratorController = fxmlLoader.getController();
+            qrCodeGeneratorController.generate(Product);
+            Stage stage = new Stage();
+            stage.setTitle("Code Qr");
+            stage.setResizable(false);
+            Image myIcon = new Image("sample/icon/PackageAPP.png");
+            stage.getIcons().add(myIcon);
+            stage.setScene(new Scene(root1));
+            stage.centerOnScreen();
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+    }
+
+
+
+
+
+
 
     public Connection getConnection() {
 
@@ -275,6 +318,7 @@ public class DepotController implements Initializable {
             unitPriceTextField.setText("" + products.getUnitPrice());
             modifier.setDisable(false);
             supprimer.setDisable(false);
+            qrbutton.setDisable(false);
         }
     }
 }
