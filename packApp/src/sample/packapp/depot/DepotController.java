@@ -87,9 +87,6 @@ public class DepotController<root> implements Initializable {
         qrbutton.setDisable(true);
     }
 
-
-
-
     public void qrStage(ActionEvent event) {
 
 
@@ -118,12 +115,6 @@ public class DepotController<root> implements Initializable {
         }
 
     }
-
-
-
-
-
-
 
     public Connection getConnection() {
 
@@ -320,5 +311,13 @@ public class DepotController<root> implements Initializable {
             supprimer.setDisable(false);
             qrbutton.setDisable(false);
         }
+    }
+
+    public void refresh(ActionEvent event) {
+        showProducts();
+        modifier.setDisable(true);
+        supprimer.setDisable(true);
+        qrbutton.setDisable(true);
+        clearFields();
     }
 }
