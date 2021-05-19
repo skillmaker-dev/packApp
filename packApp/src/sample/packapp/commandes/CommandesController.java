@@ -54,7 +54,7 @@ public class CommandesController implements Initializable {
     @FXML
     private TableColumn<Orders,String> statusColumn;
 
-    private String[] status = {"En cours" , "Livrée" , "Annulée"};
+    private String[] status = {"In progress" , "Delivered" , "Canceled"};
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));

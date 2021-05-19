@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../../CSSFiles/client.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients._Clients.ClientsController">
-   <Button fx:id="retour" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Retour">
+   <Button fx:id="retour" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Back">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
@@ -19,14 +19,14 @@
    <HBox layoutX="234.0" prefHeight="400.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
       <TableView fx:id="clientsTableView" onMouseClicked="#handleMouseAction" prefHeight="400.0" prefWidth="385.0" styleClass="myTable">
          <columns>
-            <TableColumn fx:id="idClientColumn" prefWidth="96.0" text="Id client" />
-            <TableColumn fx:id="ClientNameColumn" prefWidth="114.0" text="nom client" />
-            <TableColumn fx:id="NbCmdColumn" prefWidth="58.0" text="nb cmd" />
-            <TableColumn fx:id="lastCmdColumn" prefWidth="105.0" text="dernière cmd" />
+            <TableColumn fx:id="idClientColumn" prefWidth="96.0" text="Client ID" />
+            <TableColumn fx:id="ClientNameColumn" prefWidth="114.0" text="Client Name" />
+            <TableColumn fx:id="NbCmdColumn" prefWidth="58.0" text="Nb Orders" />
+            <TableColumn fx:id="lastCmdColumn" prefWidth="105.0" text="Last Order" />
          </columns>
       </TableView>
    </HBox>
-   <Label layoutX="47.0" layoutY="58.0" text="CHERCHER CLIENT" textFill="WHITE" wrapText="true">
+   <Label layoutX="54.0" layoutY="64.0" text="SEARCH CLIENT" textFill="WHITE" wrapText="true">
       <font>
          <Font size="17.0" />
       </font>
@@ -36,19 +36,19 @@
          <Font name="System Bold" size="13.0" />
       </font>
    </Label>
-   <TextField fx:id="clientIdTextField" layoutX="31.0" layoutY="191.0" prefHeight="26.0" prefWidth="171.0" promptText="ID Client" styleClass="textField" />
-   <TextField fx:id="clientNameTextField" layoutX="31.0" layoutY="138.0" prefHeight="26.0" prefWidth="171.0" promptText="Nom client" styleClass="textField" />
-   <Button fx:id="commandes" layoutX="28.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleCommandeButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Commandes">
+   <TextField fx:id="clientIdTextField" layoutX="31.0" layoutY="191.0" prefHeight="26.0" prefWidth="171.0" promptText="Client ID" styleClass="textField" />
+   <TextField fx:id="clientNameTextField" layoutX="31.0" layoutY="138.0" prefHeight="26.0" prefWidth="171.0" promptText="Client Name" styleClass="textField" />
+   <Button fx:id="commandes" layoutX="28.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleCommandeButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Orders">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="modifier" layoutX="28.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Modifier">
+   <Button fx:id="modifier" layoutX="28.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Modify">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="chercher" layoutX="119.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Chercher">
+   <Button fx:id="chercher" layoutX="119.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Search">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>

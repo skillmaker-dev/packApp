@@ -8,34 +8,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/orders.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.CommandesController">
-   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Retour">
+   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Back">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="editButton" layoutX="443.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleEditButton" styleClass="myButtons" text="Modifier">
+   <Button fx:id="editButton" layoutX="443.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleEditButton" styleClass="myButtons" text="Modify">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="searchButton" layoutX="57.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleSearchButton" styleClass="myButtons" text="Chercher">
+   <Button fx:id="searchButton" layoutX="57.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleSearchButton" styleClass="myButtons" text="Search">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="deleteButton" layoutX="514.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleDeleteButton" styleClass="myButtons" text="Supprimer">
+   <Button fx:id="deleteButton" layoutX="514.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleDeleteButton" styleClass="myButtons" text="Delete">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
    <TableView fx:id="ordersTableView" layoutX="177.0" layoutY="-1.0" onMouseClicked="#handleMouseAction" prefHeight="357.0" prefWidth="423.0">
       <columns>
-         <TableColumn fx:id="refColumn" prefWidth="81.0" text="Référence" />
-         <TableColumn fx:id="clientColumn" prefWidth="138.0" text="Nom Client" />
-         <TableColumn fx:id="priceColumn" prefWidth="111.0" text="Prix Totale" />
-         <TableColumn fx:id="statusColumn" prefWidth="92.0" text="Statut" />
+         <TableColumn fx:id="refColumn" prefWidth="81.0" text="Reference" />
+         <TableColumn fx:id="clientColumn" prefWidth="138.0" text="Client Name" />
+         <TableColumn fx:id="priceColumn" prefWidth="111.0" text="Total Price" />
+         <TableColumn fx:id="statusColumn" prefWidth="92.0" text="Status" />
       </columns>
    </TableView>
-   <TextField fx:id="refField" layoutX="14.0" layoutY="224.0" promptText="Référence" />
+   <TextField fx:id="refField" layoutX="14.0" layoutY="224.0" promptText="Reference" />
    <Button layoutX="107.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" styleClass="myButtons" text="Refresh" />
 </AnchorPane>

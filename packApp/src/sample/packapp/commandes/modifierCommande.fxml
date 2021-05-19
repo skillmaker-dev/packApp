@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="507.0" prefWidth="392.0" styleClass="myPane" stylesheets="@../../CSSFiles/changeOrders.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.ModifierCommandeController">
    <children>
-      <Button fx:id="enregistrerButton" layoutX="200.0" layoutY="429.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" text="Enregistrer">
+      <Button fx:id="enregistrerButton" layoutX="200.0" layoutY="429.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" text="Save">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -34,11 +34,11 @@
             <RowConstraints maxHeight="75.20001831054688" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="nomField" promptText="Nom Client" styleClass="textField" GridPane.rowIndex="1" />
-            <TextField fx:id="telField" promptText="Téléphone" styleClass="textField" GridPane.rowIndex="2" />
-            <TextField fx:id="emailField" promptText="Email" styleClass="textField" GridPane.rowIndex="3" />
-            <TextField fx:id="adrField" promptText="Adresse" styleClass="textField" GridPane.rowIndex="4" />
-            <TextField fx:id="QuantiteField" promptText="Quantité" styleClass="textField" GridPane.rowIndex="5" />
+            <TextField fx:id="nomField" promptText="Client Name" styleClass="textField" GridPane.rowIndex="1" />
+            <TextField fx:id="telField" promptText="Phone" styleClass="textField" GridPane.rowIndex="2" />
+            <TextField fx:id="emailField" promptText="E-mail" styleClass="textField" GridPane.rowIndex="3" />
+            <TextField fx:id="adrField" promptText="Address" styleClass="textField" GridPane.rowIndex="4" />
+            <TextField fx:id="QuantiteField" promptText="Amount" styleClass="textField" GridPane.rowIndex="5" />
             <ChoiceBox fx:id="commandeStatus" prefHeight="26.0" prefWidth="263.0" styleClass="selectFields" GridPane.rowIndex="6">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -49,7 +49,7 @@
                </GridPane.margin></TextField>
          </children>
       </GridPane>
-      <RadioButton fx:id="maleRadioButton" layoutX="115.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Male">
+      <RadioButton fx:id="maleRadioButton" layoutX="115.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Man">
          <toggleGroup>
             <ToggleGroup fx:id="gender" />
          </toggleGroup>
@@ -57,16 +57,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="femaleRadioButton" layoutX="212.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Female" toggleGroup="$gender">
+      <RadioButton fx:id="femaleRadioButton" layoutX="212.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Women" toggleGroup="$gender">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></RadioButton>
-      <Text fill="WHITE" layoutX="54.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier La Commande" wrappingWidth="283.800048828125">
+      <Text fill="WHITE" layoutX="54.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Order" textAlignment="CENTER" wrappingWidth="283.800048828125">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <Button fx:id="annulerButton" layoutX="104.0" layoutY="429.0" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" stylesheets="@../../CSSFiles/changeOrders.css" text="Annuler">
+      <Button fx:id="annulerButton" layoutX="104.0" layoutY="429.0" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="87.0" styleClass="myButtons" stylesheets="@../../CSSFiles/changeOrders.css" text="Cancel">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

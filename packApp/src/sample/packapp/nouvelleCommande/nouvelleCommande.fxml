@@ -17,22 +17,22 @@
          <Font size="17.0" />
       </font>
    </Label>
-   <TextField fx:id="fullNameField" layoutX="56.0" layoutY="80.0" promptText="Nom Complet" styleClass="textField">
+   <TextField fx:id="fullNameField" layoutX="56.0" layoutY="80.0" promptText="Full Name" styleClass="textField">
       <font>
          <Font size="14.0" />
       </font>
    </TextField>
-   <TextField fx:id="phoneField" layoutX="56.0" layoutY="125.0" promptText="Téléphone" styleClass="textField">
+   <TextField fx:id="phoneField" layoutX="56.0" layoutY="125.0" promptText="Phone" styleClass="textField">
       <font>
          <Font size="14.0" />
       </font>
    </TextField>
-   <TextField fx:id="emailField" layoutX="56.0" layoutY="171.0" prefHeight="30.0" prefWidth="254.0" promptText="Email" styleClass="textField">
+   <TextField fx:id="emailField" layoutX="56.0" layoutY="171.0" prefHeight="30.0" prefWidth="254.0" promptText="E-mail" styleClass="textField">
       <font>
          <Font size="14.0" />
       </font>
    </TextField>
-   <RadioButton fx:id="maleRadio" layoutX="328.0" layoutY="130.0" mnemonicParsing="false" text="Homme" textFill="WHITE">
+   <RadioButton fx:id="maleRadio" layoutX="328.0" layoutY="130.0" mnemonicParsing="false" text="Man" textFill="WHITE">
       <font>
          <Font name="Arial Rounded MT Bold" size="14.0" />
       </font>
@@ -43,7 +43,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </RadioButton>
-   <RadioButton fx:id="femaleRadio" layoutX="410.0" layoutY="130.0" mnemonicParsing="false" text="Femme" textFill="WHITE" toggleGroup="$sexe">
+   <RadioButton fx:id="femaleRadio" layoutX="410.0" layoutY="130.0" mnemonicParsing="false" text="Women" textFill="WHITE" toggleGroup="$sexe">
       <font>
          <Font name="Arial Rounded MT Bold" size="14.0" />
       </font>
@@ -51,22 +51,22 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </RadioButton>
-   <Label layoutX="56.0" layoutY="208.0" text="Commande" textFill="WHITE">
+   <Label layoutX="56.0" layoutY="208.0" text="Order" textFill="WHITE">
       <font>
          <Font size="17.0" />
       </font>
    </Label>
-   <TextField fx:id="addressField" layoutX="56.0" layoutY="282.0" prefHeight="30.0" prefWidth="254.0" promptText="Adresse" styleClass="textField">
+   <TextField fx:id="addressField" layoutX="56.0" layoutY="282.0" prefHeight="30.0" prefWidth="254.0" promptText="Address" styleClass="textField">
       <font>
          <Font size="14.0" />
       </font>
    </TextField>
-   <TextField fx:id="amountField" layoutX="328.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Quantité" styleClass="textField">
+   <TextField fx:id="amountField" layoutX="328.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Amount" styleClass="textField">
       <font>
          <Font size="14.0" />
       </font>
    </TextField>
-   <TextField fx:id="priceField" layoutX="420.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Prix Unit" styleClass="textField">
+   <TextField fx:id="priceField" layoutX="420.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Unit Price" styleClass="textField">
       <font>
          <Font size="14.0" />
       </font>
@@ -89,17 +89,17 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </ChoiceBox>
-   <Label layoutX="300.0" layoutY="29.0" prefHeight="35.0" prefWidth="269.0" text="NOUVELLE COMMANDE" textAlignment="CENTER" textFill="WHITE">
+   <Label layoutX="376.0" layoutY="29.0" prefHeight="35.0" prefWidth="193.0" text="New Order" textAlignment="CENTER" textFill="WHITE">
       <font>
-         <Font size="24.0" />
+         <Font size="32.0" />
       </font>
    </Label>
-   <Button fx:id="save" layoutX="447.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="30.0" prefWidth="97.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Enregistrer">
+   <Button fx:id="save" layoutX="447.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="30.0" prefWidth="97.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Save Order">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="&lt; Retour">
+   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="&lt; Back">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>

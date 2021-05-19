@@ -23,7 +23,7 @@
          <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
-      <Button fx:id="orders" defaultButton="true" mnemonicParsing="false" onAction="#commandes" opacity="0.89" prefHeight="49.0" prefWidth="326.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Commandes" GridPane.rowIndex="1">
+      <Button fx:id="orders" defaultButton="true" mnemonicParsing="false" onAction="#commandes" opacity="0.89" prefHeight="49.0" prefWidth="326.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Orders" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="newOrder" defaultButton="true" mnemonicParsing="false" onAction="#nouvelleCommande" opacity="0.89" prefHeight="49.0" prefWidth="329.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Nouvelle Commande">
+      <Button fx:id="newOrder" defaultButton="true" mnemonicParsing="false" onAction="#nouvelleCommande" opacity="0.89" prefHeight="49.0" prefWidth="329.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="New Order">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="depot" defaultButton="true" mnemonicParsing="false" onAction="#depot" opacity="0.89" prefHeight="261.0" prefWidth="400.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Depot" GridPane.rowIndex="3">
+      <Button fx:id="depot" defaultButton="true" mnemonicParsing="false" onAction="#depot" opacity="0.89" prefHeight="261.0" prefWidth="400.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Deposit" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>
@@ -68,7 +68,7 @@
          </cursor>
       </Button>
    </GridPane>
-   <Button fx:id="logOutButton" layoutX="468.0" layoutY="354.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="32.0" prefWidth="119.0" styleClass="logout" stylesheets="@../../CSSFiles/mainPageCss.css" text="Déconnexion">
+   <Button fx:id="logOutButton" layoutX="468.0" layoutY="354.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="32.0" prefWidth="119.0" styleClass="logout" stylesheets="@../../CSSFiles/mainPageCss.css" text="Disconnection">
       <font>
          <Font size="14.0" />
       </font>
@@ -82,7 +82,7 @@
       </cursor>
       <Image url="@../../icon/password.png" />
    </ImageView>
-   <Label layoutX="433.0" layoutY="21.0" onMouseClicked="#settings" text="Changer mot de passe" textFill="WHITE" underline="true">
+   <Label layoutX="459.0" layoutY="21.0" onMouseClicked="#settings" prefHeight="18.0" prefWidth="95.0" text="Change password" textFill="WHITE" underline="true">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>

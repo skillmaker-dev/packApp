@@ -48,7 +48,7 @@ public class ModifierCommandeController implements Initializable {
     private RadioButton maleRadioButton;
     @FXML
     private ChoiceBox<String> commandeStatus;
-    private String[] status = {"En cours" , "Livrée" , "Annulée"};
+    private String[] status = {"In progress" , "Delivered" , "Canceled"};
 
     public void setSelectedReference(String selectedReference) {
         reference.setText(selectedReference);
@@ -64,9 +64,9 @@ public class ModifierCommandeController implements Initializable {
                 adrField.setText(resultSet.getString("address"));
                 QuantiteField.setText(String.valueOf(resultSet.getInt("amount")));
                 commandeStatus.setValue(resultSet.getString("status"));
-                if(resultSet.getString("gender").equals("Homme")) {
+                if(resultSet.getString("gender").equals("Man")) {
                     maleRadioButton.setSelected(true);
-                } else if(resultSet.getString("gender").equals("Femme")) {
+                } else if(resultSet.getString("gender").equals("Women")) {
                     femaleRadioButton.setSelected(true);
                 }
             }
@@ -84,9 +84,9 @@ public class ModifierCommandeController implements Initializable {
     {
         String choice = "";
         if(maleRadioButton.isSelected()) {
-            choice = "Homme";
+            choice = "Man";
         } else if(femaleRadioButton.isSelected()) {
-            choice = "Femme";
+            choice = "Women";
         }
         Connection connection = null;
         try {
@@ -97,6 +97,7 @@ public class ModifierCommandeController implements Initializable {
                     choice + "' WHERE reference = '" + reference.getText() + "'";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
+            connection.close();
             ((Node)(e.getSource())).getScene().getWindow().hide();
         } catch (Exception exception) {
             exception.printStackTrace();

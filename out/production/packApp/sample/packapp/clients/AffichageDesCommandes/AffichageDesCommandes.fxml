@@ -12,13 +12,13 @@
       <TableView fx:id="CommandesTableView" layoutY="57.0" prefHeight="339.0" prefWidth="600.0" styleClass="myTable">
         <columns>
           <TableColumn fx:id="RefCommandeColumn" prefWidth="116.0" text="Reference" />
-            <TableColumn fx:id="ProductNameColumn" prefWidth="128.0" text="Nom Produit" />
-          <TableColumn fx:id="PriceColumn" prefWidth="121.0" text="Prix" />
-            <TableColumn fx:id="QuantiteColumn" prefWidth="118.0" text="Quantité" />
-            <TableColumn fx:id="StatutColumn" prefWidth="116.0" text="Statut" />
+            <TableColumn fx:id="ProductNameColumn" prefWidth="128.0" text="Product Name" />
+          <TableColumn fx:id="PriceColumn" prefWidth="121.0" text="Price" />
+            <TableColumn fx:id="QuantiteColumn" prefWidth="118.0" text="Amount" />
+            <TableColumn fx:id="StatutColumn" prefWidth="116.0" text="Status" />
         </columns>
       </TableView>
-      <Button fx:id="RetourButton" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="retour" />
+      <Button fx:id="RetourButton" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Back" />
       <Label fx:id="clientLabel" layoutX="270.0" layoutY="8.0" text="client" textFill="WHITE">
          <font>
             <Font size="25.0" />

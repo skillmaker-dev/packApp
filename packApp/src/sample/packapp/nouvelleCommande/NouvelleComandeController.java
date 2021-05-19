@@ -55,7 +55,7 @@ public class NouvelleComandeController implements Initializable {
     @FXML
     private Button incrementButton,decrementButton;
 
-    private String[] status = {"En cours" , "Livrée" , "Annulée"};
+    private String[] status = {"In progress" , "Delivered" , "Canceled"};
     private ObservableList<String> products = FXCollections.observableArrayList();
     ReferenceGenerator refGen;
     IdGenerator idGen;
@@ -123,9 +123,9 @@ public class NouvelleComandeController implements Initializable {
 
         String radioButtonChoice = null;
         if(maleRadio.isSelected()) {
-            radioButtonChoice = "Homme";
+            radioButtonChoice = "Man";
         } else if(femaleRadio.isSelected()) {
-            radioButtonChoice = "Femme";
+            radioButtonChoice = "Women";
         }
 
         if (fullNameField.getText().isEmpty() || phoneField.getText().isEmpty() || emailField.getText().isEmpty()
