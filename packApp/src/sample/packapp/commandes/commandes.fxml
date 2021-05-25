@@ -6,29 +6,42 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/orders.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.CommandesController">
-   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Back">
+<AnchorPane fx:id="container" prefHeight="500.0" prefWidth="1000.0" styleClass="myPane" stylesheets="@../../CSSFiles/orders.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.commandes.CommandesController">
+   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" prefHeight="40.0" prefWidth="104.0" styleClass="myButtons" text="&lt; Back">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <Button fx:id="editButton" layoutX="443.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleEditButton" styleClass="myButtons" text="Modify">
+   <Button fx:id="editButton" layoutX="761.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="40.0" prefWidth="104.0" styleClass="myButtons" text="Modify">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <Button fx:id="searchButton" layoutX="57.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleSearchButton" styleClass="myButtons" text="Search">
+   <Button fx:id="searchButton" layoutX="73.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="40.0" prefWidth="104.0" styleClass="myButtons" text="Search">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <Button fx:id="deleteButton" layoutX="514.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleDeleteButton" styleClass="myButtons" text="Delete">
+   <Button fx:id="deleteButton" layoutX="882.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="40.0" prefWidth="104.0" styleClass="myButtons" text="Delete">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <TableView fx:id="ordersTableView" layoutX="177.0" layoutY="-1.0" onMouseClicked="#handleMouseAction" prefHeight="357.0" prefWidth="423.0">
+   <TableView fx:id="ordersTableView" layoutX="282.0" layoutY="-2.0" onMouseClicked="#handleMouseAction" prefHeight="443.0" prefWidth="718.0">
       <columns>
          <TableColumn fx:id="refColumn" prefWidth="81.0" text="Order ID" />
          <TableColumn fx:id="idColumn" prefWidth="99.199951171875" text="Client ID " />
@@ -37,6 +50,9 @@
          <TableColumn fx:id="priceColumn" prefWidth="80.79998779296875" text="Total Price" />
       </columns>
    </TableView>
-   <TextField fx:id="refField" layoutX="14.0" layoutY="224.0" promptText="Reference" />
-   <Button layoutX="107.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" styleClass="myButtons" text="Refresh" />
+   <TextField fx:id="refField" layoutX="11.0" layoutY="261.0" prefHeight="40.0" prefWidth="248.0" promptText="Reference" />
+   <Button layoutX="149.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" prefHeight="40.0" prefWidth="104.0" styleClass="myButtons" text="Refresh">
+      <font>
+         <Font size="15.0" />
+      </font></Button>
 </AnchorPane>

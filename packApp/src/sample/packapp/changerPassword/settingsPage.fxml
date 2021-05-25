@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myAnchorPane" stylesheets="@../../CSSFiles/settingPageCSS.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.changerPassword.settingsPageController">
-   <Button fx:id="confirm" defaultButton="true" layoutX="483.0" layoutY="342.0" mnemonicParsing="false" onAction="#confirm" prefHeight="34.0" prefWidth="94.0" styleClass="myButton" stylesheets="@../../CSSFiles/settingPageCSS.css" text="Confirm">
+<AnchorPane fx:id="container" prefHeight="500.0" prefWidth="1000.0" styleClass="myAnchorPane" stylesheets="@../../CSSFiles/settingPageCSS.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.changerPassword.settingsPageController">
+   <Button fx:id="confirm" defaultButton="true" layoutX="805.0" layoutY="421.0" mnemonicParsing="false" onAction="#confirm" prefHeight="44.0" prefWidth="134.0" styleClass="myButton" stylesheets="@../../CSSFiles/settingPageCSS.css" text="Confirm">
       <font>
          <Font name="Roboto Condensed" size="16.0" />
       </font>
@@ -18,28 +18,28 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Label layoutX="81.0" layoutY="108.0" prefHeight="34.0" prefWidth="170.0" text="Current Password : " textFill="WHITE">
+   <Label layoutX="130.0" layoutY="153.0" prefHeight="44.0" prefWidth="233.0" text="Current Password : " textFill="WHITE">
       <font>
-         <Font name="Roboto Light" size="18.0" />
+         <Font name="Roboto Light" size="25.0" />
       </font>
    </Label>
-   <Label layoutX="81.0" layoutY="179.0" prefHeight="34.0" prefWidth="170.0" text="New Password :" textFill="WHITE">
+   <Label layoutX="130.0" layoutY="224.0" prefHeight="44.0" prefWidth="233.0" text="New Password :" textFill="WHITE">
       <font>
-         <Font name="Roboto Light" size="18.0" />
+         <Font name="Roboto Light" size="25.0" />
       </font>
    </Label>
-   <Label layoutX="81.0" layoutY="258.0" prefHeight="34.0" prefWidth="170.0" text="Confirm Password : " textFill="WHITE">
+   <Label layoutX="130.0" layoutY="303.0" prefHeight="44.0" prefWidth="233.0" text="Confirm Password : " textFill="WHITE">
       <font>
-         <Font name="Roboto Light" size="18.0" />
+         <Font name="Roboto Light" size="25.0" />
       </font>
    </Label>
-   <ImageView fitHeight="75.0" fitWidth="78.0" layoutX="263.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="148.0" fitWidth="222.0" layoutX="821.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../icon/iconfinder_Change_password_7023958.png" />
    </ImageView>
-   <PasswordField fx:id="currentPassField" layoutX="251.0" layoutY="108.0" prefHeight="34.0" prefWidth="231.0" styleClass="myPassField" stylesheets="@../../CSSFiles/settingPageCSS.css" />
-   <PasswordField fx:id="newPassField" layoutX="251.0" layoutY="179.0" prefHeight="34.0" prefWidth="231.0" styleClass="myPassField" stylesheets="@../../CSSFiles/settingPageCSS.css" />
-   <PasswordField fx:id="confirmPassField" layoutX="251.0" layoutY="258.0" prefHeight="34.0" prefWidth="231.0" styleClass="myPassField" stylesheets="@../../CSSFiles/settingPageCSS.css" />
-   <Button fx:id="cancel" layoutX="374.0" layoutY="342.0" mnemonicParsing="false" onAction="#mainPage" prefHeight="34.0" prefWidth="94.0" styleClass="myButton" stylesheets="@../../CSSFiles/settingPageCSS.css" text="Cancel">
+   <PasswordField fx:id="currentPassField" layoutX="453.0" layoutY="158.0" prefHeight="44.0" prefWidth="331.0" styleClass="myPassField" stylesheets="@../../CSSFiles/settingPageCSS.css" />
+   <PasswordField fx:id="newPassField" layoutX="453.0" layoutY="229.0" prefHeight="44.0" prefWidth="331.0" styleClass="myPassField" stylesheets="@../../CSSFiles/settingPageCSS.css" />
+   <PasswordField fx:id="confirmPassField" layoutX="453.0" layoutY="308.0" prefHeight="44.0" prefWidth="331.0" styleClass="myPassField" stylesheets="@../../CSSFiles/settingPageCSS.css" />
+   <Button fx:id="cancel" layoutX="656.0" layoutY="421.0" mnemonicParsing="false" onAction="#mainPage" prefHeight="44.0" prefWidth="134.0" styleClass="myButton" stylesheets="@../../CSSFiles/settingPageCSS.css" text="Cancel">
       <font>
          <Font name="Roboto Condensed" size="16.0" />
       </font>

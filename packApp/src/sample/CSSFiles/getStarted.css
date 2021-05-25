@@ -2,9 +2,13 @@
     -fx-background-radius: 20px;
     -fx-background-color: rgb(131, 211, 243);
     -fx-font-style: normal;
+
+}
+.getStartedButton:hover{
+    -fx-background-color: #4ae4ff;
 }
 
 .myPane{
     -fx-background-image: url("IMG/background1.jpg");
-    -fx-background-size : 600px 400px;
+    -fx-background-size : cover;
 }

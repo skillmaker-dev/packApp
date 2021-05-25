@@ -12,12 +12,16 @@
 }
 
 .loginButton:hover{
--fx-background-color:  rgb(118, 198, 230);
+    -fx-background-color: #4ae4ff;
+}
+.resetButton:hover{
+    -fx-background-color: #4ae4ff;
+}
 
 }
 .myPane{
     -fx-background-image: url("IMG/background1.jpg");
-    -fx-background-size : 600px 400px;
+    -fx-background-size : cover;
 }
 .textField{
     -fx-background-color: azure;

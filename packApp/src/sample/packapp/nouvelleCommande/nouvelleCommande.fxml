@@ -9,116 +9,131 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/newOrder.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.nouvelleCommande.NouvelleComandeController">
-   <Label layoutX="56.0" layoutY="47.0" text="Client" textFill="#fffdfd">
+<AnchorPane fx:id="container" prefHeight="500.0" prefWidth="1000.0" styleClass="myPane" stylesheets="@../../CSSFiles/newOrder.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.nouvelleCommande.NouvelleComandeController">
+   <Label layoutX="36.0" layoutY="48.0" text="Client" textFill="#fffdfd">
       <font>
-         <Font size="17.0" />
+         <Font size="24.0" />
       </font>
    </Label>
-   <TextField fx:id="fullNameField" layoutX="56.0" layoutY="80.0" prefHeight="30.0" prefWidth="254.0" promptText="Full Name" styleClass="textField">
+   <TextField fx:id="fullNameField" layoutX="58.0" layoutY="99.0" prefHeight="39.0" prefWidth="390.0" promptText="Full Name" styleClass="textField">
       <font>
-         <Font size="14.0" />
+         <Font size="16.0" />
       </font>
    </TextField>
-   <TextField fx:id="phoneField" layoutX="56.0" layoutY="125.0" prefHeight="30.0" prefWidth="254.0" promptText="Phone" styleClass="textField">
+   <TextField fx:id="phoneField" layoutX="58.0" layoutY="144.0" prefHeight="39.0" prefWidth="390.0" promptText="Phone" styleClass="textField">
       <font>
-         <Font size="14.0" />
+         <Font size="16.0" />
       </font>
    </TextField>
-   <TextField fx:id="emailField" layoutX="56.0" layoutY="171.0" prefHeight="30.0" prefWidth="254.0" promptText="E-mail" styleClass="textField">
+   <TextField fx:id="emailField" layoutX="58.0" layoutY="190.0" prefHeight="39.0" prefWidth="390.0" promptText="E-mail" styleClass="textField">
       <font>
-         <Font size="14.0" />
+         <Font size="16.0" />
       </font>
    </TextField>
-   <Label layoutX="56.0" layoutY="208.0" text="Order" textFill="WHITE">
+   <Label layoutX="36.0" layoutY="242.0" prefHeight="32.0" prefWidth="118.0" text="Order" textFill="WHITE">
       <font>
-         <Font size="17.0" />
+         <Font size="24.0" />
       </font>
    </Label>
-   <TextField fx:id="addressField" layoutX="56.0" layoutY="282.0" prefHeight="30.0" prefWidth="254.0" promptText="Address" styleClass="textField">
+   <TextField fx:id="addressField" layoutX="58.0" layoutY="333.0" prefHeight="39.0" prefWidth="390.0" promptText="Address" styleClass="textField">
       <font>
-         <Font size="14.0" />
+         <Font size="16.0" />
       </font>
    </TextField>
-   <TextField fx:id="amountField" layoutX="328.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Amount" styleClass="textField">
+   <TextField fx:id="amountField" layoutX="581.0" layoutY="288.0" prefHeight="39.0" prefWidth="105.0" promptText="Amount" styleClass="textField">
       <font>
-         <Font size="14.0" />
+         <Font size="16.0" />
       </font>
    </TextField>
-   <TextField fx:id="priceField" layoutX="420.0" layoutY="236.0" prefHeight="30.0" prefWidth="82.0" promptText="Unit Price" styleClass="textField">
+   <TextField fx:id="priceField" layoutX="710.0" layoutY="288.0" prefHeight="39.0" prefWidth="105.0" promptText="Unit Price" styleClass="textField">
       <font>
-         <Font size="14.0" />
+         <Font size="16.0" />
       </font>
    </TextField>
-   <Button fx:id="incrementButton" layoutX="512.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="30.0" prefWidth="34.0" styleClass="incrementButton" text="+">
+   <Button fx:id="incrementButton" layoutX="842.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleIncrementButton" prefHeight="39.0" prefWidth="52.0" styleClass="incrementButton" text="+">
       <font>
-         <Font name="Britannic Bold" size="15.0" />
+         <Font name="Engravers MT" size="21.0" />
       </font>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <ChoiceBox fx:id="productBox" layoutX="56.0" layoutY="236.0" prefHeight="30.0" prefWidth="254.0" styleClass="selectFields">
+   <ChoiceBox fx:id="productBox" layoutX="58.0" layoutY="288.0" prefHeight="39.0" prefWidth="390.0" styleClass="selectFields">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </ChoiceBox>
-   <ChoiceBox fx:id="statusBox" layoutX="56.0" layoutY="325.0" prefHeight="30.0" prefWidth="254.0" styleClass="selectFields">
+   <ChoiceBox fx:id="statusBox" layoutX="58.0" layoutY="378.0" prefHeight="39.0" prefWidth="390.0" styleClass="selectFields">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </ChoiceBox>
-   <Label layoutX="398.0" layoutY="16.0" prefHeight="35.0" prefWidth="193.0" text="New Order" textAlignment="CENTER" textFill="WHITE">
+   <Label alignment="CENTER" layoutX="305.0" layoutY="16.0" prefHeight="54.0" prefWidth="425.0" text="New Order" textAlignment="CENTER" textFill="WHITE">
       <font>
-         <Font size="32.0" />
+         <Font size="43.0" />
       </font>
    </Label>
-   <Button fx:id="save" layoutX="481.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="30.0" prefWidth="97.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Save Order">
+   <Button fx:id="save" layoutX="835.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="39.0" prefWidth="130.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Save Order">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
-   </Button>
-   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="&lt; Back">
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-   </Button>
-   <Text fill="WHITE" layoutX="328.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:">
       <font>
-         <Font size="29.0" />
+         <Font size="15.0" />
+      </font>
+   </Button>
+   <Button fx:id="retour" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" prefHeight="35.0" prefWidth="78.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="&lt; Back">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Button>
+   <Text fill="WHITE" layoutX="612.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" wrappingWidth="105.07861328125">
+      <font>
+         <Font size="37.0" />
       </font>
    </Text>
-   <Label fx:id="totalLabel" layoutX="420.0" layoutY="270.0" prefHeight="39.0" prefWidth="114.0" textFill="#e3ff2e">
+   <Label fx:id="totalLabel" layoutX="743.0" layoutY="363.0" prefHeight="54.0" prefWidth="145.0" text="Label" textFill="#e3ff2e">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <Button fx:id="decrementButton" layoutX="551.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleDecrementButton" prefHeight="30.0" prefWidth="34.0" styleClass="decrementButton" text="-">
+   <Button fx:id="decrementButton" layoutX="902.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleDecrementButton" prefHeight="39.0" prefWidth="52.0" styleClass="decrementButton" text="-">
       <font>
-         <Font name="Britannic Bold" size="15.0" />
+         <Font name="Engravers MT" size="21.0" />
       </font>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="refreshButton" layoutX="91.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshButton" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Refresh">
+   <Button fx:id="refreshButton" layoutX="115.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshButton" prefHeight="35.0" prefWidth="78.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Refresh">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
-   </Button>
-   <Button fx:id="addToCartButton" layoutX="362.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleAddToCartButton" prefHeight="30.0" prefWidth="97.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Add to Cart">
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-   </Button>
-   <TextField fx:id="idfield" layoutX="328.0" layoutY="80.0" prefHeight="30.0" prefWidth="145.0" promptText="Client Id" styleClass="textField">
       <font>
-         <Font size="14.0" />
+         <Font size="15.0" />
+      </font>
+   </Button>
+   <Button fx:id="addToCartButton" layoutX="683.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleAddToCartButton" prefHeight="39.0" prefWidth="130.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Add to Cart">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Button>
+   <TextField fx:id="idfield" layoutX="513.0" layoutY="95.0" prefHeight="39.0" prefWidth="241.0" promptText="Client Id" styleClass="textField">
+      <font>
+         <Font size="16.0" />
       </font>
    </TextField>
-   <Button fx:id="generateIdButton" layoutX="494.0" layoutY="80.0" mnemonicParsing="false" onAction="#generateIdButton" prefHeight="30.0" prefWidth="80.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Generate ID">
+   <Button fx:id="generateIdButton" layoutX="797.0" layoutY="95.0" mnemonicParsing="false" onAction="#generateIdButton" prefHeight="39.0" prefWidth="105.0" styleClass="myButton" stylesheets="@../../CSSFiles/newOrder.css" text="Generate ID">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
 </AnchorPane>

@@ -10,50 +10,80 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/depot.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.depot.DepotController">
-   <VBox layoutX="25.0" layoutY="108.0" prefHeight="147.0" prefWidth="190.0" spacing="12.0">
-      <TextField fx:id="idTextField" promptText="Product ID" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
-      <TextField fx:id="productNameTextField" promptText="Product Name" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
-      <TextField fx:id="quantityTextField" layoutX="10.0" layoutY="35.0" promptText="Amount" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
-      <TextField fx:id="unitPriceTextField" layoutX="10.0" layoutY="60.0" promptText="Unit Price" styleClass="textField" stylesheets="@../../CSSFiles/depot.css" />
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" styleClass="myPane" stylesheets="@../../CSSFiles/depot.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.depot.DepotController">
+   <VBox layoutX="25.0" layoutY="108.0" prefHeight="180.0" prefWidth="262.0" spacing="12.0">
+      <TextField fx:id="idTextField" prefHeight="35.0" prefWidth="262.0" promptText="Product ID" styleClass="textField" stylesheets="@../../CSSFiles/depot.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="productNameTextField" prefHeight="35.0" prefWidth="262.0" promptText="Product Name" styleClass="textField" stylesheets="@../../CSSFiles/depot.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="quantityTextField" layoutX="10.0" layoutY="35.0" prefHeight="35.0" prefWidth="262.0" promptText="Amount" styleClass="textField" stylesheets="@../../CSSFiles/depot.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="unitPriceTextField" layoutX="10.0" layoutY="60.0" prefHeight="35.0" prefWidth="262.0" promptText="Unit Price" styleClass="textField" stylesheets="@../../CSSFiles/depot.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
    </VBox>
-   <TableView fx:id="productsTableView" layoutX="240.0" layoutY="1.0" onMouseClicked="#handleMouseAction" prefHeight="400.0" prefWidth="360.0" styleClass="myTable">
+   <TableView fx:id="productsTableView" layoutX="354.0" onMouseClicked="#handleMouseAction" prefHeight="500.0" prefWidth="646.0" styleClass="myTable">
       <columns>
-         <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
-         <TableColumn fx:id="productNameColumn" prefWidth="129.0" text="Product Name" />
-         <TableColumn fx:id="quantityColumn" prefWidth="74.0" text="Amount" />
-         <TableColumn fx:id="unitPriceColumn" prefWidth="104.0" text="Unit Price(Dhs)" />
+         <TableColumn fx:id="idColumn" prefWidth="72.0" text="ID" />
+         <TableColumn fx:id="productNameColumn" prefWidth="245.0" text="Product Name" />
+         <TableColumn fx:id="quantityColumn" prefWidth="173.0" text="Amount" />
+         <TableColumn fx:id="unitPriceColumn" prefWidth="155.0" text="Unit Price(Dhs)" />
       </columns>
    </TableView>
-   <Text fill="WHITE" layoutX="86.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEPOSIT">
+   <Text fill="WHITE" layoutX="77.0" layoutY="88.0" strokeWidth="0.0" text="DEPOSIT" wrappingWidth="154.31884765625">
       <font>
-         <Font size="17.0" />
+         <Font size="35.0" />
       </font>
    </Text>
-   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="&lt; Back">
+   <Button fx:id="retour" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" prefHeight="35.0" prefWidth="96.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="&lt; Back">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <Button fx:id="ajouter" layoutX="25.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleInsertProducts" prefHeight="26.0" prefWidth="190.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Add">
+   <Button fx:id="ajouter" layoutX="14.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleInsertProducts" prefHeight="39.0" prefWidth="280.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Add">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <Button fx:id="modifier" layoutX="25.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleUpdateProducts" prefHeight="26.0" prefWidth="190.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Modify">
+   <Button fx:id="modifier" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleUpdateProducts" prefHeight="39.0" prefWidth="280.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Modify">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <Button fx:id="supprimer" layoutX="25.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="26.0" prefWidth="190.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Delete">
+   <Button fx:id="supprimer" layoutX="14.0" layoutY="399.0" mnemonicParsing="false" onAction="#handleDeleteProducts" prefHeight="39.0" prefWidth="280.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Delete">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <Button fx:id="qrbutton" layoutX="24.0" layoutY="359.0" mnemonicParsing="false" onAction="#qrStage" prefHeight="26.0" prefWidth="190.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Generate QR Code">
+   <Button fx:id="qrbutton" layoutX="14.0" layoutY="447.0" mnemonicParsing="false" onAction="#qrStage" prefHeight="39.0" prefWidth="280.0" styleClass="myButtons" stylesheets="@../../CSSFiles/depot.css" text="Generate QR Code">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="15.0" />
+      </font>
    </Button>
-   <Button layoutX="162.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" styleClass="myButtons" text="Refresh" />
+   <Button layoutX="225.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" prefHeight="35.0" prefWidth="103.0" styleClass="myButtons" text="Refresh">
+      <font>
+         <Font size="15.0" />
+      </font></Button>
 </AnchorPane>

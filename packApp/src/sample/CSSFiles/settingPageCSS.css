@@ -1,7 +1,7 @@
 .myAnchorPane{
     -fx-border-mode: double ;
     -fx-background-image: url("IMG/background1.jpg");
-    -fx-background-size: 600px 400px;
+    -fx-background-size : cover;
 }
 .myPassField{
     -fx-background-radius : 30px;

@@ -7,21 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../../CSSFiles/showclientcommandes.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.AffichageDesCommandes.AffichageDesCommandesController">
+<AnchorPane fx:id="container" prefHeight="500.0" prefWidth="1000.0" styleClass="myPane" stylesheets="@../../../CSSFiles/showclientcommandes.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.AffichageDesCommandes.AffichageDesCommandesController">
    <children>
-      <TableView fx:id="CommandesTableView" layoutY="57.0" onMouseClicked="#handleMouseAction" prefHeight="339.0" prefWidth="600.0" styleClass="myTable">
+      <TableView fx:id="CommandesTableView" layoutY="78.0" onMouseClicked="#handleMouseAction" prefHeight="429.0" prefWidth="1000.0" styleClass="myTable">
         <columns>
           <TableColumn fx:id="RefCommandeColumn" prefWidth="200.79998779296875" text="Order ID" />
           <TableColumn fx:id="PriceColumn" prefWidth="203.20001220703125" text="Total Price" />
             <TableColumn fx:id="StatutColumn" prefWidth="196.00006103515625" text="Status" />
         </columns>
       </TableView>
-      <Button fx:id="RetourButton" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Back" />
-      <Label fx:id="clientLabel" layoutX="270.0" layoutY="8.0" text="client" textFill="WHITE">
+      <Button fx:id="RetourButton" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" prefHeight="36.0" prefWidth="111.0" styleClass="myButtons" text="&lt; Back">
          <font>
-            <Font size="25.0" />
+            <Font size="15.0" />
+         </font></Button>
+      <Label fx:id="clientLabel" alignment="CENTER" layoutX="151.0" layoutY="8.0" prefHeight="36.0" prefWidth="704.0" text="client" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
          </font>
       </Label>
-      <Button fx:id="orderItems" layoutX="523.0" layoutY="14.0" mnemonicParsing="false" onAction="#orderItemsButton" styleClass="myButtons" text="Products" />
+      <Button fx:id="orderItems" layoutX="868.0" layoutY="14.0" mnemonicParsing="false" onAction="#orderItemsButton" prefHeight="36.0" prefWidth="111.0" styleClass="myButtons" text="Products">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

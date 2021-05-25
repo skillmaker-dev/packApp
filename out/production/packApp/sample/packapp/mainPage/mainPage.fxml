@@ -12,18 +12,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../CSSFiles/mainPageCss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.mainPage.mainPageController">
-   <GridPane layoutX="142.0" layoutY="82.0" prefHeight="237.0" prefWidth="317.0" AnchorPane.leftAnchor="142.0" AnchorPane.topAnchor="82.0">
+<AnchorPane fx:id="container" prefHeight="500.0" prefWidth="1000.0" styleClass="myPane" stylesheets="@../../CSSFiles/mainPageCss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.mainPage.mainPageController">
+   <GridPane layoutX="142.0" layoutY="129.0" prefHeight="275.0" prefWidth="605.0">
       <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
       <rowConstraints>
-         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
       </rowConstraints>
-      <Button fx:id="orders" defaultButton="true" mnemonicParsing="false" onAction="#commandes" opacity="0.89" prefHeight="49.0" prefWidth="326.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Orders" GridPane.rowIndex="1">
+      <Button fx:id="orders" defaultButton="true" mnemonicParsing="false" onAction="#commandes" opacity="0.89" prefHeight="59.0" prefWidth="560.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Orders" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="newOrder" defaultButton="true" mnemonicParsing="false" onAction="#nouvelleCommande" opacity="0.89" prefHeight="49.0" prefWidth="329.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="New Order">
+      <Button fx:id="newOrder" defaultButton="true" mnemonicParsing="false" onAction="#nouvelleCommande" opacity="0.89" prefHeight="50.0" prefWidth="560.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="New Order">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="depot" defaultButton="true" mnemonicParsing="false" onAction="#depot" opacity="0.89" prefHeight="261.0" prefWidth="400.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Deposit" GridPane.rowIndex="3">
+      <Button fx:id="depot" defaultButton="true" mnemonicParsing="false" onAction="#depot" opacity="0.89" prefHeight="50.0" prefWidth="560.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Deposit" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>
@@ -56,7 +56,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="clients" defaultButton="true" mnemonicParsing="false" onAction="#client" opacity="0.89" prefHeight="49.0" prefWidth="317.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Clients" GridPane.rowIndex="2">
+      <Button fx:id="clients" defaultButton="true" mnemonicParsing="false" onAction="#client" opacity="0.89" prefHeight="50.0" prefWidth="560.0" styleClass="myButtons" stylesheets="@../../CSSFiles/mainPageCss.css" text="Clients" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>
@@ -68,23 +68,26 @@
          </cursor>
       </Button>
    </GridPane>
-   <Button fx:id="logOutButton" layoutX="468.0" layoutY="354.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="32.0" prefWidth="119.0" styleClass="logout" stylesheets="@../../CSSFiles/mainPageCss.css" text="Disconnection">
+   <Button fx:id="logOutButton" layoutX="807.0" layoutY="417.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="46.0" prefWidth="145.0" styleClass="logout" stylesheets="@../../CSSFiles/mainPageCss.css" text="Disconnection">
       <font>
-         <Font size="14.0" />
+         <Font size="17.0" />
       </font>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <ImageView fx:id="myImageView" fitHeight="18.0" fitWidth="23.0" layoutX="560.0" layoutY="21.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="myImageView" fitHeight="35.0" fitWidth="41.0" layoutX="879.0" layoutY="40.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
       <Image url="@../../icon/password.png" />
    </ImageView>
-   <Label layoutX="459.0" layoutY="21.0" onMouseClicked="#settings" prefHeight="18.0" prefWidth="95.0" text="Change password" textFill="WHITE" underline="true">
+   <Label layoutX="664.0" layoutY="40.0" onMouseClicked="#settings" prefHeight="35.0" prefWidth="209.0" text="Change password" textFill="WHITE" underline="true">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <font>
+         <Font size="24.0" />
+      </font>
    </Label>
 </AnchorPane>
