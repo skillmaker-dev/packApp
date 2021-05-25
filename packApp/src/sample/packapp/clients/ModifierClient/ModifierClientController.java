@@ -24,9 +24,11 @@ public class ModifierClientController implements Initializable {
     @FXML
     private TextField idField;
     @FXML
-    private TextField lastCmdField;
+    private TextField emailField;
     @FXML
-    private TextField nbrCmdField;
+    private TextField phoneField;
+    @FXML
+    private TextField addressField;
     @FXML
     private Button TerminerButton;
     @FXML
@@ -52,11 +54,12 @@ public class ModifierClientController implements Initializable {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-            String query = "UPDATE clients SET id = " + idField.getText() + " , name = '" + fullNameField.getText()
-                    + "'";
+            String query = "UPDATE clients SET fullname = '" + fullNameField.getText() + "' , phone = '" + phoneField.getText() + "' , email = '" + emailField.getText()
+                    + "' , address = '" + addressField.getText() + "' WHERE client_id =  " + idField.getText() + "";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             ((Node)(event.getSource())).getScene().getWindow().hide();
+            connection.close();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -68,14 +71,16 @@ public class ModifierClientController implements Initializable {
         idField.setText(selectedId);
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-            String query = "SELECT * FROM clients WHERE id = '" + idField.getText() +"'";
+            String query = "SELECT * FROM clients WHERE client_id = '" + idField.getText() +"'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                fullNameField.setText(resultSet.getString("name"));
-                nbrCmdField.setText(String.valueOf(resultSet.getInt("nbrOrders")));
-                lastCmdField.setText(resultSet.getString("lastOrder"));
+                fullNameField.setText(resultSet.getString("fullname"));
+                phoneField.setText(resultSet.getString("phone"));
+                emailField.setText(resultSet.getString("email"));
+                addressField.setText(resultSet.getString("address"));
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -84,7 +89,6 @@ public class ModifierClientController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lastCmdField.setEditable(false);
-        nbrCmdField.setEditable(false);
+            idField.setDisable(true);
     }
 }

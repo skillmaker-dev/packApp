@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,12 +20,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sample.packapp.depot.Products;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CommandesController implements Initializable {
@@ -46,15 +42,16 @@ public class CommandesController implements Initializable {
     @FXML
     private TableView<Orders> ordersTableView;
     @FXML
-    private TableColumn<Orders,String> refColumn;
+    private TableColumn<Orders,Integer> refColumn;
     @FXML
     private TableColumn<Orders,String> clientColumn;
+    @FXML
+    private TableColumn<Orders,Integer> idColumn;
     @FXML
     private TableColumn<Orders,Double> priceColumn;
     @FXML
     private TableColumn<Orders,String> statusColumn;
 
-    private String[] status = {"In progress" , "Delivered" , "Canceled"};
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainPage/mainPage.fxml"));
@@ -98,22 +95,26 @@ public class CommandesController implements Initializable {
 
         ObservableList<Orders> ordersList = FXCollections.observableArrayList();
         Connection connection = getConnection();
-        String query = "SELECT * FROM orders";
-        Statement statement;
-        ResultSet resultSet;
-
+        Connection connection1 = getConnection();
         try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+            String query = "SELECT * FROM orders";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            Statement statement1 = connection.createStatement();;
+            ResultSet resultSet1;
+            String name = null;
             Orders orders;
             while (resultSet.next()) {
-                orders = new Orders(resultSet.getString("reference"),resultSet.getString("fullName")
-                        ,resultSet.getString("phone"),resultSet.getString("email"),
-                        resultSet.getString("address"),resultSet.getString("gender"),
-                        resultSet.getString("product"),resultSet.getDouble("price"),
-                        resultSet.getInt("amount"),resultSet.getString("status"));
+                String query1 = "SELECT * FROM clients WHERE client_id = " + resultSet.getInt("client_id") + "";
+                resultSet1 = statement1.executeQuery(query1);
+                while (resultSet1.next()) {
+                   name = resultSet1.getString("fullname");
+                }
+                orders = new Orders(resultSet.getInt("order_id"),resultSet.getInt("client_id")
+                        ,name,resultSet.getDouble("totalPrice"),resultSet.getString("status"));
                 ordersList.add(orders);
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -124,9 +125,10 @@ public class CommandesController implements Initializable {
 
         ObservableList<Orders> list = getOrdersList();
 
-        refColumn.setCellValueFactory(new PropertyValueFactory<Orders,String >("reference"));
+        refColumn.setCellValueFactory(new PropertyValueFactory<Orders,Integer> ("orderId"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Orders,Integer> ("clientId"));
         clientColumn.setCellValueFactory(new PropertyValueFactory<Orders,String>("fullName"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<Orders,Double>("Price"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<Orders,Double>("totalPrice"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<Orders,String>("status"));
 
         ordersTableView.setItems(list);
@@ -175,7 +177,7 @@ public class CommandesController implements Initializable {
 
         if(!ordersTableView.getSelectionModel().isEmpty()){
             Orders orders = ordersTableView.getSelectionModel().getSelectedItem();
-            refField.setText("" + orders.getReference());
+            refField.setText("" + orders.getOrderId());
             editButton.setDisable(false);
             deleteButton.setDisable(false);
         }
@@ -201,7 +203,7 @@ public class CommandesController implements Initializable {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 index++;
-                if (resultSet.getString("reference").equals(refField.getText())) {
+                if (resultSet.getString("order_id").equals(refField.getText())) {
                     break;
                 }
             }
@@ -212,8 +214,8 @@ public class CommandesController implements Initializable {
                 totalRows++;
             }
             index++;
-            String ref = (String) ordersTableView.getColumns().get(0).getCellObservableValue(index - 1).getValue();
-            if (index == totalRows && refField.getText().equals(ref)) {
+            int ref = (int) ordersTableView.getColumns().get(0).getCellObservableValue(index - 1).getValue();
+            if (index == totalRows && Integer.parseInt(refField.getText()) == ref) {
                 ordersTableView.getSelectionModel().select(index - 1);
             } else if (index < totalRows) {
                 ordersTableView.getSelectionModel().select(index - 1);
@@ -228,6 +230,8 @@ public class CommandesController implements Initializable {
                 stage.getIcons().add(myIcone);
                 refField.clear();
             }
+            connection.close();
+            connection2.close();
         }
 
     }
@@ -244,36 +248,14 @@ public class CommandesController implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
         }else{
-            //Connection connection2 = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-            int nbrOfOrders = 0;
-            //String ref = "";
-            String name = "";
-            /*String query4 = "SELECT * FROM orders WHERE reference = '" + refField.getText() + "'";
-            Statement statement3 = connection2.createStatement();
-            ResultSet resultSet2 = statement3.executeQuery(query4);
-            while (resultSet2.next()) {
-                ref = resultSet2.getString("reference");
-            }*/
-            String query = "DELETE FROM orders WHERE reference = '" + refField.getText() + "'";
-            executeQuery(query);
-            Connection connection1 = getConnection();
-            String query5 = "SELECT email FROM orders WHERE reference = '" + refField.getText() + "'";
-            Statement statement1 = connection1.createStatement();
-            ResultSet resultSet1 = statement1.executeQuery(query5);
-            while (resultSet1.next()) {
-                name = resultSet1.getString("fullName");
-            }
             Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-            String query2 = "SELECT nbrOrders FROM clients WHERE name = '" + name + "'";
+            String query = "DELETE FROM orders WHERE order_id = " + refField.getText() + "";
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query2);
-            while (resultSet.next()) {
-                nbrOfOrders = resultSet.getInt("nbrOrders") - 1;
-            }
-            String query3 = "UPDATE clients SET nbrOrders = " + nbrOfOrders + " WHERE name = '"
-                    + name + "'";
+            statement.executeUpdate(query);
+            String query2 = "DELETE FROM order_items WHERE order_id = " + refField.getText() + "";
             Statement statement2 = connection.createStatement();
-            statement2.executeUpdate(query3);
+            statement2.executeUpdate(query2);
+            connection.close();
             showOrders();
             clearFields();
             editButton.setDisable(true);

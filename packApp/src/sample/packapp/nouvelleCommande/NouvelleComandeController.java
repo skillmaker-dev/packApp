@@ -249,11 +249,7 @@ public class NouvelleComandeController implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_Info_728979.png");
             stage.getIcons().add(myIcone);
             alert.showAndWait();
-            Parent root = FXMLLoader.load(getClass().getResource("../mainPage/mainPage.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

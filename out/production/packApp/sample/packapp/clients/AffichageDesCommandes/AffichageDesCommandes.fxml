@@ -9,13 +9,11 @@
 
 <AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../../CSSFiles/showclientcommandes.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.AffichageDesCommandes.AffichageDesCommandesController">
    <children>
-      <TableView fx:id="CommandesTableView" layoutY="57.0" prefHeight="339.0" prefWidth="600.0" styleClass="myTable">
+      <TableView fx:id="CommandesTableView" layoutY="57.0" onMouseClicked="#handleMouseAction" prefHeight="339.0" prefWidth="600.0" styleClass="myTable">
         <columns>
-          <TableColumn fx:id="RefCommandeColumn" prefWidth="116.0" text="Reference" />
-            <TableColumn fx:id="ProductNameColumn" prefWidth="128.0" text="Product Name" />
-          <TableColumn fx:id="PriceColumn" prefWidth="121.0" text="Price" />
-            <TableColumn fx:id="QuantiteColumn" prefWidth="118.0" text="Amount" />
-            <TableColumn fx:id="StatutColumn" prefWidth="116.0" text="Status" />
+          <TableColumn fx:id="RefCommandeColumn" prefWidth="200.79998779296875" text="Order ID" />
+          <TableColumn fx:id="PriceColumn" prefWidth="203.20001220703125" text="Total Price" />
+            <TableColumn fx:id="StatutColumn" prefWidth="196.00006103515625" text="Status" />
         </columns>
       </TableView>
       <Button fx:id="RetourButton" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Back" />
@@ -24,5 +22,6 @@
             <Font size="25.0" />
          </font>
       </Label>
+      <Button fx:id="orderItems" layoutX="523.0" layoutY="14.0" mnemonicParsing="false" onAction="#orderItemsButton" styleClass="myButtons" text="Products" />
    </children>
 </AnchorPane>

@@ -16,7 +16,7 @@ public class Main extends Application {
         primaryStage.setTitle("PackApp");
         Image myIcon = new Image("sample/icon/PackageAPP.png");
         primaryStage.getIcons().add(myIcon);
-        primaryStage.setResizable(false);
+        /*primaryStage.setResizable(false);*/
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

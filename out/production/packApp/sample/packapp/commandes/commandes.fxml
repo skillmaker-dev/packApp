@@ -30,10 +30,11 @@
    </Button>
    <TableView fx:id="ordersTableView" layoutX="177.0" layoutY="-1.0" onMouseClicked="#handleMouseAction" prefHeight="357.0" prefWidth="423.0">
       <columns>
-         <TableColumn fx:id="refColumn" prefWidth="81.0" text="Reference" />
-         <TableColumn fx:id="clientColumn" prefWidth="138.0" text="Client Name" />
-         <TableColumn fx:id="priceColumn" prefWidth="111.0" text="Total Price" />
-         <TableColumn fx:id="statusColumn" prefWidth="92.0" text="Status" />
+         <TableColumn fx:id="refColumn" prefWidth="81.0" text="Order ID" />
+         <TableColumn fx:id="idColumn" prefWidth="99.199951171875" text="Client ID " />
+         <TableColumn fx:id="clientColumn" prefWidth="93.5999755859375" text="Client Name" />
+         <TableColumn fx:id="statusColumn" prefWidth="68.0" text="Status" />
+         <TableColumn fx:id="priceColumn" prefWidth="80.79998779296875" text="Total Price" />
       </columns>
    </TableView>
    <TextField fx:id="refField" layoutX="14.0" layoutY="224.0" promptText="Reference" />

@@ -10,19 +10,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" styleClass="myPane" stylesheets="@../../../CSSFiles/client.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients._Clients.ClientsController">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" styleClass="myPane" stylesheets="@../../../CSSFiles/client.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients._Clients.ClientsController">
    <Button fx:id="retour" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#mainPage" styleClass="myButtons" text="&lt; Back">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
    <HBox layoutX="234.0" prefHeight="400.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
-      <TableView fx:id="clientsTableView" onMouseClicked="#handleMouseAction" prefHeight="400.0" prefWidth="385.0" styleClass="myTable">
+      <TableView fx:id="clientsTableView" onMouseClicked="#handleMouseAction" prefHeight="600.0" prefWidth="969.0" styleClass="myTable">
          <columns>
             <TableColumn fx:id="idClientColumn" prefWidth="96.0" text="Client ID" />
-            <TableColumn fx:id="ClientNameColumn" prefWidth="114.0" text="Client Name" />
-            <TableColumn fx:id="NbCmdColumn" prefWidth="58.0" text="Nb Orders" />
-            <TableColumn fx:id="lastCmdColumn" prefWidth="105.0" text="Last Order" />
+            <TableColumn fx:id="ClientNameColumn" prefWidth="133.60003662109375" text="Client Name" />
+            <TableColumn fx:id="phoneColumn" prefWidth="126.39996337890625" text="Phone" />
+            <TableColumn fx:id="emailColumn" prefWidth="200.00006103515625" text="Email" />
+            <TableColumn fx:id="adrColumn" prefWidth="213.5999755859375" text="Address" />
          </columns>
       </TableView>
    </HBox>
@@ -38,23 +39,23 @@
    </Label>
    <TextField fx:id="clientIdTextField" layoutX="31.0" layoutY="191.0" prefHeight="26.0" prefWidth="171.0" promptText="Client ID" styleClass="textField" />
    <TextField fx:id="clientNameTextField" layoutX="31.0" layoutY="138.0" prefHeight="26.0" prefWidth="171.0" promptText="Client Name" styleClass="textField" />
-   <Button fx:id="commandes" layoutX="31.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleCommandeButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Orders">
+   <Button fx:id="commandes" layoutX="31.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleCommandeButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Orders">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="modifier" layoutX="31.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Modify">
+   <Button fx:id="modifier" layoutX="31.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Modify">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="chercher" layoutX="60.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="26.0" prefWidth="108.0" styleClass="myButtons" text="Search">
+   <Button fx:id="chercher" layoutX="32.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Search">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
    <Button layoutX="147.0" layoutY="15.0" mnemonicParsing="false" onAction="#refresh" styleClass="myButtons" text="Refresh" />
-   <Button fx:id="delete" layoutX="118.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Delete">
+   <Button fx:id="delete" layoutX="31.0" layoutY="389.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Delete">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>

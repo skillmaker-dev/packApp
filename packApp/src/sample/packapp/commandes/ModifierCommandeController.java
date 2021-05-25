@@ -22,9 +22,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ModifierCommandeController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @FXML
     private TextField reference;
@@ -41,62 +38,52 @@ public class ModifierCommandeController implements Initializable {
     @FXML
     private TextField adrField;
     @FXML
-    private TextField QuantiteField;
-    @FXML
-    private RadioButton femaleRadioButton;
-    @FXML
-    private RadioButton maleRadioButton;
-    @FXML
     private ChoiceBox<String> commandeStatus;
     private String[] status = {"In progress" , "Delivered" , "Canceled"};
-
+    private  int clientId=0;
     public void setSelectedReference(String selectedReference) {
         reference.setText(selectedReference);
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-            String query = "SELECT * FROM orders WHERE reference = '" + reference.getText() +"'";
+            String query = "SELECT * FROM orders WHERE order_id = '" + reference.getText() +"'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                nomField.setText(resultSet.getString("fullName"));
-                telField.setText(String.valueOf(resultSet.getInt("phone")));
-                emailField.setText(resultSet.getString("email"));
-                adrField.setText(resultSet.getString("address"));
-                QuantiteField.setText(String.valueOf(resultSet.getInt("amount")));
+
+            while(resultSet.next())
+            {
+                clientId = resultSet.getInt("client_id");
                 commandeStatus.setValue(resultSet.getString("status"));
-                if(resultSet.getString("gender").equals("Man")) {
-                    maleRadioButton.setSelected(true);
-                } else if(resultSet.getString("gender").equals("Women")) {
-                    femaleRadioButton.setSelected(true);
-                }
             }
+            String query1= "SELECT * FROM clients WHERE client_id = '" + clientId +"'";
+            Statement statement1 = connection.createStatement();
+            ResultSet resultSet1 = statement1.executeQuery(query1);
+            while (resultSet1.next()) {
+                nomField.setText(resultSet1.getString("fullname"));
+                telField.setText(resultSet1.getString("phone"));
+                emailField.setText(resultSet1.getString("email"));
+                adrField.setText(resultSet1.getString("address"));
+
+            }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void annuler(ActionEvent e) throws IOException
+    public void annuler(ActionEvent e)
     {
         ((Node)(e.getSource())).getScene().getWindow().hide();
     }
 
-    public void enregistrer(ActionEvent e)
-    {
-        String choice = "";
-        if(maleRadioButton.isSelected()) {
-            choice = "Man";
-        } else if(femaleRadioButton.isSelected()) {
-            choice = "Women";
-        }
-        Connection connection = null;
+    public void enregistrer(ActionEvent e) throws SQLException {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-            String query = "UPDATE orders SET fullName = '" + nomField.getText() + "' , phone = " + telField.getText()
-                    + " , email = '" + emailField.getText() + "' , address = '" + adrField.getText() + "' , amount = "
-                    + QuantiteField.getText() + " , status = '" + commandeStatus.getValue() + "' , gender = '" +
-                    choice + "' WHERE reference = '" + reference.getText() + "'";
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            String query = "UPDATE orders SET status = '" + commandeStatus.getValue() + "' WHERE order_id = " + reference.getText() + "";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
+            String query2 = "UPDATE clients SET fullname = '" + nomField.getText() + "' , phone = '" + telField.getText() + "', email = '" + emailField.getText() + "', address = '" + adrField.getText() + "' WHERE client_id = " + clientId + "";
+            Statement statement1 = connection.createStatement();
+            statement1.executeUpdate(query2);
             connection.close();
             ((Node)(e.getSource())).getScene().getWindow().hide();
         } catch (Exception exception) {

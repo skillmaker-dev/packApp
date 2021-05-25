@@ -47,9 +47,11 @@ public class ClientsController implements Initializable {
     @FXML
     private TableColumn<Clients, String> ClientNameColumn;
     @FXML
-    private TableColumn<Clients, String> lastCmdColumn;
+    private TableColumn<Clients, String> phoneColumn;
     @FXML
-    private TableColumn<Clients, String> NbCmdColumn;
+    private TableColumn<Clients, String> emailColumn;
+    @FXML
+    private TableColumn<Clients, String> adrColumn;
     @FXML
     private Button modifier;
     @FXML
@@ -111,12 +113,14 @@ public class ClientsController implements Initializable {
             resultSet = statement.executeQuery(query);
             Clients clients;
             while (resultSet.next()) {
-                clients = new Clients(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("lastOrder"), resultSet.getInt("NbrOrders"));
+                clients = new Clients(resultSet.getInt("client_id"), resultSet.getString("fullname"), resultSet.getString("phone"), resultSet.getString("email"),resultSet.getString("address"));
                 clientsList.add(clients);
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return clientsList;
     }
 
@@ -126,8 +130,9 @@ public class ClientsController implements Initializable {
 
         idClientColumn.setCellValueFactory(new PropertyValueFactory<Clients, Integer>("clientId"));
         ClientNameColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("clientName"));
-        lastCmdColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("lastCmd"));
-        NbCmdColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("NbCmd"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("phone"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("email"));
+        adrColumn.setCellValueFactory(new PropertyValueFactory<Clients, String>("address"));
 
         clientsTableView.setItems(list);
     }
@@ -158,7 +163,7 @@ public class ClientsController implements Initializable {
             modifierClientController.setSelectedId(selectedId);
             Stage stage = new Stage();
             stage.setTitle("Modifier Client");
-            stage.setResizable(false);
+
             Image myIcon = new Image("sample/icon/PackageAPP.png");
             stage.getIcons().add(myIcon);
             stage.setScene(new Scene(root1));
@@ -171,14 +176,14 @@ public class ClientsController implements Initializable {
     public void handleCommandeButton(ActionEvent event) {
 
         try {
-            String selectedClient = clientNameTextField.getText();
+            int selectedClient = Integer.parseInt(clientIdTextField.getText());
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../AffichageDesCommandes/AffichageDesCommandes.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             AffichageDesCommandesController affichageDesCommandesController = fxmlLoader.getController();
-            affichageDesCommandesController.setSelectedClient(selectedClient);
+            affichageDesCommandesController.setSelectedClient(selectedClient,clientNameTextField.getText());
             Stage stage = new Stage();
             stage.setTitle("Afficher les commandes");
-            stage.setResizable(false);
+
             Image myIcon = new Image("sample/icon/PackageAPP.png");
             stage.getIcons().add(myIcon);
             stage.setScene(new Scene(root1));
@@ -200,26 +205,14 @@ public class ClientsController implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
         } else {
-            int index = -1;
-            String query = "SELECT * FROM clients";
-            Connection connection = getConnection();
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            String query = "DELETE FROM clients WHERE client_id = " + clientIdTextField.getText() + "";
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                index++;
-                if (resultSet.getInt("id") == Integer.parseInt(clientIdTextField.getText())) {
-                    break;
-                }
-            }
-            if((int) clientsTableView.getColumns().get(2).getCellObservableValue(index).getValue() == 0) {
-                String query1 = "DELETE FROM clients WHERE id = " + clientIdTextField.getText() + "";
-                executeQuery(query1);
-                showClients();
-                clearFields();
-                modifier.setDisable(true);
-                delete.setDisable(true);
-                commandes.setDisable(true);
-            }
+            statement.executeUpdate(query);
+            connection.close();
+            showClients();
+            clearFields();
+
         }
     }
 
@@ -244,7 +237,7 @@ public class ClientsController implements Initializable {
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
                     index++;
-                    if (resultSet.getInt("id") == Integer.parseInt(clientIdTextField.getText())) {
+                    if (resultSet.getInt("client_id") == Integer.parseInt(clientIdTextField.getText())) {
                         break;
                     }
                 }
@@ -292,10 +285,6 @@ public class ClientsController implements Initializable {
     private void handleMouseAction(MouseEvent event) throws SQLException {
 
         if(!clientsTableView.getSelectionModel().isEmpty()){
-            Connection connection = getConnection();
-            String query = "SELECT * FROM orders WHERE fullName = '" + clientNameTextField.getText() + "'";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
             Clients clients = clientsTableView.getSelectionModel().getSelectedItem();
             clientIdTextField.setText("" + clients.getClientId());
             clientNameTextField.setText("" + clients.getClientName());

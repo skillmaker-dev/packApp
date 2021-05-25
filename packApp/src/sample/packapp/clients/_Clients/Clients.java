@@ -3,14 +3,16 @@ package sample.packapp.clients._Clients;
 public class Clients {
     private int clientId;
     private String clientName;
-    private String lastCmd;
-    private int NbCmd;
+    private String phone;
+    private String email;
+    private String address;
 
-    public Clients(int clientId, String clientName, String lastCmd, int nbCmd) {
+    public Clients(int clientId, String clientName, String phone, String email, String address) {
         this.clientId = clientId;
         this.clientName = clientName;
-        this.lastCmd = lastCmd;
-        NbCmd = nbCmd;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
     }
 
     public int getClientId() {
@@ -21,11 +23,15 @@ public class Clients {
         return clientName;
     }
 
-    public String getLastCmd() {
-        return lastCmd;
+    public String getPhone() {
+        return phone;
     }
 
-    public int getNbCmd() {
-        return NbCmd;
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }
