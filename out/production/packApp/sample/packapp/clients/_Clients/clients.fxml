@@ -38,20 +38,25 @@
    </Label>
    <TextField fx:id="clientIdTextField" layoutX="31.0" layoutY="191.0" prefHeight="26.0" prefWidth="171.0" promptText="Client ID" styleClass="textField" />
    <TextField fx:id="clientNameTextField" layoutX="31.0" layoutY="138.0" prefHeight="26.0" prefWidth="171.0" promptText="Client Name" styleClass="textField" />
-   <Button fx:id="commandes" layoutX="28.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleCommandeButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Orders">
+   <Button fx:id="commandes" layoutX="31.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleCommandeButton" prefHeight="26.0" prefWidth="171.0" styleClass="myButtons" text="Orders">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="modifier" layoutX="28.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Modify">
+   <Button fx:id="modifier" layoutX="31.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Modify">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="chercher" layoutX="119.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Search">
+   <Button fx:id="chercher" layoutX="60.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="26.0" prefWidth="108.0" styleClass="myButtons" text="Search">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
    <Button layoutX="147.0" layoutY="15.0" mnemonicParsing="false" onAction="#refresh" styleClass="myButtons" text="Refresh" />
+   <Button fx:id="delete" layoutX="118.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="26.0" prefWidth="83.0" styleClass="myButtons" text="Delete">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
 </AnchorPane>

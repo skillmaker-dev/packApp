@@ -160,6 +160,7 @@ public class CommandesController implements Initializable {
         try {
             statement = connection.createStatement();
             statement.executeUpdate(query);
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -243,24 +244,24 @@ public class CommandesController implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
         }else{
-            Connection connection2 = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
+            //Connection connection2 = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             int nbrOfOrders = 0;
-            String ref = "";
+            //String ref = "";
             String name = "";
-            String query4 = "SELECT * FROM orders WHERE reference = '" + refField.getText() + "'";
+            /*String query4 = "SELECT * FROM orders WHERE reference = '" + refField.getText() + "'";
             Statement statement3 = connection2.createStatement();
             ResultSet resultSet2 = statement3.executeQuery(query4);
             while (resultSet2.next()) {
                 ref = resultSet2.getString("reference");
-            }
-            String query = "DELETE FROM orders WHERE reference = '" + ref + "'";
+            }*/
+            String query = "DELETE FROM orders WHERE reference = '" + refField.getText() + "'";
             executeQuery(query);
             Connection connection1 = getConnection();
-            String query5 = "SELECT fullName FROM orders WHERE reference = '" + refField.getText() + "'";
-            Statement statement4 = connection1.createStatement();
-            ResultSet resultSet3 = statement4.executeQuery(query5);
-            while (resultSet3.next()) {
-                name = resultSet3.getString("fullName");
+            String query5 = "SELECT email FROM orders WHERE reference = '" + refField.getText() + "'";
+            Statement statement1 = connection1.createStatement();
+            ResultSet resultSet1 = statement1.executeQuery(query5);
+            while (resultSet1.next()) {
+                name = resultSet1.getString("fullName");
             }
             Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
             String query2 = "SELECT nbrOrders FROM clients WHERE name = '" + name + "'";

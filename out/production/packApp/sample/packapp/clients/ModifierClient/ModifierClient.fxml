@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="500.0" styleClass="myPane" stylesheets="@../../../CSSFiles/changeclient.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.ModifierClient.ModifierClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="331.0" styleClass="myPane" stylesheets="@../../../CSSFiles/changeclient.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.packapp.clients.ModifierClient.ModifierClientController">
    <children>
-      <TextField fx:id="fullNameField" layoutX="148.0" layoutY="193.0" prefHeight="34.0" prefWidth="205.0" promptText="Client Name" styleClass="textField" />
-      <TextField fx:id="nbrCmdField" layoutX="148.0" layoutY="275.0" prefHeight="34.0" prefWidth="205.0" promptText="Nb of Orders" styleClass="textField" />
-      <Button fx:id="TerminerButton" layoutX="130.0" layoutY="446.0" mnemonicParsing="false" onAction="#HandleEndButton" prefHeight="34.0" prefWidth="83.0" styleClass="myButtons" text="Cancel" />
-      <Button fx:id="SaveButton" layoutX="295.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="34.0" prefWidth="83.0" styleClass="myButtons" text="Save" />
-      <Label alignment="CENTER" layoutX="103.0" layoutY="30.0" prefHeight="34.0" prefWidth="275.0" text="Edit Client" textFill="WHITE">
+      <TextField fx:id="fullNameField" layoutX="63.0" layoutY="177.0" prefHeight="34.0" prefWidth="205.0" promptText="Client Name" styleClass="textField" />
+      <TextField fx:id="nbrCmdField" layoutX="63.0" layoutY="260.0" prefHeight="34.0" prefWidth="205.0" promptText="Nb of Orders" styleClass="textField" />
+      <Button fx:id="TerminerButton" layoutX="63.0" layoutY="430.0" mnemonicParsing="false" onAction="#HandleEndButton" prefHeight="34.0" prefWidth="83.0" styleClass="myButtons" text="Cancel" />
+      <Button fx:id="SaveButton" layoutX="185.0" layoutY="430.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="34.0" prefWidth="83.0" styleClass="myButtons" text="Save" />
+      <Label alignment="CENTER" layoutX="28.0" layoutY="14.0" prefHeight="34.0" prefWidth="275.0" text="Edit Client" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="23.0" />
          </font>
       </Label>
-      <TextField fx:id="lastCmdField" layoutX="148.0" layoutY="357.0" prefHeight="34.0" prefWidth="205.0" promptText="Last Order" styleClass="textField" />
-      <TextField fx:id="idField" layoutX="148.0" layoutY="112.0" prefHeight="34.0" prefWidth="205.0" promptText="Client ID" styleClass="textField" />
+      <TextField fx:id="lastCmdField" layoutX="63.0" layoutY="341.0" prefHeight="34.0" prefWidth="205.0" promptText="Last Order" styleClass="textField" />
+      <TextField fx:id="idField" layoutX="63.0" layoutY="91.0" prefHeight="34.0" prefWidth="205.0" promptText="Client ID" styleClass="textField" />
    </children>
 </AnchorPane>

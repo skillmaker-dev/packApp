@@ -56,6 +56,8 @@ public class ClientsController implements Initializable {
     private Button commandes;
     @FXML
     private Button chercher;
+    @FXML
+    private Button delete;
 
     public void mainPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../mainPage/mainPage.fxml"));
@@ -80,6 +82,7 @@ public class ClientsController implements Initializable {
         modifier.setDisable(true);
         commandes.setDisable(true);
         chercher.setDisable(false);
+        delete.setDisable(true);
     }
 
     public Connection getConnection() {
@@ -186,6 +189,40 @@ public class ClientsController implements Initializable {
         }
     }
 
+    public void handleDeleteButton() throws SQLException {
+        if(clientNameTextField.getText().isEmpty() || clientIdTextField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("You must select a client to DELETE it !");
+            alert.setContentText("Click Ok to Try Again");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
+        } else {
+            int index = -1;
+            String query = "SELECT * FROM clients";
+            Connection connection = getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                index++;
+                if (resultSet.getInt("id") == Integer.parseInt(clientIdTextField.getText())) {
+                    break;
+                }
+            }
+            if((int) clientsTableView.getColumns().get(2).getCellObservableValue(index).getValue() == 0) {
+                String query1 = "DELETE FROM clients WHERE id = " + clientIdTextField.getText() + "";
+                executeQuery(query1);
+                showClients();
+                clearFields();
+                modifier.setDisable(true);
+                delete.setDisable(true);
+                commandes.setDisable(true);
+            }
+        }
+    }
+
     public void handleSearchButton(ActionEvent event) {
 
         try {
@@ -234,6 +271,8 @@ public class ClientsController implements Initializable {
                     stage.getIcons().add(myIcone);
                     clientIdTextField.clear();
                 }
+                connection.close();
+                connection2.close();
             }
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -263,6 +302,7 @@ public class ClientsController implements Initializable {
             modifier.setDisable(false);
             chercher.setDisable(true);
             commandes.setDisable(false);
+            delete.setDisable(false);
         }
     }
 
@@ -271,6 +311,7 @@ public class ClientsController implements Initializable {
         modifier.setDisable(true);
         commandes.setDisable(true);
         chercher.setDisable(false);
+        delete.setDisable(true);
         clearFields();
     }
 }

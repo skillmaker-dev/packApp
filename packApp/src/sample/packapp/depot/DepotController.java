@@ -25,10 +25,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -82,6 +79,7 @@ public class DepotController<root> implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showProducts();
+        idTextField.setEditable(false);
         modifier.setDisable(true);
         supprimer.setDisable(true);
         qrbutton.setDisable(true);
@@ -97,21 +95,32 @@ public class DepotController<root> implements Initializable {
 
         String Product = id + "\n" + name + "\n" + quantity + "\n" + price;
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("QrCode.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            QrCodeGeneratorController qrCodeGeneratorController = fxmlLoader.getController();
-            qrCodeGeneratorController.generate(Product);
-            Stage stage = new Stage();
-            stage.setTitle("Code Qr");
-            stage.setResizable(false);
-            Image myIcon = new Image("sample/icon/PackageAPP.png");
-            stage.getIcons().add(myIcon);
-            stage.setScene(new Scene(root1));
-            stage.centerOnScreen();
-            stage.show();
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        if(idTextField.getText().isEmpty() || productNameTextField.getText().isEmpty() || quantityTextField.getText().isEmpty() || unitPriceTextField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("You must select a product to generate its QR Code !");
+            alert.setContentText("Click Ok to Try Again");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
+        } else {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("QrCode.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                QrCodeGeneratorController qrCodeGeneratorController = fxmlLoader.getController();
+                qrCodeGeneratorController.generate(Product);
+                Stage stage = new Stage();
+                stage.setTitle("Code Qr");
+                stage.setResizable(false);
+                Image myIcon = new Image("sample/icon/PackageAPP.png");
+                stage.getIcons().add(myIcon);
+                stage.setScene(new Scene(root1));
+                stage.centerOnScreen();
+                stage.show();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
 
     }
@@ -142,9 +151,10 @@ public class DepotController<root> implements Initializable {
             resultSet = statement.executeQuery(query);
             Products products;
             while (resultSet.next()) {
-                products = new Products(resultSet.getInt("id"),resultSet.getString("productName"),resultSet.getInt("quantity"),resultSet.getDouble("unitPrice"));
+                products = new Products(resultSet.getInt("product_id"),resultSet.getString("name"),resultSet.getInt("quantity"),resultSet.getDouble("unit_price"));
                 productsList.add(products);
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -169,6 +179,7 @@ public class DepotController<root> implements Initializable {
         try {
             statement = connection.createStatement();
             statement.executeUpdate(query);
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -181,29 +192,9 @@ public class DepotController<root> implements Initializable {
         unitPriceTextField.clear();
     }
 
+    public void handleInsertProducts() throws SQLException {
 
-    public int checkID(){
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-            String query = "SELECT * FROM products";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                if(resultSet.getInt("id") == Integer.parseInt(idTextField.getText())){
-                    ID = resultSet.getInt("id");
-                    break;
-                }
-            }
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ID;
-    }
-
-    public void handleInsertProducts() {
-
-        if(!quantityTextField.getText().matches("[0-9]*") || !unitPriceTextField.getText().matches("[0-9]*")){
+        if (!quantityTextField.getText().matches("[0-9]*") || !unitPriceTextField.getText().matches("[0-9]*")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText("You must enter valide value !");
@@ -213,36 +204,21 @@ public class DepotController<root> implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
             clearFields();
-        }
-        else{
-            if(idTextField.getText().equals("") || productNameTextField.getText().equals("") || quantityTextField.getText().equals("") || unitPriceTextField.getText().equals("")) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ERROR!");
-                alert.setHeaderText("You must insert all fields (required) !");
-                alert.setContentText("Click Ok to Try Again");
-                alert.show();
-                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
-                stage.getIcons().add(myIcone);
-                clearFields();
-            }
-            else if(checkID() == Integer.parseInt(idTextField.getText())){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ERROR!");
-                alert.setHeaderText("The ID must be unique !");
-                alert.setContentText("Click Ok to Try Again");
-                alert.show();
-                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
-                stage.getIcons().add(myIcone);
-                idTextField.clear();
-            }
-            else {
-                String query = "INSERT INTO products VALUES (" + idTextField.getText() + " , '" + productNameTextField.getText() + "' , " + quantityTextField.getText() + " , " + unitPriceTextField.getText() + ")";
-                executeQuery(query);
-                showProducts();
-                clearFields();
-            }
+        } else if (productNameTextField.getText().equals("") || quantityTextField.getText().equals("") || unitPriceTextField.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("You must insert all fields (required) !");
+            alert.setContentText("Click Ok to Try Again");
+            alert.show();
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
+            stage.getIcons().add(myIcone);
+            clearFields();
+        } else {
+            String query = "INSERT INTO products (name, quantity, unit_price) VALUES ('" + productNameTextField.getText() + "' , " + quantityTextField.getText() + " , " + unitPriceTextField.getText() + ")";
+            executeQuery(query);
+            showProducts();
+            clearFields();
         }
     }
 
@@ -258,10 +234,10 @@ public class DepotController<root> implements Initializable {
             stage.getIcons().add(myIcone);
             clearFields();
         }else{
-            if(idTextField.getText().isEmpty() || productNameTextField.getText().isEmpty() || quantityTextField.getText().isEmpty() || unitPriceTextField.getText().isEmpty()){
+            if(productNameTextField.getText().isEmpty() || quantityTextField.getText().isEmpty() || unitPriceTextField.getText().isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR!");
-                alert.setHeaderText("You must select a product UPDATE it !");
+                alert.setHeaderText("You must select a product to UPDATE it !");
                 alert.setContentText("Click Ok to Try Again");
                 alert.show();
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
@@ -269,7 +245,7 @@ public class DepotController<root> implements Initializable {
                 stage.getIcons().add(myIcone);
             }
             else{
-                String query = "UPDATE products SET id = " + idTextField.getText() + " , productName = '" + productNameTextField.getText() + "' , quantity = " + quantityTextField.getText() + " , unitPrice = " + unitPriceTextField.getText() + " WHERE id = " + idTextField.getText() + "";
+                String query = "UPDATE products SET name = '" + productNameTextField.getText() + "' , quantity = " + quantityTextField.getText() + " , unit_price = " + unitPriceTextField.getText() + " WHERE product_id = " + idTextField.getText() + "";
                 executeQuery(query);
                 showProducts();
                 clearFields();
@@ -280,7 +256,7 @@ public class DepotController<root> implements Initializable {
     }
 
     public void handleDeleteProducts() {
-        if(idTextField.getText().isEmpty() || productNameTextField.getText().isEmpty() || quantityTextField.getText().isEmpty() || unitPriceTextField.getText().isEmpty()){
+        if(productNameTextField.getText().isEmpty() || quantityTextField.getText().isEmpty() || unitPriceTextField.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText("You must select a product to DELETE it !");
@@ -290,7 +266,7 @@ public class DepotController<root> implements Initializable {
             Image myIcone = new Image("sample/icon/iconfinder_sign-error_299045.png");
             stage.getIcons().add(myIcone);
         }else{
-            String query = "DELETE FROM products WHERE id = " + idTextField.getText() + "";
+            String query = "DELETE FROM products WHERE product_id = " + idTextField.getText() + "";
             executeQuery(query);
             showProducts();
             clearFields();
@@ -298,6 +274,7 @@ public class DepotController<root> implements Initializable {
             supprimer.setDisable(true);
         }
     }
+
     @FXML
     private void handleMouseAction(MouseEvent event) {
 
@@ -310,14 +287,19 @@ public class DepotController<root> implements Initializable {
             modifier.setDisable(false);
             supprimer.setDisable(false);
             qrbutton.setDisable(false);
+            qrbutton.setDisable(false);
+            ajouter.setDisable(true);
+            idTextField.setEditable(false);
         }
     }
 
     public void refresh(ActionEvent event) {
         showProducts();
+        idTextField.setEditable(false);
         modifier.setDisable(true);
         supprimer.setDisable(true);
         qrbutton.setDisable(true);
+        ajouter.setDisable(false);
         clearFields();
     }
 }

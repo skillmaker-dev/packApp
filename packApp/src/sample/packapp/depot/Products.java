@@ -2,7 +2,7 @@ package sample.packapp.depot;
 
 public class Products {
 
-    private int id = 1;
+    private int id;
     private String productName;
     private int quantity;
     private double unitPrice;

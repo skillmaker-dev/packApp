@@ -64,7 +64,7 @@ public class rootPageController {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                oldPassword =resultSet.getString("oldPassword");
+                oldPassword =resultSet.getString("oldpassword");
             }
         } catch (Exception e) {
             e.printStackTrace();

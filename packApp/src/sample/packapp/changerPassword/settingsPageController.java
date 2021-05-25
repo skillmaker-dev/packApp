@@ -105,7 +105,7 @@ public class settingsPageController extends rootPageController {
             }else{
                 try {
                     Connection connection = DriverManager.getConnection("jdbc:sqlite:packApp/src/sample/DataBase/sqlite.db");
-                    String query = "UPDATE users SET password = '" + newPassword + "' , oldPassword = '" + currentPassword +"'";
+                    String query = "UPDATE users SET password = '" + newPassword + "' , oldpassword = '" + currentPassword +"'";
                     Statement statement = connection.createStatement();
                     statement.executeUpdate(query);
                 } catch (Exception e) {

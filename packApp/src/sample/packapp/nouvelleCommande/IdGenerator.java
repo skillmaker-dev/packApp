@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class IdGenerator {
 
-    public static String generateId() {
+    public static int generateId() {
 
         // create a string of numbers
         String numbers = "0123456789";
@@ -32,7 +32,8 @@ public class IdGenerator {
         }
 
         String randomString = sb.toString();
-        return randomString;
+        int randomID = Integer.parseInt(randomString);
+        return randomID;
 
     }
 
