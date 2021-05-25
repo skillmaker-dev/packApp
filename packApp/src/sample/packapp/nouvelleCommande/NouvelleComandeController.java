@@ -144,17 +144,28 @@ public class NouvelleComandeController implements Initializable {
     public void resetScene() {
 
         idfield.clear();
+        idfield.setEditable(true);
         fullNameField.clear();
+        fullNameField.setEditable(true);
         phoneField.clear();
+        phoneField.setEditable(true);
         emailField.clear();
+        emailField.setEditable(true);
         addressField.clear();
+        addressField.setEditable(true);
         priceField.clear();
+        priceField.setEditable(true);
         amountField.clear();
+        amountField.setEditable(true);
         statusBox.setValue("Status : ");
+        statusBox.setDisable(false);
         productBox.setValue("Product : ");
         amountField.setText("0");
         totalLabel.setText("0");
+        generateIdButton.setDisable(false);
+        refreshButton.setDisable(false);
         save.setDisable(true);
+
 
     }
 
@@ -253,6 +264,8 @@ public class NouvelleComandeController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        resetScene();
+        orderID = idGen.generateId();
     }
 
     public void handleAddToCartButton(ActionEvent event) {
@@ -310,11 +323,15 @@ public class NouvelleComandeController implements Initializable {
                         stage.getIcons().add(myIcone);
                     }
                 } else {
+                    int boughtQuantity = 0;
+                    boughtQuantity = Integer.parseInt(amountField.getText());
                     String query2 = "INSERT INTO order_items VALUES ( " + orderID + " , " + selectedProductId + " , " +
-                            Integer.parseInt(amountField.getText()) + " , " + Double.parseDouble(priceField.getText()) + ')';
+                            boughtQuantity + " , " + Double.parseDouble(priceField.getText()) + ')';
                     Statement statement2 = connection1.createStatement();
+                    String query3 = " UPDATE products SET quantity = quantity - " + boughtQuantity + " WHERE product_id = " + selectedProductId +   "";
                     totalPrice += Double.parseDouble(priceField.getText());
                     statement2.executeUpdate(query2);
+                    statement2.executeUpdate(query3);
                     idfield.setEditable(false);
                     fullNameField.setEditable(false);
                     phoneField.setEditable(false);
