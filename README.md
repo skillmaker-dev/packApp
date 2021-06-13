@@ -22,13 +22,9 @@ Please Respect the Application hierarchy as in the image below posted By our Tea
 - inside every scene there is a *Back* button and also there is some buttons like : **chercher** **Enregistrer** ...
 
 - We are going to use **SQLite** database.
-- We are going to use **TableView** to display products and orders ( each row contains labels ).
+- We are going to use **TableView** to display products and orders.
 
 - We are going to add some features in upcoming versions: PDF export, Qr code generator... 
 
-- Note that this is still not a complete application, only some scenes are made.
-
-- **rootPage.fxml** is the login scene.
-- **rootPageController.java** is the login scene controller
 
 - Feel free to commit.
